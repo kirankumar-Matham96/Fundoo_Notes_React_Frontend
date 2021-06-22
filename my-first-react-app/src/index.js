@@ -5,13 +5,6 @@ import './index.scss';
 import Register from './pages/register.jsx';
 import reportWebVitals from './reportWebVitals';
 
-// ReactDOM.render(
-//   <React.StrictMode>
-//     <App />
-//   </React.StrictMode>,
-//   document.getElementById('root')
-// );
-
 ReactDOM.render(
   <React.StrictMode>
     <Register />

@@ -1,0 +1,47 @@
+.title{
+  display: flex;
+  flex-direction: row;
+}
+.fundoo{
+  display: flex;
+  flex-direction: row;
+  margin-left: 10px;
+}
+.notes{
+  display: flex;
+  flex-direction: row;
+  margin-left: 10px;
+}
+#f{
+  color: rgb(0, 17, 255);
+}
+#u{
+  color: rgb(255, 0, 0);
+}
+#n1{
+  color: rgb(139, 127, 15);
+}
+#d{
+  color: rgb(255, 94, 0);
+}
+#o1{
+  color: rgb(21, 255, 0);
+}
+#o2{
+  color: rgb(0, 47, 255);
+}
+#n2{
+  color: rgb(0, 0, 0);
+}
+#o3{
+  color: rgb(0, 0, 0);
+}
+#t{
+  color: rgb(0, 0, 0);
+}
+#e{
+  color: rgb(0, 0, 0);
+}
+#s{
+  color: rgb(0, 0, 0);
+}

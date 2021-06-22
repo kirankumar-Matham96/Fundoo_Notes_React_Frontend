@@ -1,12 +1,13 @@
 $backGround1: #fff;
-
+*{
+  font-family: roboto,'Noto Sans Myanmar UI',arial,sans-serif;
+}
 .Register {
   display:flex;
   flex-direction: column;
   margin: 0;
   padding: 0;
   background: $backGround1;
-  font-family: roboto,'Noto Sans Myanmar UI',arial,sans-serif;
 }
 .form{
   display: flex;
@@ -17,13 +18,11 @@ $backGround1: #fff;
   transform: translate(-50%,-50%);
   border: 1px solid #9c9c9c;
   border-radius: 10px;
-  width: 750px;
+  width: 500px;
   padding: 25px;
 }
-.label{
-  position: relative;
-  font-size: 14px;
-  margin-left: 10px;
+.info{
+  padding: 10px 0px 10px 0;
 }
 h1{
   margin-left: 0px;
@@ -33,32 +32,59 @@ h1{
   flex-flow: row;
 }
 #user-name{
-  width: 352px;
+  align-items: stretch;
 }
 .end-options{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin: 30px 30px 30px 0px;
+  padding-right: 30px;
 }
 #first,#pwd{
   margin-right: 7px;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
 }
-
-#head-statement{
-  font-weight: 400;
-  font-size: 30px;
-  color: rgb(30, 32, 36);
-}
-
 input{
   margin: 30px 0 0 10px;
   border: 1px solid rgba(0, 0, 0, 0.582);
   border-radius: 2px;
+  padding: 10px 10px 10px 10px;
 }
-
-#logo2{
+p{
+  color: #272626c0;
+  margin-top: 5px;
+  margin-left: 25px;
 }
-
-.end-options{
-  margin: 30px 30px 30px 0px;
+#head-statement{
+  margin: 10px;
+  font-weight: 370;
+  font-size: 30px;
+  color: rgba(19, 20, 22, 0.931);
+}
+a{
+  margin-left: 10px;
+  font-size: large;
+  font-weight: bold;
+  color: rgb(57, 146, 206);
+  text-decoration: none;
+}
+#next-btn{
+  color: rgb(255, 255, 255);
+  background-color: rgb(6, 92, 252);
+  width: 100px;
+  height: 47px;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+}
+#show-password{
+  margin-left: 10px;
+}
+.check-box{
+  border: 2px solid black;
+  width: 20px;
+  height: 20px;
 }
