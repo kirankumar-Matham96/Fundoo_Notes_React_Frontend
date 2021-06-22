@@ -1,12 +1,18 @@
 import React, { Component } from "react";
 import '../scss/register.scss';
 import Title from '../components/title';
+import Login from './login';
+import { BrowserRouter as Router, Route, Switch, Link, Redirect } from 'react-router-dom';
 
 //using class component
 class Register extends Component {
 
   //method from Component
   render() {
+    function clickedMe() {
+      return (<Login />);
+    }
+
     return (
       <div className='Register'>
         <form className='form' action="#">
@@ -49,7 +55,7 @@ class Register extends Component {
               </div>
               <div className='end-options'>
                 <a href='https://www.google.com'>Sign in instead</a>
-                <button className='btn' id='next-btn'>Next</button>
+                <button className='btn' id='next-btn' onClick={ clickedMe }>Next</button>
               </div>
             </div>
           </div>

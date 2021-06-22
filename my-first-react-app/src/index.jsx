@@ -3,11 +3,27 @@ import ReactDOM from 'react-dom';
 import './index.scss';
 // import App from './App';
 import Register from './pages/register.jsx';
+// import Router from './pages/router';
+import Login from './pages/login';
 import reportWebVitals from './reportWebVitals';
+
+// ReactDOM.render(
+//   <React.StrictMode>
+//     <Register />
+//   </React.StrictMode>,
+//   document.getElementById('root')
+// );
+
+// ReactDOM.render(
+//   <React.StrictMode>
+//     <Router />
+//   </React.StrictMode>,
+//   document.getElementById('root')
+// );
 
 ReactDOM.render(
   <React.StrictMode>
-    <Register />
+    <Login />
   </React.StrictMode>,
   document.getElementById('root')
 );

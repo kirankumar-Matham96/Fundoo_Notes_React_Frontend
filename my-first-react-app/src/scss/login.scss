@@ -1,0 +1,36 @@
+.login{
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  border-radius: 2%;
+  align-items: center;
+  justify-content: center;
+  height: 500px;
+  margin: 50px 200px 200px 200px;
+}
+header{
+  color: tomato;
+}
+
+#email,#pwd{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 10px 10px 10px;
+  padding: 10px 10px 10px 10px;
+}
+
+.show-pwd{
+  width: 200px;
+  padding-left: 15px;
+  margin-bottom: 20px;
+}
+
+.button{
+}
+#login-button{
+  width: 100px;
+  height: 30px;
+}
+
