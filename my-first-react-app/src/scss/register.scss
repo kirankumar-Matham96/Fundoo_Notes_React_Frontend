@@ -1,0 +1,64 @@
+$backGround1: #fff;
+
+.Register {
+  display:flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  background: $backGround1;
+  font-family: roboto,'Noto Sans Myanmar UI',arial,sans-serif;
+}
+.form{
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  border: 1px solid #9c9c9c;
+  border-radius: 10px;
+  width: 750px;
+  padding: 25px;
+}
+.label{
+  position: relative;
+  font-size: 14px;
+  margin-left: 10px;
+}
+h1{
+  margin-left: 0px;
+}
+.name{
+  display:flex;
+  flex-flow: row;
+}
+#user-name{
+  width: 352px;
+}
+.end-options{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+#first,#pwd{
+  margin-right: 7px;
+}
+
+#head-statement{
+  font-weight: 400;
+  font-size: 30px;
+  color: rgb(30, 32, 36);
+}
+
+input{
+  margin: 30px 0 0 10px;
+  border: 1px solid rgba(0, 0, 0, 0.582);
+  border-radius: 2px;
+}
+
+#logo2{
+}
+
+.end-options{
+  margin: 30px 30px 30px 0px;
+}
