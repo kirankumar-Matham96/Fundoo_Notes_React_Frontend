@@ -14,29 +14,25 @@ function Login() {
   const [storeMail, storeEmail] = useState(false);
   const [storePassword, storePWD] = useState(false);
 
-  let userEmail;
-  let userPassword;
-
-  getEmail = (event) => {
+  const getEmail = (event) => {
     setEmail(event.target.value);
-    userEmail = email;
-    console.log(`email: ${userEmail}`);
+    console.log(email);
   }
-  getPassword = (event) => {
+
+  const getPassword = (event) => {
     setPassword(event.target.value);
-    userPassword = password;
-    console.log(userPassword);
+    console.log(password);
   }
 
-  storeUserData = () => {
-    let mail;
-    let password;
+  const storeUserData = () => {
+    storeEmail(value => value = true);
+    storePWD(value => value = true);
 
-    storeMail ? mail = userEmail : mail = 'Not stored!';
-    console.log(`email stored: ${mail}`);
+    console.log(`storeMail: ${storeMail}`)
+    console.log(`storePassword: ${storePassword}`)
 
-    storePassword ? password = userPassword : password = 'Not stored!';
-    console.log(`password stored: ${password}`);
+    storeMail ? console.log(email) : console.log('Not stored!');
+    storePassword ? console.log(password) : console.log('Not stored!');
   }
 
   return (
@@ -45,15 +41,15 @@ function Login() {
         <h1>Login here</h1>
       </header>
       <div className='text'>
-        <input type='text' id='email' placeholder='Email' onChange={ getEmail }/>
-        <input type='password' id='pwd' placeholder='Password' onChange={ getPassword }/>
+        <input type='text' id='email' placeholder='Email' onChange={ getEmail } />
+        <input type='password' id='pwd' placeholder='Password' onChange={ getPassword } />
       </div>
       <div className='show-pwd'>
         <input type='checkbox'></input>
         <label>Show password</label>
       </div>
       <div className='button'>
-        <button id='login-button' onClick={ () => { storeEmail(true), storePWD(true) }, storeUserData }>Login</button>
+        <button id='login-button' onClick={ storeUserData }>Login</button>
       </div>
     </div>
     )

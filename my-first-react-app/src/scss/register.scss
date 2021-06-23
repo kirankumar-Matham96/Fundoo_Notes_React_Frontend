@@ -17,7 +17,7 @@ $backGround1: #fff;
   left: 50%;
   transform: translate(-50%,-50%);
   // border: 1px solid #9c9c9c;
-  overflow: inherit;
+  overflow: hidden;
   box-shadow: 0px 0px 15px -5px;
   border-radius: 10px;
   width: 500px;
@@ -50,6 +50,7 @@ h1{
   align-items: center;
   justify-content: center;
 }
+
 input{
   margin: 30px 0 0 10px;
   border: 1px solid rgba(0, 0, 0, 0.582);
