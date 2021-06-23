@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link, Switch, Redirect} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Register from './register';
-import Login from './pages';
+import Login from './login';
+import Home from './home'
 
-class RouterClass {
-  render() {
+function RouterFunction() {
     return (
       <Router>
-        <Route path='/' Component={ Register } />
-        <Route path='/login' Component={ Login } />
+        <div className='route'>
+          <Switch>
+            <Route path='/' exact component={ Home } />
+            <Route path='/register' component={Register} />
+            <Route path='/login' component={Login} />
+          </Switch>
+        </div>
       </Router>
     );
   }
-}
 
-export default RouterClass;
+export default RouterFunction;

@@ -21,28 +21,31 @@ class Register extends Component {
   getData = (event) => {
     const name = event.target.name;
     const value = event.target.value;
-    this.setState({ [name]: value });
+    this.validateData(name, value) ? this.setState({ [name]: value }) : console.log('Check your input again!');
     console.log(this.state);
   }
 
   buttonClicked = (event) => {
-    event.preventDefault();//stop reloading
-    const firstName = this.state.firstName;
-    const lastName = this.state.lastName;
-    const email = this.state.email;
-    const password = this.state.password;
-    const confirmPassword = this.state.confirmPassword;
+    event.preventDefault();//stops reloading
+    const userData = {
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      email: this.state.email,
+      password: this.state.password,
+      confirmPassword: this.state.confirmPassword
+    };
 
-    console.log(`firstName: ${firstName}`);
-    console.log(`lastName: ${lastName}`);
-    console.log(`email: ${email}`);
-    console.log(`password: ${password}`);
-    console.log(`confirmPassword: ${confirmPassword}`);
+    const data = Object.values(userData);
+    console.log(data)
+  }
+
+  validateData = (name, value) => {
+    //need to use validator here (example validator: yup <- from Manu)
+    return true;
   }
 
   //method from Component
   render() {
-    console.log(`state: ${this.state.value}`)
     return (
       <div className='Register'>
         <form className='form' action='#'>
@@ -53,15 +56,15 @@ class Register extends Component {
             </div>
             <div className='name' id='name'>
               <div id='first'>
-                <input type='text' onChange={ this.getData } name='firstName' placeholder='First Name' />
+                <input type='text' onChange={ this.getData } name='firstName' placeholder='First Name' required='required' />
               </div>
               <div id='last'>
-                <input type='text' onChange={ this.getData } name='lastName' placeholder='Last Name' />
+                <input type='text' onChange={ this.getData } name='lastName' placeholder='Last Name' required/>
               </div>
             </div>
             <div>
               <span>
-                <input type='email' id='user-name' onChange={ this.getData } name='email' placeholder='User Name' />
+                <input type='email' id='user-name' onChange={ this.getData } name='email' placeholder='User Name' required/>
                 <label>@gmail.com</label>
               </span>
               <p>You can use letters, numbers & periods</p>
@@ -71,10 +74,10 @@ class Register extends Component {
             </div>
             <div className='name' id='password'>
               <div id='pwd'>
-                <input type='password' onChange={ this.getData } name='password' placeholder='Password' />
+                <input type='password' onChange={ this.getData } name='password' placeholder='Password' required/>
               </div>
               <div id='confirm-pwd'>
-                <input type='confirmPassword' onChange={ this.getData } name='confirmPassword' placeholder='Confirm' />
+                <input type='confirmPassword' onChange={ this.getData } name='confirmPassword' placeholder='Confirm' required/>
               </div>
             </div>
             <p>Use 8 or more characters with a mix of letters, numbers & symbols</p>

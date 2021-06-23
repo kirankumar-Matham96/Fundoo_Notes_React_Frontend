@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.scss';
 // import App from './App';
 import Register from './pages/register.jsx';
-// import Router from './pages/router';
+import Router from './pages/router';
 import Login from './pages/login';
+import Login2 from './pages/login2';
 import reportWebVitals from './reportWebVitals';
 
 // ReactDOM.render(
@@ -14,19 +15,26 @@ import reportWebVitals from './reportWebVitals';
 //   document.getElementById('root')
 // );
 
-ReactDOM.render(
-  <React.StrictMode>
-    <Login />
-  </React.StrictMode>,
-  document.getElementById('root')
-  );
+// ReactDOM.render(
+//   <React.StrictMode>
+//     <Login />
+//   </React.StrictMode>,
+//   document.getElementById('root')
+//   );
 
-  // ReactDOM.render(
-  //   <React.StrictMode>
-  //     <Router />
-  //   </React.StrictMode>,
-  //   document.getElementById('root')
-  // );
+// ReactDOM.render(
+//   <React.StrictMode>
+//     <Login2 />
+//   </React.StrictMode>,
+//   document.getElementById('root')
+//   );
+
+  ReactDOM.render(
+    <React.StrictMode>
+      <Router />
+    </React.StrictMode>,
+    document.getElementById('root')
+  );
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
