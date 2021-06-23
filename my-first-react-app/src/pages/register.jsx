@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import '../scss/register.scss';
+import { BrowserRouter as Router, Route, Switch, Link, Redirect } from 'react-router-dom';
 import Title from '../components/title';
 import Login from './login';
-import { BrowserRouter as Router, Route, Switch, Link, Redirect } from 'react-router-dom';
+import '../scss/register.scss';
 
 //using class component
 class Register extends Component {
@@ -15,7 +15,7 @@ class Register extends Component {
 
     return (
       <div className='Register'>
-        <form className='form' action="#">
+        <form className='form' action='#'>
           <div className='info'>
             <div id='logo1'>
               <div id='headerLogo'>{<Title />}</div>
@@ -59,9 +59,6 @@ class Register extends Component {
               </div>
             </div>
           </div>
-          {/* <logo id='logo2'>
-            <img src={ sideLogo } alt='logo'/>
-          </logo> */}
         </form>
       </div>)
   }

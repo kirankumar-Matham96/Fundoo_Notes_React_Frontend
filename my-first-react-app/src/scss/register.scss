@@ -16,7 +16,9 @@ $backGround1: #fff;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  border: 1px solid #9c9c9c;
+  // border: 1px solid #9c9c9c;
+  overflow: inherit;
+  box-shadow: 0px 0px 15px -5px;
   border-radius: 10px;
   width: 500px;
   padding: 25px;
@@ -30,6 +32,7 @@ h1{
 .name{
   display:flex;
   flex-flow: row;
+  // justify-content: space-around;
 }
 #user-name{
   align-items: stretch;
@@ -41,11 +44,11 @@ h1{
   margin: 30px 30px 30px 0px;
   padding-right: 30px;
 }
-#first,#pwd{
+#first{
   margin-right: 7px;
   display: flex;
-  align-items: stretch;
-  justify-content: stretch;
+  align-items: center;
+  justify-content: center;
 }
 input{
   margin: 30px 0 0 10px;
