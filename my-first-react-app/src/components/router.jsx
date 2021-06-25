@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import Register from './register';
-import Login from './login';
-import Home from './home'
+import Register from '../pages/register';//for default export
+import Login from '../pages/login';//for default export
+// import { Login } from '../pages/login';//for named export
+import Home from '../pages/home';//for default export
 
 function RouterFunction() {
     return (

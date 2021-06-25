@@ -5,43 +5,42 @@
 .fundoo{
   display: flex;
   flex-direction: row;
-  margin-left: 10px;
+  // margin-left: 10px;
 }
 .notes{
   display: flex;
   flex-direction: row;
-  margin-left: 10px;
 }
 #f{
-  color: rgb(0, 17, 255);
+  color: rgb(243, 56, 243);
 }
 #u{
-  color: rgb(255, 0, 0);
+  color: indigo;
 }
 #n1{
-  color: rgb(0, 184, 129);
+  color: blue;
 }
 #d{
-  color: rgb(25, 99, 43);
+  color: green;
 }
 #o1{
-  color: tomato;
+  color: yellow;
 }
 #o2{
-  color: rgb(0, 47, 255);
+  color: orange;
 }
 #n2{
-  color: rgb(0, 0, 0);
+  color: rgb(255, 0, 0);
 }
 #o3{
-  color: rgb(0, 0, 0);
+  color: rgb(243, 56, 243);
 }
 #t{
-  color: rgb(0, 0, 0);
+  color: indigo;
 }
 #e{
-  color: rgb(0, 0, 0);
+  color:  rgb(5, 21, 255);
 }
 #s{
-  color: rgb(0, 0, 0);
+  color: rgb(0, 129, 32);
 }

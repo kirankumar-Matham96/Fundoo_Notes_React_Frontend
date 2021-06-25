@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Switch, Link, Redirect } from 'react-router-dom';
 import Title from '../components/title';
-import Login from './login';
 import '../scss/register.scss';
+import { Link } from 'react-router-dom';
 
 //using class component
 class Register extends Component {
@@ -40,7 +39,7 @@ class Register extends Component {
   }
 
   validateData = (name, value) => {
-    //need to use validator here (example validator: yup <- from Manu)
+    //need to use validator here
     return true;
   }
 
@@ -65,7 +64,7 @@ class Register extends Component {
             <div>
               <span>
                 <input type='email' id='user-name' onChange={ this.getData } name='email' placeholder='User Name' required/>
-                <label>@gmail.com</label>
+                <label id='email-end'>@gmail.com</label>
               </span>
               <p>You can use letters, numbers & periods</p>
             </div>
@@ -87,7 +86,10 @@ class Register extends Component {
                 <label className='label' id='show-password'>Show password</label>
               </div>
               <div className='end-options'>
-                <a href='https://www.google.com'>Sign in instead</a>
+                <Link to='/login'><a>Sign in instead</a></Link>
+                <Link to='/'>
+                  <button className='btn' id='home-btn'>Home</button>
+                </Link>
                 <button className='btn' id='next-btn' onClick={ this.buttonClicked }>Next</button>
               </div>
             </div>

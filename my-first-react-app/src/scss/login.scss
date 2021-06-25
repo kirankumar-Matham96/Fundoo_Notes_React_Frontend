@@ -14,19 +14,31 @@ header{
   color: tomato;
 }
 
-#email,#pwd{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 10px 10px 10px 10px;
-  padding: 10px 10px 10px 10px;
-}
+// #email,#pwd{
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: center;
+//   margin: 10px 10px 10px 10px;
+//   padding: 10px 10px 10px 10px;
+// }
 
+// #check-box{
+//   width: 2px;
+//   height: 2px;
+// }
 .show-pwd{
+  padding-top: 0px;
   width: 200px;
   padding-left: 15px;
   margin-bottom: 20px;
+}
+label{
+  // font-size: 20px;
+}
+#show{
+  margin-left: 10px;
+  font-size: 15px;
 }
 
 form{
@@ -41,5 +53,20 @@ form{
   background-color: rgb(9, 74, 216);
   color: white;
   border-radius: 5px;
+}
+
+#sign-up-link{
+  padding-top: 10px;
+  margin-right: 20px;
+  display: flex;
+  justify-content: row;
+  font-size: 17px;
+}
+.text{
+  display: flex;
+  align-content: flex-end;
+}
+#fundooNotes{
+  margin-left: 0;
 }
 

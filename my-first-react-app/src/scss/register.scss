@@ -62,6 +62,9 @@ p{
   margin-top: 5px;
   margin-left: 25px;
 }
+#headerLogo{
+  margin-left: 10px;
+}
 #head-statement{
   margin: 10px;
   font-weight: 370;
@@ -75,7 +78,21 @@ a{
   color: rgb(57, 146, 206);
   text-decoration: none;
 }
-#next-btn{
+#name{
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+#email-end{
+  margin-left: 10px;
+}
+#password{
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+#next-btn,#home-btn{
   color: rgb(255, 255, 255);
   background-color: rgb(6, 92, 252);
   width: 100px;
