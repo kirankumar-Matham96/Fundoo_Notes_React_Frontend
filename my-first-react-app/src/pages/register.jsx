@@ -2,101 +2,144 @@ import React, { Component } from "react";
 import Title from '../components/title';
 import '../scss/register.scss';
 import { Link } from 'react-router-dom';
+import { Formik, Form, Field } from 'formik';
 
 //using class component
-class Register extends Component {
+class Register extends Component{
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      firstName: '',
-      lastName: '',
-      email: '',
-      password: '',
-      confirmPassword:''
+      formValues: {
+        firstName: '',
+        lastName: '',
+        email: '',
+        password: '',
+        confirmPassword: ''
+      },
+      formErrors: {
+        firstName: '',
+        lastName: '',
+        email: '',
+        password: '',
+        confirmPassword: ''
+      },
+      formValidity: {
+        firstName: false,
+        lastName: false,
+        email: false,
+        password: false,
+        confirmPassword: false
+      },
+      isSubmitting: false
     }
   }
 
   getData = (event) => {
     const name = event.target.name;
     const value = event.target.value;
-    this.validateData(name, value) ? this.setState({ [name]: value }) : console.log('Check your input again!');
-    console.log(this.state);
+    console.log(this.state.formValues);
   }
 
-  buttonClicked = (event) => {
-    event.preventDefault();//stops reloading
-    const userData = {
-      firstName: this.state.firstName,
-      lastName: this.state.lastName,
-      email: this.state.email,
-      password: this.state.password,
-      confirmPassword: this.state.confirmPassword
-    };
-
-    const data = Object.values(userData);
-    console.log(data)
+  handleChange = ({ target }) => {
+    const { formValues } = this.state;
+    formValues[ target.name ] = target.value;
+    this.setState({ formValues });
+    this.handleValidation(target);
   }
 
-  validateData = (name, value) => {
-    //need to use validator here
-    return true;
+  handleValidation = (target) => {
+    const { name, value } = target;
+    const fieldValidationErrors = this.state.formErrors;
+    const validity = this.state.formValidity;
+    const isFirstName = name === 'firstName';
+    const isLastName = name === 'lastName';
+    const isEmail = name === 'email';
+    const isPassword = name === 'password';
+    const isConfirmPassword = name === 'confirmPassword'
+    const nameTest = /^[A-Z]{1}[A-Za-z]{2,25}$/i;
+    const emailTest = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+
+    validity[name] = value.length > 0;
+    fieldValidationErrors[name] = validity[name] ? '' : `${name} is required and cannot be empty!`;
+
+    if (validity[name]) {
+      if (isFirstName) {
+        validity[name] = nameTest.test(value);
+        fieldValidationErrors[name] = validity[name] ? '' : `${name} should be a valid one!`;
+      }
+      if (isLastName) {
+        validity[name] = nameTest.test(value);
+        fieldValidationErrors[name] = validity[name] ? '' : `${name} should be a valid one!`;
+      }
+      if (isEmail) {
+        validity[name] = emailTest.test(value);
+        fieldValidationErrors[name] = validity[name] ? '' : `${name} should be a valid one!`;
+      }
+    }
+
+    this.setState({
+      formErrors: fieldValidationErrors,
+      formValidity: validity
+    })
   }
 
-  //method from Component
+  handleSubmit = (event) => {
+    event.preventDefault();
+    this.setState({ isSubmitting: true });
+    const { formValues, formValidity } = this.state;
+    if (Object.values(formValidity).every(Boolean)) {
+      alert('Form is validated, submitting the form...');
+      this.getData(event);
+      this.setState({ isSubmitting: false });
+    } else {
+      for (let key in formValues) {
+        let target = {
+          name: key,
+          value: formValues[key]
+        };
+        this.handleValidation(target);
+      }
+      this.setState({ isSubmitting: false });
+    }
+   }
+
   render() {
-    return (
-      <div className='Register'>
-        <form className='form' action='#'>
-          <div className='info'>
-            <div id='logo1'>
-              <div id='headerLogo'>{<Title />}</div>
-              <p id='head-statement'>Create your Personal Notes</p>
-            </div>
-            <div className='name' id='name'>
-              <div id='first'>
-                <input type='text' onChange={ this.getData } name='firstName' placeholder='First Name' required='required' />
-              </div>
-              <div id='last'>
-                <input type='text' onChange={ this.getData } name='lastName' placeholder='Last Name' required/>
-              </div>
-            </div>
-            <div>
-              <span>
-                <input type='email' id='user-name' onChange={ this.getData } name='email' placeholder='User Name' required/>
-                <label id='email-end'>@gmail.com</label>
-              </span>
-              <p>You can use letters, numbers & periods</p>
-            </div>
-            <div className='button' id='userName-button'>
-              <a href='https://www.youtube.com'>Use my current email address instead</a>
-            </div>
-            <div className='name' id='password'>
-              <div id='pwd'>
-                <input type='password' onChange={ this.getData } name='password' placeholder='Password' required/>
-              </div>
-              <div id='confirm-pwd'>
-                <input type='confirmPassword' onChange={ this.getData } name='confirmPassword' placeholder='Confirm' required/>
-              </div>
-            </div>
-            <p>Use 8 or more characters with a mix of letters, numbers & symbols</p>
-            <div className='show-password'>
-              <div>
-                <input type='checkbox' className='check-box' />
-                <label className='label' id='show-password'>Show password</label>
-              </div>
-              <div className='end-options'>
-                <Link to='/login'><a>Sign in instead</a></Link>
-                <Link to='/'>
-                  <button className='btn' id='home-btn'>Home</button>
-                </Link>
-                <button className='btn' id='next-btn' onClick={ this.buttonClicked }>Next</button>
-              </div>
-            </div>
+    const { formValues, formErrors, isSubmitting } = this.state
+    return(
+      <Formik>
+        <Form onSubmit={this.handleSubmit} >
+          <div>{ <Title />}</div>
+          <div>
+            <input name='firstName' type='text' placeholder='first name' onChange={this.handleChange} value={ formValues.firstName}/>
+            <div className='error-message'>{ formErrors.firstName}</div>
+            <input name='lastName' type='text' placeholder='last name' onChange={ this.handleChange } />
+            <div className='error-message'>{ formErrors.lastName}</div>
           </div>
-        </form>
-      </div>
+          <input name='email' type='email' placeholder='email' onChange={ this.handleChange } />
+            <div className='error-message'>{ formErrors.email}</div>
+            <p>You can use letters, numbers & periods</p>
+          <div>
+            <input name='password' type='password' placeholder='password' onChange={ this.handleChange } />
+            <div className='error-message'>{ formErrors.password}</div>
+            <input name='confirmPassword' type='password' placeholder='confirm password' onChange={ this.handleChange } />
+            <div className='error-message'>{ formErrors.confirmPassword}</div>
+          </div>
+          <p>Use 8 or more characters with a mix of letters, numbers & symbols</p>
+          <div>
+            <input type='checkbox' ></input>
+            <label htmlFor="">show password</label>
+          </div>
+          <div>
+          <Link to='/'>
+            <button className='button'>Home</button>
+          </Link>
+            <button className='button' type='submit' disabled={isSubmitting} >Register</button>
+          </div>
+        </Form>
+      </Formik>
     )
   }
 }
+
 export default Register;
