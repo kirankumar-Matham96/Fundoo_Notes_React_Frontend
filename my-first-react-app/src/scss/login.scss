@@ -1,73 +1,73 @@
-.login-container{
-  display: flex;
-  flex-direction: column;
-  // border: 1px solid black;
-  border-radius: 2%;
-  align-items: center;
-  justify-content: center;
-  height: 500px;
-  margin: 50px 500px 200px 500px;
-  overflow: hidden;
-  box-shadow: 0px 0px 15px -5px;
-  background-color: rgb(255, 255, 255);
-}
-header{
-  color: tomato;
-}
+// .login-container{
+//   display: flex;
+//   flex-direction: column;
+//   // border: 1px solid black;
+//   border-radius: 2%;
+//   align-items: center;
+//   justify-content: center;
+//   height: 500px;
+//   margin: 50px 500px 200px 500px;
+//   overflow: hidden;
+//   box-shadow: 0px 0px 15px -5px;
+//   background-color: rgb(255, 255, 255);
+// }
+// header{
+//   color: tomato;
+// }
 
-// #email,#pwd{
+// // #email,#pwd{
+// //   display: flex;
+// //   flex-direction: column;
+// //   align-items: center;
+// //   justify-content: center;
+// //   margin: 10px 10px 10px 10px;
+// //   padding: 10px 10px 10px 10px;
+// // }
+
+// // #check-box{
+// //   width: 2px;
+// //   height: 2px;
+// // }
+// .show-pwd{
+//   padding-top: 0px;
+//   width: 200px;
+//   padding-left: 15px;
+//   margin-bottom: 20px;
+// }
+// label{
+//   // font-size: 20px;
+// }
+// #show{
+//   margin-left: 10px;
+//   font-size: 15px;
+// }
+
+// form{
 //   display: flex;
 //   flex-direction: column;
 //   align-items: center;
-//   justify-content: center;
-//   margin: 10px 10px 10px 10px;
-//   padding: 10px 10px 10px 10px;
 // }
 
-// #check-box{
-//   width: 2px;
-//   height: 2px;
+// #login-button{
+//   width: 100px;
+//   height: 30px;
+//   background-color: rgb(9, 74, 216);
+//   color: white;
+//   border-radius: 5px;
 // }
-.show-pwd{
-  padding-top: 0px;
-  width: 200px;
-  padding-left: 15px;
-  margin-bottom: 20px;
-}
-label{
-  // font-size: 20px;
-}
-#show{
-  margin-left: 10px;
-  font-size: 15px;
-}
 
-form{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-#login-button{
-  width: 100px;
-  height: 30px;
-  background-color: rgb(9, 74, 216);
-  color: white;
-  border-radius: 5px;
-}
-
-#sign-up-link{
-  padding-top: 10px;
-  margin-right: 20px;
-  display: flex;
-  justify-content: row;
-  font-size: 17px;
-}
-.text{
-  display: flex;
-  align-content: flex-end;
-}
-#fundooNotes{
-  margin-left: 0;
-}
+// #sign-up-link{
+//   padding-top: 10px;
+//   margin-right: 20px;
+//   display: flex;
+//   justify-content: row;
+//   font-size: 17px;
+// }
+// .text{
+//   display: flex;
+//   align-content: flex-end;
+// }
+// #fundooNotes{
+//   margin-left: 0;
+// }
 
