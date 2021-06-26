@@ -123,14 +123,14 @@ class Register extends Component{
               <div className='text name'>
                 <div className='parallel-fields left-field' >
                   <label className='custom-field'>
-                    <input className='firstName' name='firstName' type='text' onChange={this.handleChange} value={ formValues.firstName} required/>
+                    <input className='firstName' name='firstName' type='text' onChange={this.handleChange} value={ formValues.firstName} required autoComplete='off'/>
                     <span className='placeHolder'>First Name</span>
                   </label>
                   <div className='error-message'>{ formErrors.firstName}</div>
                 </div>
               <div className='parallel-fields right-field' >
               <label className='custom-field'>
-                  <input className='lastName' name='lastName' type='text' onChange={ this.handleChange } required />
+                  <input className='lastName' name='lastName' type='text' onChange={ this.handleChange } required autoComplete='off' />
                   <span className='placeHolder'>Last Name</span>
               </label>
                   <div className='error-message'>{ formErrors.lastName}</div>
@@ -138,7 +138,7 @@ class Register extends Component{
               </div>
             <div className='email-div'>
               <label className='custom-field'>
-                <input className='email text' name='email' type='email' onChange={ this.handleChange } required />
+                <input className='email text' name='email' type='email' onChange={ this.handleChange } required autoComplete='off' />
                 <span className='placeHolder'>Email</span>
               </label>
             </div>
@@ -147,14 +147,14 @@ class Register extends Component{
               <div className='text pwd-section'>
               <div className='parallel-fields left-field' >
               <label className='custom-field'>
-                  <input className='password' id='password' name='password' type='password' onChange={ this.handleChange } required />
+                  <input className='password' id='password' name='password' type='password' onChange={ this.handleChange } required autoComplete='off' />
                   <span className='placeHolder'>Password</span>
               </label>
                   <div className='error-message'>{ formErrors.password}</div>
                 </div>
               <div className='parallel-fields right-field' >
               <label className='custom-field'>
-                  <input className='password' id='password' name='confirmPassword' type='password' onChange={ this.handleChange } required />
+                  <input className='password' id='password' name='confirmPassword' type='password' onChange={ this.handleChange } required autoComplete='off' />
                   <span className='placeHolder'>Confirm Password</span>
               </label>
                   <div className='error-message'>{ formErrors.confirmPassword}</div>

@@ -30,24 +30,26 @@ const Login = () => {
     >
       {formik => (
         <div className='login-container'>
+          <div className='content'>
           <header>
-            <div id='fundooNotes'>{<Title />}</div>
+            <div className='fundooNotes'>{<Title />}</div>
             <h1>Login here</h1>
           </header>
-          <Form className='text'>
-            <TextField label='Email' name='email' type='email' placeholder='username@gmail.com' />
-            <TextField label='Password' name='password' type='password' placeholder='password' />
+          <Form className='form-fields'>
+              <TextField className='textField' name='email' type='email' required/>
+            <TextField className='textField' name='password' type='password' required/>
             <div className='show-pwd'>
               <label>
-                <Field id='check-box' type='checkbox' name='checked' />
+                <Field className='check-box' type='checkbox' name='checked' />
               </label>
-              <label id='show'>Show password</label>
+              <label className='show'>Show password</label>
             </div>
-            <button id='login-button' type='submit'>Login</button>
+            <button className='login-button' type='submit'>Login</button>
             <Link to='/register'>
               <a>Create account</a>
             </Link>
-          </Form>
+            </Form>
+            </div>
         </div>
       )}
     </Formik>
