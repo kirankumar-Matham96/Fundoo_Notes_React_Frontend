@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState }from 'react';
 import * as Yup from 'yup';
 import { Formik, Field, Form } from 'formik';
 import { Link } from 'react-router-dom';
@@ -14,10 +14,20 @@ const userCredentials = (data) => {
 }
 
 const Login = () => {
+
+
   const validate = Yup.object().shape({
     email: Yup.string().email('Email is invalid!').required('Email required!'),
     password: Yup.string().min(8, 'Password should be 8 chars minimum!').max(20, 'Maximum length is 20 chars').required('Password required!')
   })
+
+  const [isPasswordShown, setPasswordVisibility] = useState();
+
+  const togglePasswordVisibility = () =>
+  {
+    setPasswordVisibility(isPasswordShown ? false : true );
+  }
+
 
   return (
     <Formik
@@ -37,12 +47,12 @@ const Login = () => {
           </header>
           <Form className='form-fields'>
               <TextField className='textField' name='email' type='email' required/>
-            <TextField className='textField' name='password' type='password' required/>
+              <TextField className='textField' name='password' type={isPasswordShown ? 'text' : 'password'} required/>
             <div className='show-pwd'>
               <label>
-                <Field className='check-box' type='checkbox' name='checked' />
+                <Field className='check-box' type='checkbox' name='checked'  onClick={ togglePasswordVisibility }/>
               </label>
-              <label className='show'>Show password</label>
+                <label className='show' onClick={ togglePasswordVisibility }>Show password</label>
             </div>
             <button className='login-button' type='submit'>Login</button>
             <Link to='/'>

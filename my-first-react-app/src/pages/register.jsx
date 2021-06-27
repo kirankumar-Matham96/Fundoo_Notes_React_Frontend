@@ -3,13 +3,21 @@ import Title from '../components/title';
 import '../scss/register.scss';
 import { Link } from 'react-router-dom';
 import { Formik, Form, Field } from 'formik';
+// import axios from 'axios';
+
+// const api = axios.create({
+//   baseURL: 'http://localhost:3000/notes/'
+// })
 
 //using class component
 class Register extends Component{
 
   constructor(props) {
     super(props);
+
     this.state = {
+      isPasswordShown: false,
+      // notes:[],
       formValues: {
         firstName: '',
         lastName: '',
@@ -31,8 +39,20 @@ class Register extends Component{
         password: false,
         confirmPassword: false
       },
-      isSubmitting: false
+      isSubmitting: false,
     }
+
+    // api.get('/').then(res => {
+    //   console.log(res.data);
+    //   // this.setState({notes: res.data})
+    // })
+  }
+
+  passwordVisibilityHandler = () => {
+    const isPasswordShown = this.state.isPasswordShown;
+    console.log(`isPasswordShown variable: ${isPasswordShown}`)
+    this.setState({ isPasswordShown: !isPasswordShown })
+    console.log(`is password shown? : ${this.state.isPasswordShown}`);
   }
 
   getData = (event) => {
@@ -114,9 +134,10 @@ class Register extends Component{
    }
 
   render() {
-    const { formValues, formErrors, isSubmitting } = this.state
+    const { isPasswordShown, formValues, formErrors, isSubmitting } = this.state
     return (
       <div className='register-page'>
+        {/* {this.state.notes.map(users => <h5>{ users.data}</h5>)} */}
         <Formik>
           <Form onSubmit={this.handleSubmit} >
             <div className='title'>{<Title />}</div>
@@ -147,14 +168,14 @@ class Register extends Component{
               <div className='text pwd-section'>
               <div className='parallel-fields left-field' >
               <label className='custom-field'>
-                  <input className='password' name='password' type='password' onChange={ this.handleChange } required autoComplete='off' />
+                  <input className='password' name='password' type={isPasswordShown ? 'text' : 'password'} onChange={ this.handleChange } required autoComplete='off' />
                   <span className='placeHolder'>Password</span>
               </label>
                   <div className='error-message'>{ formErrors.password}</div>
                 </div>
               <div className='parallel-fields right-field' >
               <label className='custom-field'>
-                  <input className='password' name='confirmPassword' type='password' onChange={ this.handleChange } required autoComplete='off' />
+                  <input className='password' name='confirmPassword' type={isPasswordShown ? 'text' : 'password'} onChange={ this.handleChange } required autoComplete='off' />
                   <span className='placeHolder'>Confirm Password</span>
               </label>
                   <div className='error-message'>{ formErrors.confirmPassword}</div>
@@ -162,8 +183,8 @@ class Register extends Component{
               </div>
               <p>Use 8 or more characters with a mix of letters, numbers & symbols</p>
               <div className='checkbox-content'>
-                <input type='checkbox' ></input>
-                <label>show password</label>
+              <input className='showMe' type='checkbox' onClick={ this.passwordVisibilityHandler}></input>
+                <label className='showMe'  onClick={ this.passwordVisibilityHandler}>show password</label>
               </div>
             <footer className='foot'>
               <div className='signin-link'>
