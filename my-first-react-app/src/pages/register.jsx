@@ -68,7 +68,9 @@ class Register extends Component{
     this.handleValidation(target);
   }
 
-  handleValidation = (target) => {
+  handleValidation = (target) =>
+  {
+    const { password, confirmPassword } = this.state;
     const { name, value } = target;
     const fieldValidationErrors = this.state.formErrors;
     const validity = this.state.formValidity;
@@ -79,7 +81,6 @@ class Register extends Component{
     const isConfirmPassword = name === 'confirmPassword'
     const nameTest = /^[A-Z]{1}[A-Za-z]{2,25}$/;
     const emailTest = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
-
 
     validity[name] = value.length > 0;
     fieldValidationErrors[name] = validity[name] ? '' : `${name} is required!`;
@@ -93,18 +94,19 @@ class Register extends Component{
         validity[name] = nameTest.test(value);
         fieldValidationErrors[name] = validity[name] ? '' : `${name} is invalid!`;
       }
-      if (isEmail) {
+      if (isEmail)
+      {
+        console.log(target);
         validity[name] = emailTest.test(value);
       }
-      if (isPassword) {
-        var pwd = value;
+      if (isPassword)
+      {
         validity[name] = value.length >= 8;
         fieldValidationErrors[name] = validity[name] ? '' : `${name} should at least be 8 chars!`;
       }
-      // if (isConfirmPassword) {
-      //   validity[name] = (value === pwd);
-      //   fieldValidationErrors[name] = validity[name] ? '' : `${name} should match!`;
-      // }
+      if (isConfirmPassword){
+        fieldValidationErrors[name] = target.value !== this.state.formValues.password ? `${ name } should match!` : '';
+      }
     }
 
     this.setState({
