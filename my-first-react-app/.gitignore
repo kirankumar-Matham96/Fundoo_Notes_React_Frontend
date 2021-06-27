@@ -2,6 +2,10 @@
 
 .gitignore
 
+# experimental files
+./src/pages/registerFixTrial.jsx
+./src/scss/registerFixTrial.scss
+
 # dependencies
 /node_modules
 /.pnp

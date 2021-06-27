@@ -1,0 +1,73 @@
+.error {
+  color: red;
+}
+
+.input-box {
+  padding: 0px 0px 0px 0px;
+  width: 100px;
+  font-size: 14px;
+}
+
+label {
+  margin-top: 25px;
+}
+
+.error {
+  color: red;
+  font-size: .9rem;
+}
+
+.field-error {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.customText-field input {
+  position: relative;
+  font-size: 14px;
+  padding-top: 20px;
+  padding: 15px 50px 15px 50px;
+  border-radius: 5px;
+}
+
+.customText-field .placeholder {
+  width: 70px;
+  position: relative;
+  left: 12px;
+  top: 30%;
+  background: #fff;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  color: gray;
+  -webkit-transition: top 0.3s ease, font-size 0.3s ease, color 0.3s ease;
+  transition: top 0.3s ease, font-size 0.3s ease, color 0.3s ease;
+}
+
+.customText-field input:valid + .placeholder,
+.customText-field input:focus + .placeholder {
+  bottom: 50px;
+  font-size: 12px;
+  color: #222;
+}
+
+.customText-field input {
+  border: 2px solid #969696;
+  -webkit-transition: border-color 0.3s ease;
+  transition: border-color 0.3s ease;
+}
+
+.customText-field input + .placeholder {
+  padding: 0 5px;
+  left: 8px;
+}
+
+.customText-field input:valid + .placeholder,
+.customText-field input:focus + .placeholder {
+  background: #fff;
+}
+/*# sourceMappingURL=textField.css.map */

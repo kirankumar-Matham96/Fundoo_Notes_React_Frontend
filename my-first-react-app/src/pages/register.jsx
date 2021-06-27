@@ -147,14 +147,14 @@ class Register extends Component{
               <div className='text pwd-section'>
               <div className='parallel-fields left-field' >
               <label className='custom-field'>
-                  <input className='password' id='password' name='password' type='password' onChange={ this.handleChange } required autoComplete='off' />
+                  <input className='password' name='password' type='password' onChange={ this.handleChange } required autoComplete='off' />
                   <span className='placeHolder'>Password</span>
               </label>
                   <div className='error-message'>{ formErrors.password}</div>
                 </div>
               <div className='parallel-fields right-field' >
               <label className='custom-field'>
-                  <input className='password' id='password' name='confirmPassword' type='password' onChange={ this.handleChange } required autoComplete='off' />
+                  <input className='password' name='confirmPassword' type='password' onChange={ this.handleChange } required autoComplete='off' />
                   <span className='placeHolder'>Confirm Password</span>
               </label>
                   <div className='error-message'>{ formErrors.confirmPassword}</div>

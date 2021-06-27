@@ -6,11 +6,11 @@ import  Title  from '../components/title';
 import TextField from '../components/textField';
 import '../scss/login.scss';
 
-let USER_DATA;
+let userData;
 
 const userCredentials = (data) => {
-  USER_DATA = data;
-  console.log(USER_DATA);
+  userData = data;
+  console.log(userData);
 }
 
 const Login = () => {
@@ -45,7 +45,7 @@ const Login = () => {
               <label className='show'>Show password</label>
             </div>
             <button className='login-button' type='submit'>Login</button>
-            <Link to='/register'>
+            <Link to='/'>
               <a>Create account</a>
             </Link>
             </Form>
