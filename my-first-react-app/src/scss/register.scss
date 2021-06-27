@@ -1,8 +1,7 @@
 *{
   font-family: roboto,'Noto Sans Myanmar UI',arial,sans-serif;
 }
-.register-page{
-  width: 800px;
+  .register-page{
   display: flex;
   // align-items: center;
   justify-content: center;
@@ -17,10 +16,28 @@
   height: 700px;
   border-radius: 10px;
 }
+.form-content{
+  display: flex;
+  align-content: center;
+  // width: 90%;
+  padding-left: 30px;
+  padding-right: 60px;
+}
 .title{
   display: flex;
   justify-content: flex-start;
   margin-top: 20px;
+}
+.sub-title p{
+  margin: none;
+  padding: none;
+  display: flex;
+  justify-content: flex-start;
+  margin-top: -10px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 150%;
+  color: black;
 }
 .text{
   display: flex;
@@ -104,6 +121,12 @@ a{
   padding-top: 8px;
   font-size: .8rem;
 }
+.email-error{//<---------------------
+  color: red;
+  margin-left: 10px;
+  padding-top: 0px;
+  font-size: .8rem;
+}
 .foot{
   display: flex;
   flex-direction: row;
@@ -149,7 +172,7 @@ a{
 .custom-field .placeHolder{
   position: absolute;
   left: 12px;
-  top: 50%;
+  top: 60%;
   transform:translateY(-50%);
   color: gray;
   transition: top 0.3s ease, font-size 0.3s ease, color 0.3s ease;
@@ -191,4 +214,38 @@ a{
 
 .checkbox-content .showMe{
   cursor: pointer;
+}
+.custom-field-email input{
+  border: 2px solid rgb(150, 150, 150);
+}
+.custom-field-email .placeHolder{
+  color: gray;
+  position: relative;
+  left: 15px;
+  bottom: 40px;
+}
+.custom-field-email input:valid + .placeHolder,
+.custom-field-email input:focus + .placeHolder{
+  bottom: 72px;
+  color: black;
+  background-color: #fff;
+  border: 3px solid #fff;
+  font-size: 12px;
+  // padding-right: 5px;
+}
+.custom-field-email .ph{
+  color: rgb(61, 59, 59);
+  position: relative;
+  left: 420px;
+  bottom: 40px;
+}
+.pwd-section{
+  margin-top: -30px;
+}
+.email-div{
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  // margin: none;
+  height: 100px;
 }

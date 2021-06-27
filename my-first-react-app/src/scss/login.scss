@@ -1,3 +1,11 @@
+@mixin boxes {
+  width: 233px;
+  height: 40px;
+  padding-left: 5%;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 2px solid gray;
+}
 .login-container{
   width: 800px;
   display: flex;
@@ -26,37 +34,58 @@
   justify-content: flex-start;
   align-items: center;
 }
-.fundooNotes{}
 .form-fields{
   display: flex;
   flex-direction: column;
   align-items: center;
-  // border: 1px solid rgb(0, 0, 0);
+  border: 1px solid red;
   box-shadow: none;
   width: 80%;
   height: 80%;
   padding: 0px 0px 0px 0px;
 }
-.custom-login-field{
+.LoginField{
+  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  // border: 1px solid red;
+  width: 250px;
+  height: 70px;
+}
+// .block-errorMessage{
 
+// }
+.LoginField {
+  color: red
 }
-.email-field{
-  // padding: 10px 10px 5px 10px;
-  // border: 1px solid rgb(17, 0, 255);
-}
-.password-field{
-  // padding: 10px 10px 5px 10px;
-  // border: 1px solid rgb(199, 0, 149);
-}
-.placeholder{
-  // border: 1px solid rgb(0, 159, 199);
 
+.LoginField .errors{
+  color: red
+}
+
+.LoginField .email-login{
+  @include boxes;
+}
+.LoginField .password-login{
+  @include boxes;
+}
+.LoginField .placeholder{
+  border: 1px solid red;
+  color: gray;
+  position: relative;
+  top: -35px;
+  left: 10px;
+}
+.LoginField .email-ph{
+  width: 17%;
+}
+.LoginField .password-ph{
+  width: 29%;
 }
 .show-pwd{
   padding: 10px 10px 5px 10px;
   // border: 1px solid rgb(199, 0, 0);
 }
-.check-box{}
 .login-button{
   margin-top: 20px;
   width: 100px;
@@ -68,127 +97,21 @@
 }
 a{
   text-decoration: none;
+  padding-top: 25px;
 }
-
-// .customLogin-field .TextField{
-//   position: relative;
-//   font-size: 14px;
-//   // padding-top: 20px;
-//   padding: 20px 0px 20px 10px;
-// }
-// .customLogin-field .placeHolder{
-//   position: absolute;
-//   left: 12px;
-//   top: 50%;
-//   transform:translateY(-50%);
-//   color: gray;
-//   transition: top 0.3s ease, font-size 0.3s ease, color 0.3s ease;
-// }
-// .customLogin-field .TextField:valid + .placeHolder,
-// .customLogin-field .TextField:focus + .placeHolder{
-//   top:10px;
-//   font-size: 11px;
-//   color: #222;
-// }
-// // /*****************/
-
-// // /*Model 2*/
-// .customLogin-field .TextField{
-//   border: 2px solid rgb(150, 150, 150);
-//   transition: border-color 0.3s ease;
-// }
-
-// .customLogin-field .TextField:valid,
-// .customLogin-field .TextField:focus {
-//   top:10px;
-//   font-size: 10px;
-//   color: #222;
-//   transition-delay: 0.1s;
-// }
-
-// .customLogin-field input + .placeHolder {
-//   padding: 0 5px;
-//   left: 8px;
-// }
-
-// .customLogin-field input:valid + .placeHolder,
-// .customLogin-field input:focus + .placeHolder{
-//   top:20px;
-//   background: #fff;
-// }
-
-/*****************/
-
-// .login-container{
-//   display: flex;
-//   flex-direction: column;
-//   // border: 1px solid black;
-//   border-radius: 2%;
-//   align-items: center;
-//   justify-content: center;
-//   height: 500px;
-//   margin: 50px 500px 200px 500px;
-//   overflow: hidden;
-//   box-shadow: 0px 0px 15px -5px;
-//   background-color: rgb(255, 255, 255);
-// }
-// header{
-//   color: tomato;
-// }
-
-// // #email,#pwd{
-// //   display: flex;
-// //   flex-direction: column;
-// //   align-items: center;
-// //   justify-content: center;
-// //   margin: 10px 10px 10px 10px;
-// //   padding: 10px 10px 10px 10px;
-// // }
-
-// // #check-box{
-// //   width: 2px;
-// //   height: 2px;
-// // }
-// .show-pwd{
-//   padding-top: 0px;
-//   width: 200px;
-//   padding-left: 15px;
-//   margin-bottom: 20px;
-// }
-// label{
-//   // font-size: 20px;
-// }
-// #show{
-//   margin-left: 10px;
-//   font-size: 15px;
-// }
-
-// form{
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-// }
-
-// #login-button{
-//   width: 100px;
-//   height: 30px;
-//   background-color: rgb(9, 74, 216);
-//   color: white;
-//   border-radius: 5px;
-// }
-
-// #sign-up-link{
-//   padding-top: 10px;
-//   margin-right: 20px;
-//   display: flex;
-//   justify-content: row;
-//   font-size: 17px;
-// }
-// .text{
-//   display: flex;
-//   align-content: flex-end;
-// }
-// #fundooNotes{
-//   margin-left: 0;
-// }
-
+.LoginField input:focus + .email-ph,
+.LoginField input:valid + .email-ph{
+  color: black;
+  top: -58px;
+  background-color: #fff;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.LoginField input:focus + .password-ph,
+.LoginField input:valid + .password-ph{
+  color: black;
+  top: -58px;
+  background-color: #fff;
+  padding-left: 5px;
+  padding-right: 5px;
+}

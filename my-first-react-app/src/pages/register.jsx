@@ -140,9 +140,13 @@ class Register extends Component{
     return (
       <div className='register-page'>
         {/* {this.state.notes.map(users => <h5>{ users.data}</h5>)} */}
+        <div className='form-content'>
         <Formik>
           <Form onSubmit={this.handleSubmit} >
-            <div className='title'>{<Title />}</div>
+            <div className='title'>
+              {<Title />}
+            </div>
+              <div className='sub-title'><p>Register now and keep you notes safe.</p> </div>
               <div className='text name'>
                 <div className='parallel-fields left-field' >
                   <label className='custom-field'>
@@ -159,13 +163,14 @@ class Register extends Component{
                   <div className='error-message'>{ formErrors.lastName}</div>
                 </div>
               </div>
-            <div className='email-div'>
-              <label className='custom-field'>
-                <input className='email text' name='email' type='email' onChange={ this.handleChange } required autoComplete='off' />
+            <div className='email-div text'>
+              <label className='custom-field-email'>
+                <input className='email' name='email' type='email' onChange={ this.handleChange } autoComplete='off'  required/>
                 <span className='placeHolder'>Email</span>
+                <span className='ph'>@gmail.com</span>
               </label>
+              <div className='error-message email-error'>{formErrors.email}</div>
             </div>
-              <div className='error-message'>{formErrors.email}</div>
               <p>You can use letters, numbers & periods</p>
               <div className='text pwd-section'>
               <div className='parallel-fields left-field' >
@@ -202,7 +207,8 @@ class Register extends Component{
               </div>
             </footer>
           </Form>
-        </Formik>
+          </Formik>
+          </div>
       </div>
     )
   }
