@@ -3,7 +3,7 @@ import Title from '../components/title';
 import '../scss/register.scss';
 import { Link } from 'react-router-dom';
 import { Formik, Form, Field } from 'formik';
-// import axios from 'axios';
+import axios from 'axios';
 
 // const api = axios.create({
 //   baseURL: 'http://localhost:3000/notes/'
@@ -17,7 +17,6 @@ class Register extends Component{
 
     this.state = {
       isPasswordShown: false,
-      // notes:[],
       formValues: {
         firstName: '',
         lastName: '',
