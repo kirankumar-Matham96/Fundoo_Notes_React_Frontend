@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import Title from '../components/title';
 import '../scss/register.scss';
 import { Link } from 'react-router-dom';
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form } from 'formik';
 import axios from 'axios';
 
 // const api = axios.create({
-//   baseURL: 'http://localhost:3000/notes/'
+//   baseURL: 'http://localhost:3000/'
 // })
 
 //using class component
@@ -49,9 +49,9 @@ class Register extends Component{
 
   passwordVisibilityHandler = () => {
     const isPasswordShown = this.state.isPasswordShown;
-    console.log(`isPasswordShown variable: ${isPasswordShown}`)
+    // console.log(`isPasswordShown variable: ${isPasswordShown}`)
     this.setState({ isPasswordShown: !isPasswordShown })
-    console.log(`is password shown? : ${this.state.isPasswordShown}`);
+    // console.log(`is password shown? : ${this.state.isPasswordShown}`);
   }
 
   getData = (event) => {
@@ -95,7 +95,6 @@ class Register extends Component{
       }
       if (isEmail)
       {
-        console.log(target);
         validity[name] = emailTest.test(value);
       }
       if (isPassword)
@@ -170,7 +169,7 @@ class Register extends Component{
               </label>
               <div className='error-message email-error'>{formErrors.email}</div>
             </div>
-              <p>You can use letters, numbers & periods</p>
+              <p className='email-para'>You can use letters, numbers & periods</p>
               <div className='text pwd-section'>
               <div className='parallel-fields left-field' >
               <label className='custom-field'>
@@ -199,10 +198,11 @@ class Register extends Component{
                 </Link>
               </div>
               <div className='button'>
-                <button className='register-btn' type='submit' disabled={isSubmitting} >Register</button>
                 <Link to='/'>
-                  <button className='home-btn'>Home</button>
+                  {/* <button className='home-btn'>Home</button> */}
+                  <a>Home</a>
                 </Link>
+                <button className='register-btn' type='submit' disabled={isSubmitting} >Register</button>
               </div>
             </footer>
           </Form>
