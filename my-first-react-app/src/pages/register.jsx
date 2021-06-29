@@ -3,12 +3,7 @@ import Title from '../components/title';
 import '../scss/register.scss';
 import { Link } from 'react-router-dom';
 import { Formik, Form } from 'formik';
-import axios from 'axios';
-// import home from './home';
-
-// const api = axios.create({
-//   baseURL: 'http://localhost:3000/'
-// })
+import ServiceClass from '../services/user';
 
 //using class component
 class Register extends Component{
@@ -55,22 +50,18 @@ class Register extends Component{
     // console.log(`is password shown? : ${this.state.isPasswordShown}`);
   }
 
-  //axios registration
-  registerUser = (data) => {
-    axios.post('http://fundoonotes.incubation.bridgelabz.com/user/userSignUp',data)
-      .then(res => {
-        console.log(`response from server: ${ res.data }`);
-      }).catch((err) => { console.log(`Error: ${err}`)})
-  }
-
   getData = (event) => {
     console.log(this.state.formValues);
+    
+    const modifiedData = {
+      firstName: this.state.formValues.firstName,
+      lasName: this.state.formValues.lastName,
+      email: this.state.formValues.email,
+      password: this.state.formValues.password
+    }
 
-    // const modifiedData = {
-
-    // }
-
-    this.registerUser(this.state.formValues);
+    const service = new ServiceClass();
+    service.registerUser(modifiedData);
   }
 
   handleChange = ({ target }) => {

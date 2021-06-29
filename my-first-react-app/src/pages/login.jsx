@@ -4,35 +4,13 @@ import { ErrorMessage, Formik, Field, Form } from 'formik';
 import { Link } from 'react-router-dom';
 import  Title  from '../components/title';
 import '../scss/login.scss';
-import axios from 'axios';
-
-let userData;
+import Service from '../services/user';
 
 const userCredentials = (data) => {
-  userData = data;
-  console.log('data: ',data)
-  console.log(`userData from UI: \n email: ${ userData.email } \n password: ${ userData.password }`);
-  const modifiedDataObject = {
-    email: data.email,
-    password: data.password
-  };
-  console.log(`modified user data object: ${modifiedDataObject.email}\n${modifiedDataObject.password}`)
-  // loginUser(userData);
-  loginUser(data);
-  // loginUser(modifiedDataObject);
-}
+  console.log('data: ', data)
 
-const loginUser = (data) =>
-{
-  axios.post('http://fundoonotes.incubation.bridgelabz.com/api/user/login', data)
-    .then((res) =>
-    {
-        console.log(`response data:\nprop1: ${res.data.id}`);
-        console.log(`prop2: ${res.data.price}`);
-    }).catch((err) =>
-    {
-      console.log(`Error: ${err}`)
-    })
+  const serviceClass = new Service();
+  serviceClass.loginUser(data);
 }
 
 const validate = Yup.object().shape({
