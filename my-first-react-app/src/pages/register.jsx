@@ -4,6 +4,7 @@ import '../scss/register.scss';
 import { Link } from 'react-router-dom';
 import { Formik, Form } from 'formik';
 import axios from 'axios';
+// import home from './home';
 
 // const api = axios.create({
 //   baseURL: 'http://localhost:3000/'
@@ -54,10 +55,22 @@ class Register extends Component{
     // console.log(`is password shown? : ${this.state.isPasswordShown}`);
   }
 
+  //axios registration
+  registerUser = (data) => {
+    axios.post('http://fundoonotes.incubation.bridgelabz.com/user/userSignUp',data)
+      .then(res => {
+        console.log(`response from server: ${ res.data }`);
+      }).catch((err) => { console.log(`Error: ${err}`)})
+  }
+
   getData = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
     console.log(this.state.formValues);
+
+    // const modifiedData = {
+
+    // }
+
+    this.registerUser(this.state.formValues);
   }
 
   handleChange = ({ target }) => {
@@ -78,7 +91,7 @@ class Register extends Component{
     const isEmail = name === 'email';
     const isPassword = name === 'password';
     const isConfirmPassword = name === 'confirmPassword'
-    const nameTest = /^[A-Z]{1}[A-Za-z]{2,25}$/;
+    const nameTest = /^[a-z]{3,25}$/;
     const emailTest = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
 
     validity[name] = value.length > 0;
