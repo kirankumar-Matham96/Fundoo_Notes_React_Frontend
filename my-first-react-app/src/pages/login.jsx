@@ -6,10 +6,10 @@ import  Title  from '../components/title';
 import '../scss/login.scss';
 import Service from '../services/user';
 
+const serviceClass = new Service();
+
 const userCredentials = (data) => {
   console.log('data: ', data)
-
-  const serviceClass = new Service();
   serviceClass.loginUser(data);
 }
 

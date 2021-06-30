@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import { Formik, Form } from 'formik';
 import ServiceClass from '../services/user';
 
+const service = new ServiceClass();
+
 //using class component
 class Register extends Component{
 
@@ -36,18 +38,11 @@ class Register extends Component{
       },
       isSubmitting: false,
     }
-
-    // api.get('/').then(res => {
-    //   console.log(res.data);
-    //   // this.setState({notes: res.data})
-    // })
   }
 
   passwordVisibilityHandler = () => {
     const isPasswordShown = this.state.isPasswordShown;
-    // console.log(`isPasswordShown variable: ${isPasswordShown}`)
     this.setState({ isPasswordShown: !isPasswordShown })
-    // console.log(`is password shown? : ${this.state.isPasswordShown}`);
   }
 
   getData = (event) => {
@@ -61,7 +56,6 @@ class Register extends Component{
       service: 'advance'
     }
 
-    const service = new ServiceClass();//global 
     service.registerUser(modifiedData);
   }
 
