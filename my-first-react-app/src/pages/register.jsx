@@ -52,15 +52,16 @@ class Register extends Component{
 
   getData = (event) => {
     console.log(this.state.formValues);
-    
+
     const modifiedData = {
       firstName: this.state.formValues.firstName,
-      lasName: this.state.formValues.lastName,
+      lastName: this.state.formValues.lastName,
       email: this.state.formValues.email,
-      password: this.state.formValues.password
+      password: this.state.formValues.password,
+      service: 'advance'
     }
 
-    const service = new ServiceClass();
+    const service = new ServiceClass();//global 
     service.registerUser(modifiedData);
   }
 
@@ -148,7 +149,7 @@ class Register extends Component{
             <div className='title'>
               {<Title />}
             </div>
-              <div className='sub-title'><p>Register now and keep you notes safe.</p> </div>
+              <div className='sub-title'><p>Register now and keep your notes safe.</p> </div>
               <div className='text name'>
                 <div className='parallel-fields left-field' >
                   <label className='custom-field'>

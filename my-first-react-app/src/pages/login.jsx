@@ -63,7 +63,7 @@ const Login = () => {
                 <label className='show' onClick={ togglePasswordVisibility }>Show password</label>
             </div>
             <button className='login-button' type='submit'>Login</button>
-            <Link to='/register'>
+            <Link to='/'>
               <a>Create account</a>
             </Link>
             </Form>

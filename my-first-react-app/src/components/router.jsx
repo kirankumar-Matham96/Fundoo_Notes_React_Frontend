@@ -10,8 +10,7 @@ function RouterFunction() {
       <Router>
         <div className='route'>
           <Switch>
-            <Route path='/' exact component={ Home } />
-            <Route path='/register' exact component={Register} />
+            <Route path='/' exact component={Register} />
             <Route path='/login' component={Login} />
           </Switch>
         </div>

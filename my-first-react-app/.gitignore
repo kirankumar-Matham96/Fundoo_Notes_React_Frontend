@@ -3,6 +3,7 @@
 .gitignore
 ../backend/
 ../.vscode/
+.env
 
 # experimental files
 ./src/pages/registerFixTrial.jsx
