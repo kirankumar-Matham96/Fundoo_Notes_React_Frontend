@@ -21,6 +21,7 @@ const userCredentials = (data) =>
     } else {
       alert('Something went wrong!');
     }
+    
     /**
      * trying to alert with appropriate message.<===
      */
