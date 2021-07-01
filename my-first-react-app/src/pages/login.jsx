@@ -4,13 +4,45 @@ import { ErrorMessage, Formik, Field, Form } from 'formik';
 import { Link } from 'react-router-dom';
 import  Title  from '../components/title';
 import '../scss/login.scss';
-import Service from '../services/user';
+import Service from '../services/user.jsx';
 
 const serviceClass = new Service();
 
-const userCredentials = (data) => {
-  console.log('data: ', data)
-  serviceClass.loginUser(data);
+const userCredentials = (data) =>
+{
+  console.log(`data from UI: ${ JSON.stringify(data) }`)
+
+  serviceClass.loginUser(data).then(data =>
+  {
+    if (data.status === 200)
+    {
+      alert('Login successful!\nRedirecting to dashboard...');
+      window.location = './dashboard';
+    } else {
+      alert('Something went wrong!');
+    }
+    /**
+     * trying to alert with appropriate message.<===
+     */
+      // switch (data.status)
+      //   {
+      //   case 200:
+      //     alert('Login successful!\nRedirecting to dashboard...');
+      //     break;
+      //   case 401:
+      //     alert('Email or password is wrong!');
+      //     break;
+      //   case 500:
+      //     alert('Internal server error!');
+      //     break;
+      //   default:
+      //     alert('Something went wrong!');
+      //    }
+  }).catch((err) =>
+  {
+    console.log(`Error: ${err}`);
+    alert('Something bad happened!😥')
+  })
 }
 
 const validate = Yup.object().shape({
@@ -66,7 +98,7 @@ const Login = () => {
             <Link to='/'>
               <a>Create account</a>
             </Link>
-            </Form>
+              </Form>
             </div>
         </div>
       )}

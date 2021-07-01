@@ -1,11 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import Register from '../pages/register';//for default export
-// import Register from '../pages/registerFixTrial';//for default export
-import Login from '../pages/login';//for default export
-import Home from '../pages/home'
+import Register from './pages/register';
+import Login from './pages/login';
 
-function RouterFunction() {
+function App() {
     return (
       <Router>
         <div className='route'>
@@ -18,4 +16,4 @@ function RouterFunction() {
     );
   }
 
-export default RouterFunction;
+export default App;

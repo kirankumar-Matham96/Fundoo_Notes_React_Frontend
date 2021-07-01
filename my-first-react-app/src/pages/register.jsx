@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import Title from '../components/title';
 import '../scss/register.scss';
-import { Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { Formik, Form } from 'formik';
-import ServiceClass from '../services/user';
+import ServiceClass from '../services/user.jsx';
+import Login from './login';
 
 const service = new ServiceClass();
 
@@ -45,8 +46,8 @@ class Register extends Component{
     this.setState({ isPasswordShown: !isPasswordShown })
   }
 
-  getData = (event) => {
-    console.log(this.state.formValues);
+  getData = () => {
+    console.log(`From UI: ${JSON.stringify(this.state.formValues)}`);
 
     const modifiedData = {
       firstName: this.state.formValues.firstName,
@@ -56,7 +57,23 @@ class Register extends Component{
       service: 'advance'
     }
 
-    service.registerUser(modifiedData);
+    service.registerUser(modifiedData).then(data =>
+    {
+      console.log(`status from promise: ${JSON.stringify(data.status)}`);
+
+      if (data.status === 200)
+      {
+        alert('Registration successful. 👍\nNow you will be redirected to login page.')
+        window.location = './login';
+      } else
+      {
+        alert('Something went wrong!');
+      }
+    }).catch((err) =>
+    {
+      console.log(`Error: ${err}`);
+      alert('Something went wrong!😥')
+    })
   }
 
   handleChange = ({ target }) => {
@@ -197,10 +214,6 @@ class Register extends Component{
                 </Link>
               </div>
               <div className='button'>
-                <Link to='/'>
-                  {/* <button className='home-btn'>Home</button> */}
-                  <a>Home</a>
-                </Link>
                 <button className='register-btn' type='submit' disabled={isSubmitting} >Register</button>
               </div>
             </footer>
