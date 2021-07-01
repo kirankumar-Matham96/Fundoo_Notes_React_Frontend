@@ -1,10 +1,11 @@
 import React, { useState }from 'react';
 import * as Yup from 'yup';
 import { ErrorMessage, Formik, Field, Form } from 'formik';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import  Title  from '../components/title';
 import '../scss/login.scss';
 import Service from '../services/user.jsx';
+import DashBoard from './dashboard';
 
 const serviceClass = new Service();
 
@@ -13,18 +14,18 @@ const userCredentials = (data) =>
   console.log(`data from UI: ${ JSON.stringify(data) }`)
 
   serviceClass.loginUser(data).then(data =>
-  {
-    if (data.status === 200)
     {
-      alert('Login successful!\nRedirecting to dashboard...');
-      window.location = './dashboard';
-    } else {
-      alert('Something went wrong!');
-    }
-    
-    /**
-     * trying to alert with appropriate message.<===
-     */
+      if (data.status === 200)
+      {
+        alert('Login successful!\nRedirecting to dashboard...');//use bootstrap alert here.
+        // window.location = {DashBoard};
+      } else {
+        alert('Something went wrong!');
+      }
+
+      /**
+       * trying to alert with appropriate message.<===
+       */
       // switch (data.status)
       //   {
       //   case 200:
@@ -39,38 +40,41 @@ const userCredentials = (data) =>
       //   default:
       //     alert('Something went wrong!');
       //    }
-  }).catch((err) =>
-  {
-    console.log(`Error: ${err}`);
-    alert('Something bad happened!😥')
-  })
-}
-
-const validate = Yup.object().shape({
-  email: Yup.string().email('invalid email!').required('Email is required!'),
-  password: Yup.string().min(8, 'Password should be 8 chars minimum!').max(20, 'Maximum length is 20 chars').required('Password required!')
-})
-
-const Login = () => {
-  const [isPasswordShown, setPasswordVisibility] = useState();
-
-  const togglePasswordVisibility = () =>
-  {
-    setPasswordVisibility(isPasswordShown ? false : true );
+    }).catch((err) =>
+    {
+      console.log(`Error: ${err}`);
+      alert('Something bad happened!😥')
+    })
   }
 
-  return (
-    <div>
-    <Formik
-      initialValues={{
-        email: '',
-        password: ''
-      }}
-      validationSchema={validate}
-      onSubmit={values => userCredentials(values) }
-    >
+  const validate = Yup.object().shape({
+    email: Yup.string().email('invalid email!').required('Email is required!'),
+    password: Yup.string().min(8, 'Password should be 8 chars minimum!').max(20, 'Maximum length is 20 chars').required('Password required!')
+  })
+
+const Login = () =>
+{
+  let history = useHistory();
+    const [isPasswordShown, setPasswordVisibility] = useState();
+
+
+    const togglePasswordVisibility = () =>
+    {
+      setPasswordVisibility(isPasswordShown ? false : true );
+    }
+
+    return (
+      <div>
+        <Formik
+          initialValues={{
+            email: '',
+            password: ''
+          }}
+          validationSchema={validate}
+          onSubmit={values => userCredentials(values) }
+      >
         {({errors, touched}) => (
-        <div className='login-container'>
+          <div className='login-container'>
           <div className='content'>
           <header>
             <div className='fundooNotes'>{<Title />}</div>
@@ -98,7 +102,12 @@ const Login = () => {
             <button className='login-button' type='submit'>Login</button>
             <Link to='/'>
               <a>Create account</a>
+                </Link>
+
+            <Link to='/dashboard'>
+              <a>Dash Board</a>
             </Link>
+
               </Form>
             </div>
         </div>

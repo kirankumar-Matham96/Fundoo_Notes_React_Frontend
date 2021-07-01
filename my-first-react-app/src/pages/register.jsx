@@ -64,7 +64,7 @@ class Register extends Component{
       if (data.status === 200)
       {
         alert('Registration successful. 👍\nNow you will be redirected to login page.')
-        window.location = './login';
+        window.location = {Login}/*'./login'*/;
       } else
       {
         alert('Something went wrong!');
