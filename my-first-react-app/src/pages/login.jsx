@@ -5,41 +5,34 @@ import { Link, useHistory } from 'react-router-dom';
 import  Title  from '../components/title';
 import '../scss/login.scss';
 import Service from '../services/user.jsx';
-import DashBoard from './dashboard';
 
 const serviceClass = new Service();
+let token = '';
 
-const userCredentials = (data) =>
+const validate = Yup.object().shape({
+  email: Yup.string().email('invalid email!').required('Email is required!'),
+  password: Yup.string().min(8, 'Password should be 8 chars minimum!').max(20, 'Maximum length is 20 chars').required('Password required!')
+})
+
+const Login = () =>
 {
-  console.log(`data from UI: ${ JSON.stringify(data) }`)
+  let history = useHistory();
+  const [isPasswordShown, setPasswordVisibility] = useState();
 
-  serviceClass.loginUser(data).then(data =>
+  const userCredentials = (data) =>
+  {
+    console.log(`data from UI: ${ JSON.stringify(data) }`)
+
+    serviceClass.loginUser(data).then(data =>
     {
       if (data.status === 200)
       {
-        alert('Login successful!\nRedirecting to dashboard...');//use bootstrap alert here.
-        // window.location = {DashBoard};
+        token = data.data.id;
+        alert('Login successful!\nRedirecting to dashboard...');
+        history.push('./dashboard');
       } else {
         alert('Something went wrong!');
       }
-
-      /**
-       * trying to alert with appropriate message.<===
-       */
-      // switch (data.status)
-      //   {
-      //   case 200:
-      //     alert('Login successful!\nRedirecting to dashboard...');
-      //     break;
-      //   case 401:
-      //     alert('Email or password is wrong!');
-      //     break;
-      //   case 500:
-      //     alert('Internal server error!');
-      //     break;
-      //   default:
-      //     alert('Something went wrong!');
-      //    }
     }).catch((err) =>
     {
       console.log(`Error: ${err}`);
@@ -47,32 +40,21 @@ const userCredentials = (data) =>
     })
   }
 
-  const validate = Yup.object().shape({
-    email: Yup.string().email('invalid email!').required('Email is required!'),
-    password: Yup.string().min(8, 'Password should be 8 chars minimum!').max(20, 'Maximum length is 20 chars').required('Password required!')
-  })
+  const togglePasswordVisibility = () =>
+  {
+    setPasswordVisibility(isPasswordShown ? false : true );
+  }
 
-const Login = () =>
-{
-  let history = useHistory();
-    const [isPasswordShown, setPasswordVisibility] = useState();
-
-
-    const togglePasswordVisibility = () =>
-    {
-      setPasswordVisibility(isPasswordShown ? false : true );
-    }
-
-    return (
-      <div>
-        <Formik
-          initialValues={{
-            email: '',
+  return (
+    <div>
+      <Formik
+        initialValues={{
+          email: '',
             password: ''
           }}
           validationSchema={validate}
           onSubmit={values => userCredentials(values) }
-      >
+        >
         {({errors, touched}) => (
           <div className='login-container'>
           <div className='content'>
@@ -98,8 +80,10 @@ const Login = () =>
                 <Field className='check-box' type='checkbox' name='checked'  onClick={ togglePasswordVisibility }/>
               </label>
                 <label className='show' onClick={ togglePasswordVisibility }>Show password</label>
-            </div>
-            <button className='login-button' type='submit'>Login</button>
+                  </div>
+                  {/* <Link to='/dashboard'> */}
+                    <button className='login-button' type='submit'>Login</button>
+                  {/* </Link> */}
             <Link to='/'>
               <a>Create account</a>
                 </Link>

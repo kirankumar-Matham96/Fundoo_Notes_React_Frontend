@@ -1,16 +1,15 @@
 import React, { Component } from "react";
 import Title from '../components/title';
 import '../scss/register.scss';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Formik, Form } from 'formik';
 import ServiceClass from '../services/user.jsx';
-import Login from './login';
 
 const service = new ServiceClass();
 
 //using class component
-class Register extends Component{
-
+class Register extends Component
+{
   constructor(props) {
     super(props);
 
@@ -59,12 +58,19 @@ class Register extends Component{
 
     service.registerUser(modifiedData).then(data =>
     {
-      console.log(`status from promise: ${JSON.stringify(data.status)}`);
-
       if (data.status === 200)
       {
-        alert('Registration successful. 👍\nNow you will be redirected to login page.')
-        window.location = {Login}/*'./login'*/;
+        this.setState({
+          formValues: {
+            firstName: '',
+            lastName: '',
+            email: '',
+            password: '',
+            confirmPassword: ''
+          }
+        });
+        alert('Registration successful. 👍\nNow you will be redirected to login page.');
+        this.props.history.push('./login');
       } else
       {
         alert('Something went wrong!');
@@ -85,7 +91,6 @@ class Register extends Component{
 
   handleValidation = (target) =>
   {
-    const { password, confirmPassword } = this.state;
     const { name, value } = target;
     const fieldValidationErrors = this.state.formErrors;
     const validity = this.state.formValidity;
@@ -153,7 +158,6 @@ class Register extends Component{
     const { isPasswordShown, formValues, formErrors, isSubmitting } = this.state
     return (
       <div className='register-page'>
-        {/* {this.state.notes.map(users => <h5>{ users.data}</h5>)} */}
         <div className='form-content'>
         <Formik>
           <Form onSubmit={this.handleSubmit} >
