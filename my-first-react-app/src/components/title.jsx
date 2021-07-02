@@ -12,8 +12,6 @@ const Title = () => {
         <h1 id='d'>d</h1>
         <h1 id='o1'>o</h1>
         <h1 id='o2'>o</h1>
-      </div>
-      <div className='notes'>
         <h1 id='n2'>N</h1>
         <h1 id='o3'>o</h1>
         <h1 id='t'>t</h1>

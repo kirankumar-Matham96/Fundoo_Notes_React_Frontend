@@ -1,36 +1,35 @@
 import React from 'react';
 import Title from './title';
-import { FaStickyNote, FaBars } from 'react-icons/fa';
-import { Row, Col, Form, FormControl } from 'react-bootstrap';
+import { FaStickyNote, FaBars, FaRedo, FaCog, FaEquals, FaSearch } from 'react-icons/fa';
+import { Row, Col, Form, FormControl, Container } from 'react-bootstrap';
+import '../scss/dashboard.header.scss'
 
 const header = () =>
 {
   return (
-    <div>
-
-      <Form>
-        <header className='header'>
-          <Row>
+      <div className='header'>
+        <div className="head-part">
+          <Row className='col-xs-12'>
             <Col>
-              <h1><FaBars /> </h1>
-            </Col>
-            <Col>
-              <h1><FaStickyNote /> </h1>
-            </Col>
-            <Col>
-              <Title />
-            </Col>
-            <Col>
-              <FormControl type='text'  placeholder="Search" />
-            </Col>
-            <Col>
-              some control buttons
+              <div className='left'>
+                <FaBars className='icon'/>
+                <FaStickyNote className='icon notes'/>
+                <h4 className='custom-title'><Title /></h4>
+                <Form.Group className='middle'>
+                  <FaSearch className='search-icon icon'/>
+                  <FormControl className='text-box placeholder' type='text' placeholder='Search'/>
+                </Form.Group>
+                <div className='right'>
+                <FaRedo className='icon'/>
+                <FaEquals className='icon'/>
+                <FaCog className='icon'/>
+              </div>
+              </div>
             </Col>
           </Row>
-        </header>
-      </Form>
+        </div>
+      </div>
 
-    </div>
   )
 }
 

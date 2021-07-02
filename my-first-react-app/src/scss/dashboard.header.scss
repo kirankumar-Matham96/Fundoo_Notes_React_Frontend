@@ -1,0 +1,110 @@
+@mixin head {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+}
+@mixin borderForTest {
+  // border: 1px solid red;
+}
+@mixin right {
+  // border: 1px solid red;
+}
+@mixin left {
+  // border: 1px solid rgb(0, 255, 13);
+}
+@mixin middle {
+  // border: 1px solid rgb(38, 0, 255);
+}
+@mixin iconDesign {
+  width: 70px;
+  height: 20px;
+  color: gray;
+}
+@mixin cardFloatEffect {
+  box-shadow: 0px 0px 15px -8px;
+}
+@mixin container {
+  margin-inline: auto;
+  // width: min(90%, 70.5rem);
+  // max-width: 90rem;
+}
+@mixin placeholder {
+  padding-left: 3em;
+}
+.head-part{
+  @include container;
+}
+.row{
+  @include head;
+  @include borderForTest;
+  @include cardFloatEffect;
+  height: 70px;
+}
+.header h4{
+  @include borderForTest;
+  @include head;
+  padding-top: 10px;
+  color: gray;
+}
+.icon{
+  @include borderForTest;
+  @include iconDesign;
+}
+.search-icon{
+  position: absolute;
+  padding-right: 2%;
+  color: rgb(99, 96, 96);
+}
+.notes{
+  height: 40px;
+  color: rgb(255, 189, 6);
+}
+.form-control{
+  width: 40%;
+}
+.left/*, .middle*/{
+  @include borderForTest;
+  @include left;
+  @include head;
+  justify-content: flex-start;
+  height: 70px;
+}
+.middle{
+  @include borderForTest;
+  @include middle;
+  @include head;
+  justify-content: flex-start;
+  height: 70px;
+  width: min(35%, 50.5rem);
+  margin-left: 5%;
+}
+.middle .placeholder[type=text]{
+  @include placeholder;
+  background-color: 	#f1f3f4;
+  border: none;
+  border: 1px solid transparent;
+  border-radius: 8px;
+}
+.text-box{
+  height: 50px;
+  width: min(20%, 20.5rem);
+    @include placeholder;
+}
+ .right{
+   @include borderForTest;
+   @include right;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70px;
+  width: min(10%, 20.5rem);
+  margin-left: 20%;
+ }
+.custom-title{
+  margin-top: -13px;
+}
+.placeholder{
+  @include placeholder;
+}
+
