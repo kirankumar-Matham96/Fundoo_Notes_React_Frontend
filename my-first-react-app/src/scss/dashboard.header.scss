@@ -7,8 +7,11 @@
 @mixin borderForTest {
   // border: 1px solid red;
 }
+@mixin borderForTest2 {
+  // border: 1px solid rgb(95, 236, 1);
+}
 @mixin right {
-  // border: 1px solid red;
+  // border: 1px solid rgb(17, 0, 255);
 }
 @mixin left {
   // border: 1px solid rgb(0, 255, 13);
@@ -31,6 +34,15 @@
 }
 @mixin placeholder {
   padding-left: 3em;
+}
+@mixin side-nav-icons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 10%;
+  @include iconDesign;
+  height: 80px;
+  margin-bottom: 20%;
 }
 .head-part{
   @include container;
@@ -56,9 +68,10 @@
   padding-right: 2%;
   color: rgb(99, 96, 96);
 }
-.notes{
+.solid-notes{
   height: 40px;
   color: rgb(255, 189, 6);
+  padding-left: 10px;
 }
 .form-control{
   width: 40%;
@@ -69,6 +82,8 @@
   @include head;
   justify-content: flex-start;
   height: 70px;
+  padding-left: 0.5%;
+
 }
 .middle{
   @include borderForTest;
@@ -98,8 +113,9 @@
   align-items: center;
   justify-content: center;
   height: 70px;
-  width: min(10%, 20.5rem);
+  width: min(20%, 20.5rem);
   margin-left: 20%;
+  padding-right: 4%;
  }
 .custom-title{
   margin-top: -13px;
@@ -107,4 +123,43 @@
 .placeholder{
   @include placeholder;
 }
+.side-nav{
+  @include side-nav-icons;
+  margin-top: 5em;
 
+}
+.notes{
+  @include borderForTest2;
+  @include side-nav-icons;
+  // position:absolute;
+  position:relative;
+
+}
+.remainders{
+  @include borderForTest2;
+  @include side-nav-icons;
+  // position:absolute;
+  position:relative;
+
+}
+.edit-notes{
+  @include borderForTest2;
+  @include side-nav-icons;
+  // position:absolute;
+  position:relative;
+
+}
+.archive{
+  @include borderForTest2;
+  @include side-nav-icons;
+  // position:absolute;
+  position:relative;
+
+}
+.trash{
+  @include borderForTest2;
+  @include side-nav-icons;
+  // position:absolute;
+  position:relative;
+
+}
