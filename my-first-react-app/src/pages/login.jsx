@@ -18,6 +18,7 @@ const Login = () =>
 {
   let history = useHistory();
   const [isPasswordShown, setPasswordVisibility] = useState();
+  const [token, setToken] = useState(null);
 
   const userCredentials = (data) =>
   {
@@ -29,9 +30,14 @@ const Login = () =>
     {
       if (data.status === 200)
       {
-        token = data.data.id;
-        alert('Login successful!\nRedirecting to dashboard...');
-        history.push('./dashboard');
+        setToken(data.data.id);
+        if (token)
+        {
+          alert('Login successful!\nRedirecting to dashboard...');
+          history.push('./dashboard');
+        } else {
+          alert('Something went wrong!');
+        }
       } else {
         alert('Something went wrong!');
       }
