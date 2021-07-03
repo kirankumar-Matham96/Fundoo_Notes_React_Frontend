@@ -21,8 +21,7 @@ const header = () =>
                   <FormControl className='text-box placeholder' type='text' placeholder='Search'/>
                 </Form.Group>
                 <div className='right'>
-                <FaRedo className='icon'/>
-                <FaEquals className='icon'/>
+                <button className='login-button'>Logout</button>
                 <FaCog className='icon'/>
               </div>
               </div>

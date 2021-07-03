@@ -5,6 +5,7 @@ import { Link, useHistory } from 'react-router-dom';
 import  Title  from '../components/title';
 import '../scss/login.scss';
 import Service from '../services/user.jsx';
+import auth from '../services/auth';
 
 const serviceClass = new Service();
 let token = '';
@@ -18,26 +19,19 @@ const Login = () =>
 {
   let history = useHistory();
   const [isPasswordShown, setPasswordVisibility] = useState();
-  const [token, setToken] = useState(null);
 
   const userCredentials = (data) =>
   {
-    resetForm();
-
-    console.log(`data from UI: ${ JSON.stringify(data) }`)
+    // resetForm();
 
     serviceClass.loginUser(data).then(data =>
     {
       if (data.status === 200)
       {
-        setToken(data.data.id);
-        if (token)
+        auth.login(() =>
         {
-          alert('Login successful!\nRedirecting to dashboard...');
           history.push('./dashboard');
-        } else {
-          alert('Something went wrong!');
-        }
+        })
       } else {
         alert('Something went wrong!');
       }
