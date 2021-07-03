@@ -15,7 +15,7 @@ const header = () =>
               <div className='left'>
                 <FaBars className='icon'/>
                 <FaStickyNote className='icon solid-notes'/>
-                <div className='custom-title'><Title /></div>
+                <div className='custom-title'><Title className='fundooTitile'/></div>
                 <Form.Group className='middle'>
                   <FaSearch className='search-icon icon'/>
                   <FormControl className='text-box placeholder' type='text' placeholder='Search'/>

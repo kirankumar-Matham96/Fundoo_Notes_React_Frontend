@@ -22,7 +22,6 @@
     "react-scripts": "4.0.3",
     "sass": "^1.35.1",
     "web-vitals": "^1.1.2",
-    "winston": "^3.3.3",
     "yup": "^0.32.9"
   },
   "scripts": {
@@ -48,5 +47,14 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.14.7",
+    "@babel/preset-react": "^7.14.5",
+    "babel-jest": "^26.6.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.6",
+    "jest": "^26.6.0",
+    "react-test-renderer": "^17.0.2"
   }
 }

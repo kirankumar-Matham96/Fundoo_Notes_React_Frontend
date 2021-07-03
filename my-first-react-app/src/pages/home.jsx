@@ -47,20 +47,43 @@ const Home = () =>
       }).catch((err) => { console.log(`Error: ${err}`)})
   }
 
+  /**
+   * for test checking
+  */
+  const [counter, setCounter] = useState(0);
+
   return (
     <div>
       <h1>Using functional component</h1>
-      <ol>
+      <header>Hello</header>
+      <div id='div-one'>{counter}</div>
+
+
+      <div>
+        <div>
+          <div>
+            <div>
+              <div className='hello'>
+                Hello Home
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <button id='increment-btn' onClick={() => { setCounter(counter+1) }}>increment</button>
+      {/* <ol> */}
         {/* {`dataFrom swagger: ${users.firstName}`} */}
-      </ol>
-      <div>{`First Name: ${ first }`} <br/> {`Last Name: ${last}`}</div>
-      <img src={pic} alt='pic' />
-      <button onClick={getDataFromOnlineSite}>get data from online site</button>
-      <button onClick={getAllUsers}>get all users from swagger</button>
-      <button onClick={getUserById}>get user by id from swagger</button>
-      <Link to='/register'>
-        <button>Register</button>
-      </Link>
+      {/* </ol> */}
+      {/* <div>{`First Name: ${ first }`} <br/> {`Last Name: ${last}`}</div> */}
+      {/* <img src={pic} alt='pic' /> */}
+      {/* <button onClick={getDataFromOnlineSite}>get data from online site</button> */}
+      {/* <button onClick={getAllUsers}>get all users from swagger</button> */}
+      {/* <button onClick={getUserById}>get user by id from swagger</button> */}
+      {/* <Link to='/register'> */}
+        {/* <button>Register</button> */}
+      {/* </Link> */}
     </div>
   );
 }

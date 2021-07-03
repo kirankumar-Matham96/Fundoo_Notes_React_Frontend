@@ -21,6 +21,8 @@ const Login = () =>
 
   const userCredentials = (data) =>
   {
+    resetForm();
+
     console.log(`data from UI: ${ JSON.stringify(data) }`)
 
     serviceClass.loginUser(data).then(data =>
@@ -102,3 +104,8 @@ const Login = () =>
 }
 
 export default Login;
+
+/**
+ *    props.resetForm()
+            props.setSubmitting(false)
+ */

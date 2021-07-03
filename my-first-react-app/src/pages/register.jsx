@@ -99,7 +99,7 @@ class Register extends Component
     const isEmail = name === 'email';
     const isPassword = name === 'password';
     const isConfirmPassword = name === 'confirmPassword'
-    const nameTest = /^[a-z]{3,25}$/;
+    const nameTest = /^[A-Za-z]{3,25}$/;
     const emailTest = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
 
     validity[name] = value.length > 0;
