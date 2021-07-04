@@ -2,7 +2,8 @@ import React from 'react';
 import Title from './title';
 import { FaStickyNote, FaBars, FaRedo, FaCog, FaEquals, FaSearch, FaRegStickyNote, FaRegBell, FaPencilAlt, FaRegFileArchive, FaRegTrashAlt } from 'react-icons/fa';
 import { Row, Col, Form, FormControl } from 'react-bootstrap';
-import '../scss/dashboard.header.scss'
+import '../scss/dashboard.header.scss';
+import { Menu } from '../components/dashboard.header.dropdownMenue';
 
 const header = () =>
 {
@@ -20,9 +21,9 @@ const header = () =>
                   <FaSearch className='search-icon icon'/>
                   <FormControl className='text-box placeholder' type='text' placeholder='Search'/>
                 </Form.Group>
-                <div className='right'>
-                <button className='login-button'>Logout</button>
-                <FaCog className='icon'/>
+              <div className='right'>
+                <button onClick={() => { <div>Menu</div> }}><FaCog className='icon' /></button>
+                <FaCog className='icon' />
               </div>
               </div>
             </Col>

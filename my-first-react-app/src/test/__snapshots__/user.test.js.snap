@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login Snapshot Testing expect to render Login component 1`] = `ShallowWrapper {}`;
+
+exports[`Register Snapshot Testing expect to render Register component 1`] = `ShallowWrapper {}`;

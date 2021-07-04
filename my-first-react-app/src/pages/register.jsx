@@ -46,8 +46,6 @@ class Register extends Component
   }
 
   getData = () => {
-    console.log(`From UI: ${JSON.stringify(this.state.formValues)}`);
-
     const modifiedData = {
       firstName: this.state.formValues.firstName,
       lastName: this.state.formValues.lastName,
@@ -84,7 +82,7 @@ class Register extends Component
 
   handleChange = ({ target }) => {
     const { formValues } = this.state;
-    formValues[ target.name ] = target.value;
+    formValues[target.name] = target.value;
     this.setState({ formValues });
     this.handleValidation(target);
   }
@@ -175,7 +173,7 @@ class Register extends Component
                 </div>
               <div className='parallel-fields right-field' >
               <label className='custom-field'>
-                  <input className='lastName' name='lastName' type='text' onChange={ this.handleChange } required autoComplete='off' />
+                  <input className='lastName' name='lastName' type='text' onChange={ this.handleChange } value={ formValues.lastName}required autoComplete='off' />
                   <span className='placeHolder'>Last Name</span>
               </label>
                   <div className='error-message'>{ formErrors.lastName}</div>
@@ -183,7 +181,7 @@ class Register extends Component
               </div>
             <div className='email-div text'>
               <label className='custom-field-email'>
-                <input className='email' name='email' type='email' onChange={ this.handleChange } autoComplete='off'  required/>
+                <input className='email' name='email' type='email' onChange={ this.handleChange } autoComplete='off' value={ formValues.email} required/>
                 <span className='placeHolder'>Email</span>
                 <span className='ph'>@gmail.com</span>
               </label>
@@ -193,7 +191,7 @@ class Register extends Component
               <div className='text pwd-section'>
               <div className='parallel-fields left-field' >
               <label className='custom-field'>
-                  <input className='password' name='password' type={isPasswordShown ? 'text' : 'password'} onChange={ this.handleChange } required autoComplete='off' />
+                  <input className='password' name='password' type={isPasswordShown ? 'text' : 'password'} onChange={ this.handleChange } value={ formValues.password} required autoComplete='off' />
                   <span className='placeHolder'>Password</span>
               </label>
                   <div className='error-message'>{ formErrors.password}</div>

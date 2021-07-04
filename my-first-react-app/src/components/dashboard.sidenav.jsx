@@ -1,8 +1,7 @@
 import React from 'react';
-// import { } from 'react-bootstrap';
 import {FaRegStickyNote, FaRegBell, FaPencilAlt, FaRegFileArchive, FaRegTrashAlt} from 'react-icons/fa';
 
-const sidenav = () =>
+const sideNav = () =>
 {
   return (
     <div className='body'>
@@ -27,5 +26,5 @@ const sidenav = () =>
   );
 }
 
-export default sidenav;
+export default sideNav;
 

@@ -1,85 +1,121 @@
-import { shallow, mount } from 'enzyme';
-import Home from '../pages/home';
+import { shallow } from 'enzyme';
+import Title from '../components/title';
 import Register from '../pages/register';
+import Login from '../pages/login';
 
+/**
+ * Shallow testing
+ */
+describe('Shallow testing', () =>
+{
+  test('expect to render Title component', () =>
+  {
+    expect(shallow(<Title />).length).toEqual(1);
+  })
 
-describe('First test', () =>
+  test('expect to render Register component', () =>
+  {
+    expect(shallow(<Register />).length).toEqual(1);
+  })
+
+  test('expect to render Login component', () =>
+  {
+    expect(shallow(<Login />).length).toEqual(1);
+  })
+});
+
+/**
+ * Snapshot testing
+ */
+describe('Register Snapshot Testing', () =>
 {
   let wrapper;
   beforeEach(() =>
   {
-    wrapper = shallow(<Home />)
+    wrapper = shallow(<Register />);
   })
 
-  test('renders some text', () =>
+  test('expect to render Register component', () =>
   {
-    expect(wrapper.find('h1').text()).toContain("Using")
-  });
-
-  test('render a button with text of "increment"', () =>
-  {
-    expect(wrapper.find('#increment-btn').text()).toBe('increment');
+    expect(wrapper).toMatchSnapshot();
   })
 
-  test('div render', () =>
+  test('expect to take the first name from form', () => //<== failed test case due to lack of input data
   {
-    expect(wrapper.find('#div-one').text()).toBe('0')
+    let firstName = wrapper.find('.firstName').first();
+
+    firstName.simulate('change', {
+      target: {
+        name: 'firstName',
+        value: 'Hey'
+      }
+    })
+
+    firstName = wrapper.find('.firstName').first();
+    expect(firstName.props().value).toEqual('Hey');
   })
 
-  test('test will increment counter', () =>
+  test('expect to take the last name from form', () => //<== failed test case due to lack of input data
   {
-    wrapper.find('#increment-btn').simulate('click');
-    expect(wrapper.find('#div-one').text()).toBe('1');
+    let lastName = wrapper.find('.lastName').first();
+
+    lastName.simulate('change', {
+      target: {
+        name: 'lastName',
+        value: 'Hey'
+      }
+    })
+
+    lastName = wrapper.find('.lastName').first();
+    expect(lastName.props().value).toEqual('Hey');
   })
 
-  test('Testing deeper component', () =>
+  test('expect to take the email from form', () => //<== failed test case due to lack of input data
   {
-    expect(wrapper.find('.hello').text()).toBe('Hello Home');
-  })
-})
+    let email = wrapper.find('.email').first();
 
-describe('Register tests', () =>
-{
+    email.simulate('change', {
+      target: {
+        name: 'email',
+        value: 'Hey'
+      }
+    })
 
-  let wrapper;
-  beforeEach(() =>
-  {
-    wrapper = shallow(<Home />)
-  })
-
-  test('Renders text "Register now and keep your notes safe"', () =>
-  {
-    expect(wrapper.find('.sub-title').text()).toContain('Register now and keep your notes safe');
+    email = wrapper.find('.email').first();
+    expect(email.props().value).toEqual('Hey');
   })
 
+  test('expect to take the password from form', () => //<== failed test case due to lack of input data
+  {
+    let password = wrapper.find('.password').first();
 
+    password.simulate('change', {
+      target: {
+        name: 'password',
+        value: 'Hey11111111'
+      }
+    })
 
+    password = wrapper.find('.password').first();
+    expect(password.props().value).toEqual('Hey11111111');
+  })
+});
 
-  // let wrapper;
-  // test('test for mount',() =>
-  // {
-  //   wrapper = mount(<Register />);
-  //   console.log('mount wrapper: ',wrapper.debug())
-  // })
+// describe('Login Snapshot Testing', () =>
+// {
+//   let wrapper;
+//   beforeEach(() =>
+//   {
+//     wrapper = shallow(<Login />);
+//   })
 
-  // test('Register contains text "Register"', () =>
-  // {
-  //   expect(wrapper.find('.sub-title').text()).toContain('Register');
-  // })
+//   test('expect to render Login component', () =>
+//   {
+//     expect(wrapper).toMatchSnapshot();
+//   })
 
-  // test('Register contains text "First NAme"', () =>
-  // {
-  //   expect(wrapper.find('.placeHolder').text()).toContain('First Name');
-  // })
+//   test('Email input field gets the input', () =>
+//   {
 
-  // test('Register contains text "Last Name"', () =>
-  // {
-  //   expect(wrapper.find('.placeHolder').text()).toContain('Last Name');
-  // })
-
-  // test('Register contains text "Email"', () =>
-  // {
-  //   expect(wrapper.find('.placeHolder').text()).toContain('Email');
-  // })
-})
-
+//   })
+// })

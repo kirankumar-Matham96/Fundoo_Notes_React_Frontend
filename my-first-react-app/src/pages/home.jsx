@@ -2,6 +2,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+// import 'bootstrap';
+import
+  {
+    Menu
+  } from '../components/dashboard.header.dropdownMenue';
 
 /**
  * functional component working fine👍
@@ -70,8 +75,6 @@ const Home = () =>
           </div>
         </div>
       </div>
-
-
       <button id='increment-btn' onClick={() => { setCounter(counter+1) }}>increment</button>
       {/* <ol> */}
         {/* {`dataFrom swagger: ${users.firstName}`} */}
@@ -84,6 +87,16 @@ const Home = () =>
       {/* <Link to='/register'> */}
         {/* <button>Register</button> */}
       {/* </Link> */}
+
+
+
+{/* Dropdown menu */}
+
+    {/* <Menu /> */}
+
+
+
+
     </div>
   );
 }
