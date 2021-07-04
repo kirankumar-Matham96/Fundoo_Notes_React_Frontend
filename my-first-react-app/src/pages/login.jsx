@@ -66,17 +66,17 @@ const Login = () =>
           </header>
               <Form className='form-fields'>
                 <div className='block-errorMessage'>
-              <label className='LoginField'>
-                <Field className='email-login' name='email' type="email" autoComplete='off' required/>
-                <span className='placeholder email-ph'>Email</span>
-                <ErrorMessage name='email'/>
-              </label>
-              <label className='LoginField'>
-                <Field className='password-login' name='password' type={isPasswordShown ? 'text' : 'password'} autoComplete='off' required />
-                <span className='placeholder password-ph' >Password</span>
-                  {errors.password && touched.password ? (<div>{errors.password}</div>) : null}
+                  <label className='LoginField'>
+                    <Field className='email-login' name='email' type="email" autoComplete='off' required/>
+                    <span className='placeholder email-ph'>Email</span>
+                    <ErrorMessage name='email'/>
                   </label>
-                  </div>
+                  <label className='LoginField'>
+                    <Field className='password-login' name='password' type={isPasswordShown ? 'text' : 'password'} autoComplete='off' required />
+                    <span className='placeholder password-ph' >Password</span>
+                    {errors.password && touched.password ? (<div>{errors.password}</div>) : null}
+                  </label>
+                </div>
             <div className='show-pwd'>
               <label>
                 <Field className='check-box' type='checkbox' name='checked'  onClick={ togglePasswordVisibility }/>
