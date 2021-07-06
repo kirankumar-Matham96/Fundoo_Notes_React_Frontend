@@ -1,4 +1,4 @@
-import React, { useState }from 'react';
+import React, { useState, useEffect }from 'react';
 import * as Yup from 'yup';
 import { ErrorMessage, Formik, Field, Form } from 'formik';
 import { Link, useHistory } from 'react-router-dom';
@@ -8,7 +8,6 @@ import Service from '../services/user.jsx';
 import auth from '../services/auth';
 
 const serviceClass = new Service();
-let token = '';
 
 const validate = Yup.object().shape({
   email: Yup.string().email('invalid email!').required('Email is required!'),
@@ -22,14 +21,14 @@ const Login = () =>
 
   const userCredentials = (data) =>
   {
-    // resetForm();
-
     serviceClass.loginUser(data).then(data =>
     {
-      if (data.status === 200)
+      if ((data.status === 200) && (data.data.id))
       {
+        localStorage.setItem('token', data.data.id);
         auth.login(() =>
         {
+          alert('Login successful.\n Redirecting to dashboard...');
           history.push('./dashboard');
         })
       } else {
@@ -49,7 +48,7 @@ const Login = () =>
 
   return (
     <div>
-      <Formik
+      <Formik className='formik-form'
         initialValues={{
           email: '',
             password: ''
@@ -83,9 +82,7 @@ const Login = () =>
               </label>
                 <label className='show' onClick={ togglePasswordVisibility }>Show password</label>
                   </div>
-                  {/* <Link to='/dashboard'> */}
                     <button className='login-button' type='submit'>Login</button>
-                  {/* </Link> */}
             <Link to='/'>
               <a>Create account</a>
                 </Link>

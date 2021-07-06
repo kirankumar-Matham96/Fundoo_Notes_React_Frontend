@@ -117,7 +117,7 @@ describe('Login Snapshot Testing', () =>
 
   test('Email input field gets the email', () =>
   {
-    // let email = wrapper.find('.block-errorMessage').dive().find('.LoginField').dive().first('.email-login');
+    // let email = wrapper.find('formik-form').dive().find('.block-errorMessage').dive().find('.LoginField').dive().first('.email-login');
     // let email = wrapper.find('.LoginField').dive().first('.email-login');
     // let email = wrapper.find('.LoginField').first('.email-login');
     let email = wrapper.find('.email-login').first();
