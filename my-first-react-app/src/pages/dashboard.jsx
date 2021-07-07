@@ -1,12 +1,11 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Header from '../components/dashboard.header';
-import SideNav from '../components/dashboard.sideNav';
 
-const DashBoard = () => {
+const DashBoard = () =>
+{
     return (
       <div>
         <Header />
-        <SideNav />
       </div>
     )
   }

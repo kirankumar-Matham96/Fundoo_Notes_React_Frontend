@@ -6,7 +6,7 @@ import { Formik, Form } from 'formik';
 import ServiceClass from '../services/user.jsx';
 
 const service = new ServiceClass();
-const userState = {
+const initialState = {
       isPasswordShown: false,
       formValues: {
         firstName: '',
@@ -37,15 +37,21 @@ class Register extends Component
 {
   constructor(props) {
     super(props);
-    this.state = userState;
+    this.state = initialState;
   }
+
+  // reset = (target) =>
+  // {
+  //   this.state = initialState;
+  //   target = null;
+  // }
 
   passwordVisibilityHandler = () => {
     const isPasswordShown = this.state.isPasswordShown;
     this.setState({ isPasswordShown: !isPasswordShown })
   }
 
-  getData = () => {
+  getData = (target) => {
     const modifiedData = {
       firstName: this.state.formValues.firstName,
       lastName: this.state.formValues.lastName,
@@ -53,11 +59,9 @@ class Register extends Component
       password: this.state.formValues.password,
       service: 'advance'
     }
-
     service.registerUser(modifiedData).then(data =>
-    {
-      this.setState = userState;
-      console.log(JSON.stringify(this.setState.formValues));
+      {
+      // this.reset(target);
       if (data.status === 200)
       {
         alert('Registration successful. 👍\nNow you will be redirected to login page.');
@@ -131,7 +135,7 @@ class Register extends Component
     const { formValues, formValidity } = this.state;
     if (Object.values(formValidity).every(Boolean)) {
       alert('Form is validated, submitting the form...');
-      this.getData(event);
+      this.getData(event.target);
       this.setState({ isSubmitting: false });
     } else {
       for (let key in formValues) {

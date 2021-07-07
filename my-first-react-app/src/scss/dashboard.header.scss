@@ -123,43 +123,43 @@
 .placeholder{
   @include placeholder;
 }
-.side-nav{
-  @include side-nav-icons;
-  margin-top: 5em;
+// .side-nav{
+//   @include side-nav-icons;
+//   margin-top: 5em;
 
-}
-.notes{
-  @include borderForTest2;
-  @include side-nav-icons;
-  // position:absolute;
-  position:relative;
+// }
+// .notes{
+//   @include borderForTest2;
+//   @include side-nav-icons;
+//   // position:absolute;
+//   position:relative;
 
-}
-.remainders{
-  @include borderForTest2;
-  @include side-nav-icons;
-  // position:absolute;
-  position:relative;
+// }
+// .remainders{
+//   @include borderForTest2;
+//   @include side-nav-icons;
+//   // position:absolute;
+//   position:relative;
 
-}
-.edit-notes{
-  @include borderForTest2;
-  @include side-nav-icons;
-  // position:absolute;
-  position:relative;
+// }
+// .edit-notes{
+//   @include borderForTest2;
+//   @include side-nav-icons;
+//   // position:absolute;
+//   position:relative;
 
-}
-.archive{
-  @include borderForTest2;
-  @include side-nav-icons;
-  // position:absolute;
-  position:relative;
+// }
+// .archive{
+//   @include borderForTest2;
+//   @include side-nav-icons;
+//   // position:absolute;
+//   position:relative;
 
-}
-.trash{
-  @include borderForTest2;
-  @include side-nav-icons;
-  // position:absolute;
-  position:relative;
+// }
+// .trash{
+//   @include borderForTest2;
+//   @include side-nav-icons;
+//   // position:absolute;
+//   position:relative;
 
-}
+// }
