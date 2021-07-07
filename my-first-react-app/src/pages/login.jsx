@@ -16,7 +16,7 @@ const validate = Yup.object().shape({
 
 const Login = () =>
 {
-  let history = useHistory();
+  const history = useHistory();
   const [isPasswordShown, setPasswordVisibility] = useState();
 
   const userCredentials = (data) =>
@@ -48,6 +48,7 @@ const Login = () =>
 
   return (
     <div>
+
       <Formik className='formik-form'
         initialValues={{
           email: '',
@@ -92,6 +93,7 @@ const Login = () =>
             </Link>
 
               </Form>
+
             </div>
         </div>
       )}
@@ -101,8 +103,3 @@ const Login = () =>
 }
 
 export default Login;
-
-/**
- *    props.resetForm()
-            props.setSubmitting(false)
- */
