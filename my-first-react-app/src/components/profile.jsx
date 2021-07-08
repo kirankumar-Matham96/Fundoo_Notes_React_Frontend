@@ -19,7 +19,7 @@ const profile = ({showProf}) =>
   return (
     <div className={showProf ? 'profile active' : 'profile'}>
       <div className='info'>
-        <div className='text-muted'>{ localStorage.getItem('email') }</div>
+        <div className='text-muted from-storage'>{ localStorage.getItem('email') }</div>
       </div >
         <button className='btn btn-danger' onClick={denyPermission}>Logout</button>
     </div>

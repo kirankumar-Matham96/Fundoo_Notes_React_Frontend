@@ -1,33 +1,35 @@
-.profile{
-
-  display: flex;
-  flex-direction: column;
+@mixin basic-flex {
+  display:flex;
   align-items: center;
+}
+
+.profile{
+  @include basic-flex;
+  flex-direction: column;
   justify-content: space-around;
   font-size: larger;
   margin-top: 1%;
   position: sticky;
   left: 100%;
   margin-right: 1%;
-  border: 1px solid red;
+  border: 1px solid rgb(255, 255, 255);
   height: 0vh;
   width: 250px;
   transition: 0.3s;
-  top: -30;
 }
 .profile.active{
-  top: 0;
-  height: 20vh;
+  border: 2px solid tomato;
+  height: 30vh;
   padding-bottom: 15px;
-  box-shadow: 0px 0px 15px -5px;
+  box-shadow: 0px 0px 15px -4px;
 }
 .info{
-  display:box;
-  margin-top: 20px;
+  justify-content: center;
+  border: 1px solid rgb(42, 0, 158);
+  margin-top: 29px;
   padding-top: 35px;
 }
-.info.active{
-  display:box;
-  margin-top: 20px;
-  padding-top: 35px;
+.from-storage{
+  @include basic-flex;
+  justify-content: center;
 }
