@@ -1,7 +1,5 @@
 @mixin side-tags{
-  // margin-left: -40px;
   margin-left: -50px;
-  // padding-left: 11px;
   padding-left: 25px;
   display: flex;
   flex-direction: row;
@@ -19,7 +17,6 @@
 }
 .side-nav{
   margin-top: 4px;
-  // width: 252px;
   width: 220px;
   position: absolute;
   height: 87vh;
@@ -35,7 +32,6 @@ ul{
 }
 ul li{
   list-style-type: none;
-  // margin: 10px 0;
 }
 .inline-content1{
   background-color: #feefc3;
