@@ -7,25 +7,7 @@ const sideNav = ({show}) =>
   return (
     <div className='body'>
 
-      {/* <div className="notes">
-          <FaRegStickyNote className='icon' />
-        </div>
-        <div className="remainders">
-          <FaRegBell className='icon' />
-        </div>
-        <div className="edit-notes">
-          <FaPencilAlt className='icon' />
-        </div>
-        <div className="archive">
-          <FaRegFileArchive className='icon' />
-        </div>
-        <div className="trash">
-          <FaRegTrashAlt className='icon' />
-      </div> */}
-
-
       <div className={show ? "side-nav active" : "side-nav"}>
-
 
         <ul>
           <li>
