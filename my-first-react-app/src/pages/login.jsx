@@ -4,7 +4,7 @@ import { ErrorMessage, Formik, Field, Form } from 'formik';
 import { Link, useHistory } from 'react-router-dom';
 import  Title  from '../components/title';
 import '../scss/login.scss';
-import Service from '../services/user.jsx';
+import Service from '../services/user.js';
 import auth from '../services/auth';
 
 const serviceClass = new Service();

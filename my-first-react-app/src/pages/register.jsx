@@ -3,7 +3,7 @@ import Title from '../components/title';
 import '../scss/register.scss';
 import { Link } from 'react-router-dom';
 import { Formik, Form } from 'formik';
-import ServiceClass from '../services/user.jsx';
+import ServiceClass from '../services/user.js';
 
 const service = new ServiceClass();
 const initialState = {

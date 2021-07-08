@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Register from './pages/register';
 import Login from './pages/login';
 // import Home from './components/dashboard.header.dropdownMenue';
-import DashBoard from './pages/dashboard';
+import DashBoard from './components/dashboard';
 import ProtectedRoute from './components/protectedRoute';
 
 function App() {
