@@ -63,6 +63,9 @@
   @include borderForTest;
   @include iconDesign;
 }
+.profile-icon{
+  height: 30px;
+}
 .search-icon{
   position: absolute;
   padding-right: 2%;
@@ -76,7 +79,7 @@
 .form-control{
   width: 40%;
 }
-.left/*, .middle*/{
+.left{
   @include borderForTest;
   @include left;
   @include head;
@@ -110,8 +113,9 @@
    @include borderForTest;
    @include right;
   display: flex;
+  // align-items: center;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   height: 70px;
   width: min(20%, 20.5rem);
   margin-left: 20%;
@@ -123,43 +127,4 @@
 .placeholder{
   @include placeholder;
 }
-// .side-nav{
-//   @include side-nav-icons;
-//   margin-top: 5em;
 
-// }
-// .notes{
-//   @include borderForTest2;
-//   @include side-nav-icons;
-//   // position:absolute;
-//   position:relative;
-
-// }
-// .remainders{
-//   @include borderForTest2;
-//   @include side-nav-icons;
-//   // position:absolute;
-//   position:relative;
-
-// }
-// .edit-notes{
-//   @include borderForTest2;
-//   @include side-nav-icons;
-//   // position:absolute;
-//   position:relative;
-
-// }
-// .archive{
-//   @include borderForTest2;
-//   @include side-nav-icons;
-//   // position:absolute;
-//   position:relative;
-
-// }
-// .trash{
-//   @include borderForTest2;
-//   @include side-nav-icons;
-//   // position:absolute;
-//   position:relative;
-
-// }

@@ -1,45 +1,4 @@
-@use './dashboard.header.scss';
-
-// .side-nav{
-//   @include side-nav-icons;
-//   margin-top: 5em;
-
-// }
-// .notes{
-//   @include borderForTest2;
-//   @include side-nav-icons;
-//   // position:absolute;
-//   position:relative;
-
-// }
-// .remainders{
-//   @include borderForTest2;
-//   @include side-nav-icons;
-//   // position:absolute;
-//   position:relative;
-
-// }
-// .edit-notes{
-//   @include borderForTest2;
-//   @include side-nav-icons;
-//   // position:absolute;
-//   position:relative;
-
-// }
-// .archive{
-//   @include borderForTest2;
-//   @include side-nav-icons;
-//   // position:absolute;
-//   position:relative;
-
-// }
-// .trash{
-//   @include borderForTest2;
-//   @include side-nav-icons;
-//   // position:absolute;
-//   position:relative;
-
-// }
+@use './header.scss';
 
 .body{
   box-sizing: border-box;
@@ -72,9 +31,6 @@ ul li{
 .inline-content{
   background-color: #feefc3;
   // width: 260px;
-  // width: 118%;
-  // width: 16.2rem;
-  // width: 16.2em;
   margin-left: -40px;
   display: flex;
   flex-direction: row;

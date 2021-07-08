@@ -1,10 +1,11 @@
 import React from 'react';
 import Header from '../components/header';
+import '../scss/dashBoard.scss'
 
 const DashBoard = () =>
 {
     return (
-      <div>
+      <div className='dashBoard'>
         <Header />
       </div>
     )

@@ -2,8 +2,8 @@ class Auth
 {
   constructor()
   {
-    // this.authenticated = false;
-    this.authenticated = true;//to work freely with dashboard.
+    this.authenticated = false;
+    // this.authenticated = true;//to work freely with dashboard.
   }
 
   login = (callback) =>

@@ -25,12 +25,17 @@ const Login = () =>
     {
       if ((data.status === 200) && (data.data.id))
       {
+        localStorage.setItem('email', data.data.email);
         localStorage.setItem('token', data.data.id);
-        auth.login(() =>
+        
+        if (localStorage.getItem('token'))
         {
-          alert('Login successful.\n Redirecting to dashboard...');
-          history.push('./dashboard');
-        })
+          auth.login(() =>
+          {
+            alert('Login successful.\n Redirecting to dashboard...');
+            history.push('./dashboard');
+          })
+        }
       } else {
         alert('Something went wrong!');
       }

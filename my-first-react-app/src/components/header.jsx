@@ -2,14 +2,17 @@ import React, {useState} from 'react';
 import Title from './title';
 import { FaStickyNote, FaBars, FaSearch, FaRegUserCircle} from 'react-icons/fa';
 import { Row, Col, Form, FormControl } from 'react-bootstrap';
-import '../scss/dashboard.header.scss';
+import '../scss/header.scss';
 import SideNav from '../components/sideNav';
-// import { Menu } from '../components/dashboard.header.dropdownMenue';
+import Profile from '../components/profile';
 
 const header = () =>
 {
   const [showNav, setShowNav] = useState(false);
+  const [showProfile, setShowProfile] = useState(false);
+  console.log('show profile: ',showProfile);
   return (
+    <div>
     <div className='header'>
 
         <div className="head-part">
@@ -24,15 +27,18 @@ const header = () =>
                   <FormControl className='text-box placeholder' type='text' placeholder='Search'/>
                 </Form.Group>
               <div className='right'>
-                <FaRegUserCircle className='profile-icon icon' />
+                <FaRegUserCircle className='profile-icon icon' onClick={() => {setShowProfile(!showProfile)}} />
               </div>
               </div>
             </Col>
           </Row>
       </div>
-      {<SideNav show={ showNav } />}
+      {<SideNav show={showNav} />}
 
-    </div>
+      </div>
+      { <Profile showProf={showProfile}/> }
+
+      </div>
   )
 }
 
