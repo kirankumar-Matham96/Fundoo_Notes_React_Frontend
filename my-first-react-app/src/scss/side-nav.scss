@@ -44,11 +44,11 @@ ul li{
 .side-icon{
   margin: 0;
   padding: 0;
-  color: rgb(110, 105, 105);
+  color: rgb(78, 76, 76);
 }
 .linkTag{
   display: block;
-  color: rgb(138, 132, 132);
+  color: rgb(0, 0, 0);
   text-decoration: none;
   font-size: 16px;
   padding: 10px 10px;
@@ -62,10 +62,11 @@ ul li{
 }
 .inline-content2:hover,
 .inline-content2.active{
-  background-color: #bbb9b4;
+  background-color: #e4e7ebd2;
   color: black;
 }
 .linkTag:hover,
 .linkTag:active{
   color: black;
+  font-weight: bold;
 }
