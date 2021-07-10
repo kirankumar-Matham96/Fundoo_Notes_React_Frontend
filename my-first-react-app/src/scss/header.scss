@@ -109,18 +109,22 @@
   width: min(20%, 20.5rem);
     @include placeholder;
 }
- .right{
-   @include borderForTest;
-   @include right;
+.right{
+  @include borderForTest;
+  @include right;
   display: flex;
   // align-items: center;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
+  // justify-content: flex-end;
   height: 70px;
   width: min(20%, 20.5rem);
   margin-left: 20%;
-  padding-right: 4%;
+  padding-right: 2%;
  }
+//  .right p{
+//    padding-top: 15px;
+//  }
 .custom-title{
   margin-top: -13px;
 }

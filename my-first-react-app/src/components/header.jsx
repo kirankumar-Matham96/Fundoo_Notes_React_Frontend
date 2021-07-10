@@ -1,4 +1,6 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import auth from '../services/auth';
 import Title from './title';
 import { FaStickyNote, FaBars, FaSearch, FaRegUserCircle} from 'react-icons/fa';
 import { Row, Col, Form, FormControl } from 'react-bootstrap';
@@ -10,6 +12,17 @@ const header = () =>
 {
   const [showNav, setShowNav] = useState(false);
   const [showProfile, setShowProfile] = useState(false);
+  const history = useHistory();
+
+  const denyPermission = () =>
+  {
+    auth.logout(() =>
+    {
+      localStorage.clear();
+      history.push('/login');
+    });
+  }
+
   return (
     <div>
     <div className='header'>
@@ -25,8 +38,9 @@ const header = () =>
                   <FaSearch className='search-icon icon'/>
                   <FormControl className='text-box placeholder' type='text' placeholder='Search'/>
                 </Form.Group>
-              <div className='right'>
-                <FaRegUserCircle className='profile-icon icon' /*onClick*/onMouseOver={() => {setShowProfile(!showProfile)}} onMouseOut={() => {setShowProfile(!showProfile)}} />
+                <div className='right'>
+                  <p className='text-muted mt-3'>{localStorage.getItem('email')}</p>
+                <FaRegUserCircle className='profile-icon icon' onClick={denyPermission}/*onMouseOver={() => {setShowProfile(!showProfile)}} onMouseOut={() => {setShowProfile(!showProfile)}}*/ />
               </div>
               </div>
             </Col>
@@ -39,6 +53,6 @@ const header = () =>
 
       </div>
   )
-} //TODO: add hover effect instead of button click. See the link in the group
+}
 
 export default header;
