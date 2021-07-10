@@ -3,7 +3,8 @@
   padding-left: 25px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  // justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   border-radius: 30px;
   transition: 0.5s;

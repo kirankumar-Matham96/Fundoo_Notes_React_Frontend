@@ -10,7 +10,6 @@ const header = () =>
 {
   const [showNav, setShowNav] = useState(false);
   const [showProfile, setShowProfile] = useState(false);
-  console.log('show profile: ',showProfile);
   return (
     <div>
     <div className='header'>
@@ -27,7 +26,7 @@ const header = () =>
                   <FormControl className='text-box placeholder' type='text' placeholder='Search'/>
                 </Form.Group>
               <div className='right'>
-                <FaRegUserCircle className='profile-icon icon' onClick={() => {setShowProfile(!showProfile)}} />
+                <FaRegUserCircle className='profile-icon icon' /*onClick*/onMouseOver={() => {setShowProfile(!showProfile)}} onMouseOut={() => {setShowProfile(!showProfile)}} />
               </div>
               </div>
             </Col>
@@ -40,6 +39,6 @@ const header = () =>
 
       </div>
   )
-}
+} //TODO: add hover effect instead of button click. See the link in the group
 
 export default header;
