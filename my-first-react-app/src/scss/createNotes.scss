@@ -56,9 +56,6 @@
   border: none;
   // border: 1px solid black;
 }
-textarea{
-  // height: 6vh;
-}
 .pin{
   @include icon-design;
   margin: 12px;
@@ -72,7 +69,7 @@ textarea{
   width: 65px;
   height: 30px;
 }
-.note_icons{
+.notebar_icons{
   margin-top: 5px;
   margin-bottom: 0;
   margin-left: 1%;
