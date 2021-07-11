@@ -1,5 +1,7 @@
 import React from 'react';
-import {FaRegStickyNote, FaRegBell, FaPencilAlt, FaRegFileArchive, FaRegTrashAlt} from 'react-icons/fa';
+import {FaRegStickyNote, FaRegBell, FaPencilAlt, FaRegTrashAlt} from 'react-icons/fa';
+import { RiInboxArchiveLine} from 'react-icons/ri';
+import { MdLightbulbOutline} from 'react-icons/md';
 import '../scss/side-nav.scss';
 
 const sideNav = ({show}) =>
@@ -12,7 +14,8 @@ const sideNav = ({show}) =>
         <ul>
           <li>
             <div className='inline-content1 active'>
-              <FaRegStickyNote className='icon side-icon' />
+              {/* <FaRegStickyNote className='icon side-icon' /> */}
+              <MdLightbulbOutline className='icon side-icon' />
               <a className='linkTag'>Notes</a>
             </div>
           </li>
@@ -30,7 +33,7 @@ const sideNav = ({show}) =>
           </li>
           <li>
             <div className='inline-content2'>
-              <FaRegFileArchive className='icon side-icon' />
+              <RiInboxArchiveLine className='icon side-icon' />
               <a className='linkTag'>Archive</a>
             </div>
           </li>

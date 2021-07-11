@@ -1,3 +1,15 @@
+@mixin icon_background_color{
+  background-color: rgb(232, 235, 235);
+  box-shadow: 0px 0px 10px -1px;
+}
+@mixin icon-design {
+  width: 30px;
+  height: 30px;
+  padding: 5px;
+  // border: 1px solid red;
+  border-radius: 20px;
+  color: rgb(77, 72, 72);
+}
 @mixin takeNoteTab {
   display: flex;
   flex-direction: column;
@@ -11,7 +23,7 @@
   height: 150px;
   width: 650px;
   // border: 1px solid red;
-  box-shadow: 0px 0px 15px -5px;
+  box-shadow: 0px 2px 15px -5px;
   border-radius: 10px;
 }
 
@@ -29,7 +41,7 @@
 .row1{
   padding-left: 2%;
   width: 550px;
-  justify-content: space-around;
+  justify-content: flex-start;
 }
 .row2{
   align-items: flex-end;
@@ -38,14 +50,39 @@
 }
 .row1 input, textarea {
   all: unset;
+  height: 12vh;
+  margin-top: 15px;
+  margin-bottom: 15px;
   border: none;
-  // box-shadow: 0px 0px 15px -5px;
+  // border: 1px solid black;
+}
+textarea{
+  // height: 6vh;
 }
 .pin{
-  width: 25px;
-  height: 30px;
+  @include icon-design;
+  margin: 12px;
 }
 .cancel{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background-color: #fff;
   width: 65px;
   height: 30px;
+}
+.note_icons{
+  margin-top: 5px;
+  margin-bottom: 0;
+  margin-left: 1%;
+  margin-right: 1%;
+}
+.inner_icons{
+  @include icon-design;
+  margin: 1% 5% 0 1%;
+}
+.inner_icons:hover,
+.pin:hover{
+  @include icon_background_color;
 }
