@@ -28,7 +28,7 @@ const DashBoard = () =>
       <div className='note_container'>
         {addItem ? addItem.map((val, index) =>
         {
-          return <Note className='mr-3' key={index} id={index} title={val.title} content={val.content} deleteItem={ onDelete }/>
+          return <Note key={index} id={index} title={val.title} content={val.content} deleteItem={ onDelete }/>
         }) : null}
       </div>
       </div>
