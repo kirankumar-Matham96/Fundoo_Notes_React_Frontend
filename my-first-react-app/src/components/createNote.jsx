@@ -15,7 +15,7 @@ const CreateNote = (props) =>
 
   const close = () =>
   {
-    note ? props.passNote(note) : null;
+    (note.title && note.content) ? props.passNote(note) : null;
   }
 
   const inputEvent = (event) =>
