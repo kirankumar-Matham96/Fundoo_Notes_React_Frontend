@@ -3,14 +3,11 @@
   height: 100vh;
 }
 .note_container{
-  margin-left: 15%;
-  margin-right: 15%;
-  margin-top: 20px;
+  margin: 20px 15% 0 15%;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   justify-content:flex-start;
-  border: 1px solid red;
-  flex-wrap: wrap;
 }
 .note_container .note_card{
   margin-left: 100px;
