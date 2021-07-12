@@ -4,7 +4,7 @@ import {RiPushpin2Line, RiInboxArchiveLine} from 'react-icons/ri';
 import {BiBellPlus, BiUserPlus, BiImage} from 'react-icons/bi';
 import { IoColorPaletteOutline } from 'react-icons/io5';
 
-const createNote = () =>
+const CreateNote = () =>
 {
   const [note, setNote] = useState({
     title: '',
@@ -50,4 +50,4 @@ const createNote = () =>
   </div>)
 }
 
-export default createNote;
+export default CreateNote;

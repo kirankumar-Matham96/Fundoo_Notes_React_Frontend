@@ -7,7 +7,7 @@ import { Row, Col, Form, FormControl } from 'react-bootstrap';
 import '../scss/header.scss';
 import SideNav from '../components/sideNav';
 
-const header = () =>
+const Header = () =>
 {
   const [showNav, setShowNav] = useState(false);
   const history = useHistory();
@@ -49,4 +49,4 @@ const header = () =>
   )
 }
 
-export default header;
+export default Header;
