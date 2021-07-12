@@ -1,0 +1,29 @@
+{
+  "users": [
+    {
+      "firstName": "Akil",
+      "lastName": "valarian",
+      "email": "akil@gmail.com"
+    },
+    {
+      "firstName": "Nikil",
+      "lastName": "valarian",
+      "email": "nikil@gmail.com"
+    },
+    {
+      "firstName": "Vijay",
+      "lastName": "Sai",
+      "email": "vijay@gmail.com"
+    },
+    {
+      "firstName": "Apple",
+      "lastName": "Kashmir",
+      "email": "apple@gmail.com"
+    },
+    {
+      "firstName": "Mango",
+      "lastName": "Bangenapalli",
+      "email": "mango@gmail.com"
+    }
+  ]
+}

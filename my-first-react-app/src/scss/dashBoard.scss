@@ -2,3 +2,11 @@
   overflow: hidden;
   height: 100vh;
 }
+.note_container{
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content:space-around;
+  // border: 1px solid red;
+  flex-wrap: wrap;
+}

@@ -4,29 +4,30 @@ import {RiPushpin2Line, RiInboxArchiveLine} from 'react-icons/ri';
 import {BiBellPlus, BiUserPlus, BiImage} from 'react-icons/bi';
 import { IoColorPaletteOutline } from 'react-icons/io5';
 
-const CreateNote = () =>
+const CreateNote = (props) =>
 {
-  const [note, setNote] = useState({
+  const initialState = {
     title: '',
     content: ''
-  });
+  }
 
-  // const addCard = (event) => {
-  //   event.key === 'Enter' ?
-  // }
+  const [note, setNote] = useState(initialState);
+
+  const close = () =>
+  {
+    note ? props.passNote(note) : null;
+  }
 
   const inputEvent = (event) =>
   {
     const { name, value } = event.target;
-
     setNote((oldData) =>
     {
       return {
         ...oldData,
         [name]: value,
       }
-    })
-    console.log(`note: ${JSON.stringify(note)}`);
+    });
   }
 
   return (<div className='createNote'>
@@ -44,7 +45,7 @@ const CreateNote = () =>
       </div>
       <div className='row2'>
         <RiPushpin2Line className='pin'/>
-        <button className='cancel'>Close</button>
+        <button className='close' onClick={ close }>Close</button>
       </div>
     </div>
   </div>)
