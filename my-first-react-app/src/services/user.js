@@ -1,5 +1,4 @@
 import axios from 'axios';
-// import { BASE_URL } from 'dotenv';
 require('dotenv').config();
 
 class Services
