@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import {RiPushpin2Line, RiInboxArchiveLine} from 'react-icons/ri';
 import {BiBellPlus, BiUserPlus, BiImage} from 'react-icons/bi';
 import { IoColorPaletteOutline } from 'react-icons/io5';
+import CRUD from '../services/fundooNotesServices';
 
 const CreateNote = (props) =>
 {
@@ -15,8 +16,28 @@ const CreateNote = (props) =>
 
   const close = () =>
   {
-    (note.title && note.content) ? props.passNote(note) : alert('Please add Title and Content');
-  }
+    console.log(`note in create note: ${ JSON.stringify(note) }`);
+    const newObj = {
+      ...note,
+      isPined: false,
+      isArchived: false
+    }
+    console.log(`object de-structured new data: ${JSON.stringify(newObj)}`)
+    // {
+      //       title: Hmmm...
+      //       description: HHhhhhmmmmm..........
+      //       isPined: false
+      //       color: #FFFFFF
+      //       isArchived: false
+      //       labelIdList: []
+      //       reminder: 
+      //       collaberators: []
+      //     }
+
+      console.log('axios response:',CRUD.createNote(newObj));
+      // (note.title && note.content) ? props.passNote(CRUD.createNote(newObj)) : alert('Please add Title and Content');
+      (note.title && note.content) ? props.passNote(note) : alert('Please add Title and Content');
+    }
 
   const inputEvent = (event) =>
   {

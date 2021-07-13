@@ -1,6 +1,8 @@
 import axios from 'axios';
 require('dotenv').config();
 
+let token = localStorage.getItem('token');
+
 class FundooNotesServices
 {
   createNote = (data) =>
@@ -8,16 +10,27 @@ class FundooNotesServices
     //http://fundoonotes.incubation.bridgelabz.com/api/notes/addNotes
     /**
      * Object sent:
-      title: Hmmm...
-      description: HHhhhhmmmmm..........
-      isPined: false
-      color: #FFFFFF
-      isArchived: false
-      labelIdList: []
-      reminder:
-      collaberators: []
+     * {
+          title: Hmmm...
+          description: HHhhhhmmmmm..........
+          isPined: false
+          color: #FFFFFF
+          isArchived: false
+          labelIdList: []
+          reminder: default
+          collaberators: []
+        }
      */
-    return axios.post(`${ process.env.REACT_APP_BASE_URL }`,data)
+    console.log(`token: ${ token }`)//FIXME: How to send the token to backend ? (from where?)
+
+    // const newData = {
+    //   ...data,
+    //   token: token
+    // }
+    // console.log(`newData: ${ JSON.stringify(newData) }`)
+
+    // return axios.post(`${ process.env.REACT_APP_BASE_CRUD_URL }addNotes`,newData)
+    return axios.post(`${ process.env.REACT_APP_BASE_CRUD_URL }addNotes`,data)
       .then(res => res).catch(err => err);
   }
 
@@ -70,40 +83,34 @@ class FundooNotesServices
      *      }
      * }
      */
-    return axios.post(`${ process.env.REACT_APP_BASE_URL }`)
+    return axios.post(`${ process.env.REACT_APP_BASE_CRUD_URL }getNotesList`)
       .then(res => res).catch(err => err);
   }
 
   updateNote = (data) =>
   {
-    //
+    //http://fundoonotes.incubation.bridgelabz.com/api/notes/updateNotes
     /**
      * Updated request Data:
-     *
+     *  {
+     *    noteId: "60edaf48833be700222a9dba",
+     *    title: "Hmmm...",
+     *    description: "HHhhhhmmmmm..........mmmhhhHH"
+     *  }
      */
 
-    return axios.post(`${ process.env.REACT_APP_BASE_URL }`,data)
+    return axios.post(`${ process.env.REACT_APP_BASE_CRUD_URL }updateNotes`,data)
       .then(res => res).catch(err => err);
   }
 
-  deleteNote = (data) =>
-  {
-    return axios.post(`${ process.env.REACT_APP_BASE_URL }`,data)
-      .then(res => res).catch(err => err);
-  }
-
-  //to register user
-  // registerUser = (data) =>
+  /**
+   * Delete api is not implemented or connected in reference APP..!
+   */
+  // deleteNote = (data) =>
   // {
-  //   return axios.post(`${process.env.REACT_APP_BASE_URL}userSignUp`,data)
-  //     .then(res =>
-  //     {
-  //       return res;
-  //     }).catch((err) =>
-  //     {
-  //       return err;
-  //     })
+  //   return axios.post(`${ process.env.REACT_APP_BASE_URL }`,data)
+  //     .then(res => res).catch(err => err);
   // }
 }
 
-export default FundooNotesServices;
+export default new FundooNotesServices();
