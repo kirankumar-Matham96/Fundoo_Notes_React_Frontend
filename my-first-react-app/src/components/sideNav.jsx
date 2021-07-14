@@ -1,5 +1,5 @@
 import React from 'react';
-import {FaRegStickyNote, FaRegBell, FaPencilAlt, FaRegTrashAlt} from 'react-icons/fa';
+import { FaRegBell, FaPencilAlt, FaRegTrashAlt} from 'react-icons/fa';
 import { RiInboxArchiveLine} from 'react-icons/ri';
 import { MdLightbulbOutline} from 'react-icons/md';
 import '../scss/side-nav.scss';

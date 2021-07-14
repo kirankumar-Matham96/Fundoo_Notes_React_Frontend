@@ -30,11 +30,12 @@ const CreateNote = (props) =>
       //       color: #FFFFFF
       //       isArchived: false
       //       labelIdList: []
-      //       reminder: 
+      //       reminder:
       //       collaberators: []
       //     }
 
       console.log('axios response:',CRUD.createNote(newObj));
+      CRUD.getAllNotes();
       // (note.title && note.content) ? props.passNote(CRUD.createNote(newObj)) : alert('Please add Title and Content');
       (note.title && note.content) ? props.passNote(note) : alert('Please add Title and Content');
     }

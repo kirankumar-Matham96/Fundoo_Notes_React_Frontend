@@ -17,54 +17,17 @@ class FundooNotesServices
   getAllNotes = () =>
   {
     //http://fundoonotes.incubation.bridgelabz.com/api/notes/getNotesList
-    /**
-     * Response data:
-     * {
-     *  "data":
-     *        {
-     *          "success":true,
-     *          "message":"",
-     *          "data":[
-     *            {
-     *              "title":"Hmmm...",
-     *              "description":"HHhhhhmmmmm..........",
-     *              "isPined":false,
-     *              "isArchived":false,
-     *              "isDeleted":false,
-     *              "reminder":[],
-     *              "createdDate":"2021-07-13T15:20:40.221Z",
-     *              "modifiedDate":"2021-07-13T15:20:40.221Z",
-     *              "color":"#FFFFFF",
-     *              "label":[],
-     *              "imageUrl":"",
-     *              "linkUrl":"",
-     *              "collaborators":[],
-     *              "id":"60edaf48833be700222a9dba",
-     *              "userId":"60edabd9833be700222a9db9",
-     *              "collaberator":[],
-     *              "labelIdList":[],
-     *              "noteCheckLists":[],
-     *              "noteLabels":[],
-     *              "questionAndAnswerNotes":[],
-     *              "user":{
-     *                  "firstName":"hey",
-     *                  "lastName":"hey",
-     *                  "role":"user",
-     *                  "service":"basic",
-     *                  "createdDate":"2021-07-13T15:06:01.402Z",
-     *                  "modifiedDate":"2021-07-13T15:06:01.402Z",
-     *                  "username":"heyemail@gmail.com",
-     *                  "email":"heyemail@gmail.com",
-     *                  "emailVerified":true,
-     *                  "id":"60edabd9833be700222a9db9"
-     *               }
-     *            }
-     *         ]
-     *      }
-     * }
-     */
-    return axios.post(`${ process.env.REACT_APP_BASE_CRUD_URL }getNotesList`)
-      .then(res => res).catch(err => err);
+    return axios.post(`${ process.env.REACT_APP_BASE_CRUD_URL }getNotesList`,{headers: headers})
+      .then(res =>
+      {
+        console.log(`res from axios: ${res}`)
+        return res
+      }).catch(err =>
+      {
+        console.log(`err from axios: ${err}`);
+        return err
+      }
+      );
   }
 
   updateNote = (data) =>
@@ -79,18 +42,34 @@ class FundooNotesServices
      *  }
      */
 
-    return axios.post(`${ process.env.REACT_APP_BASE_CRUD_URL }updateNotes`,data)
-      .then(res => res).catch(err => err);
+    return axios.post(`${ process.env.REACT_APP_BASE_CRUD_URL }updateNotes`,data,{headers:headers})
+      .then(res =>
+      {
+        console.log(`update res from axios: ${res}`)
+        return res
+      }).catch(err =>
+      {
+        console.log(`update err from axios: ${err}`);
+        return err
+      }
+      );
   }
-
-  /**
-   * Delete api is not implemented or connected in reference APP..!
-   */
-  // deleteNote = (data) =>
-  // {
-  //   return axios.post(`${ process.env.REACT_APP_BASE_URL }`,data)
-  //     .then(res => res).catch(err => err);
-  // }
+  
+  deleteNote = () =>
+  {
+  //http://fundoonotes.incubation.bridgelabz.com/api/notes/trashNotes
+    return axios.post(`${ process.env.REACT_APP_BASE_URL }trashNotes`,{headers:headers})
+      .then(res =>
+      {
+        console.log(`delete res from axios: ${res}`)
+        return res
+      }).catch(err =>
+      {
+        console.log(`delete err from axios: ${err}`);
+        return err
+      }
+      );
+  }
 }
 
 export default new FundooNotesServices();

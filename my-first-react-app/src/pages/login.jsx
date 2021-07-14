@@ -1,4 +1,4 @@
-import React, { useState, useEffect }from 'react';
+import React, { useState }from 'react';
 import * as Yup from 'yup';
 import { ErrorMessage, Formik, Field, Form } from 'formik';
 import { Link, useHistory } from 'react-router-dom';
@@ -27,7 +27,7 @@ const Login = () =>
       {
         localStorage.setItem('email', data.data.email);
         localStorage.setItem('token', data.data.id);
-        
+
         if (localStorage.getItem('token'))
         {
           auth.login(() =>

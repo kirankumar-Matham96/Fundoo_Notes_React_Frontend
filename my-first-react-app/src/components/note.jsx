@@ -5,11 +5,13 @@ import { RiInboxArchiveLine} from 'react-icons/ri';
 import {BiBellPlus, BiUserPlus, BiImage} from 'react-icons/bi';
 import { CgTrash } from 'react-icons/cg';
 import { IoColorPaletteOutline } from 'react-icons/io5';
+import CRUD from '../services/fundooNotesServices';
 
 const note = (props) =>
 {
   const deleteNote = () =>
   {
+    CRUD.deleteNote();
     props.deleteItem(props.id);
   }
 

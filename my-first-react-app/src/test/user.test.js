@@ -1,4 +1,4 @@
-import { shallow, dive } from 'enzyme';
+import { shallow } from 'enzyme';
 import Title from '../components/title';
 import Register from '../pages/register';
 import Login from '../pages/login';
