@@ -2,35 +2,15 @@ import axios from 'axios';
 require('dotenv').config();
 
 let token = localStorage.getItem('token');
-
+const headers = {
+  'Content-Type': 'application/json',
+  'Authorization': token
+}
 class FundooNotesServices
 {
   createNote = (data) =>
   {
-    //http://fundoonotes.incubation.bridgelabz.com/api/notes/addNotes
-    /**
-     * Object sent:
-     * {
-          title: Hmmm...
-          description: HHhhhhmmmmm..........
-          isPined: false
-          color: #FFFFFF
-          isArchived: false
-          labelIdList: []
-          reminder: default
-          collaberators: []
-        }
-     */
-    console.log(`token: ${ token }`)//FIXME: How to send the token to backend ? (from where?)
-
-    // const newData = {
-    //   ...data,
-    //   token: token
-    // }
-    // console.log(`newData: ${ JSON.stringify(newData) }`)
-
-    // return axios.post(`${ process.env.REACT_APP_BASE_CRUD_URL }addNotes`,newData)
-    return axios.post(`${ process.env.REACT_APP_BASE_CRUD_URL }addNotes`,data)
+    return axios.post(`${ process.env.REACT_APP_BASE_CRUD_URL }addNotes`, data, {headers: headers})
       .then(res => res).catch(err => err);
   }
 
