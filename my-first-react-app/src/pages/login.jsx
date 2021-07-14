@@ -60,7 +60,10 @@ const Login = () =>
             password: ''
           }}
           validationSchema={validate}
-          onSubmit={values => userCredentials(values) }
+        onSubmit={(values, { resetForm }) => {
+          userCredentials(values);
+          resetForm({ values: '' });
+        }}
         >
         {({errors, touched}) => (
           <div className='login-container'>

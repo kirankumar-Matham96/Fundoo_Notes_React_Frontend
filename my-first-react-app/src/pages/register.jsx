@@ -133,7 +133,8 @@ class Register extends Component
     event.preventDefault();
     this.setState({ isSubmitting: true });
     const { formValues, formValidity } = this.state;
-    if (Object.values(formValidity).every(Boolean)) {
+    if (Object.values(formValidity).every(Boolean))
+    {
       alert('Form is validated, submitting the form...');
       this.getData(event.target);
       this.setState({ isSubmitting: false });
@@ -155,7 +156,7 @@ class Register extends Component
       <div className='register-page'>
         <div className='form-content'>
         <Formik>
-          <Form onSubmit={this.handleSubmit} >
+            <Form onSubmit={ this.handleSubmit } >
             <div className='title'>
               {<Title />}
             </div>
