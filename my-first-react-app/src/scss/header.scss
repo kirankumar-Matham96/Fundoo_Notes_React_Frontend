@@ -44,51 +44,50 @@
   height: 80px;
   margin-bottom: 20%;
 }
-.head-part{
+.head-part {
   @include container;
 }
-.row{
+.row {
   @include head;
   @include borderForTest;
   @include cardFloatEffect;
   height: 70px;
 }
-.header h4{
+.header h4 {
   @include borderForTest;
   @include head;
   padding-top: 10px;
   color: gray;
 }
-.icon{
+.icon {
   @include borderForTest;
   @include iconDesign;
 }
-.profile-icon{
+.profile-icon {
   height: 30px;
 }
-.search-icon{
+.search-icon {
   position: absolute;
   padding-right: 2%;
   color: rgb(99, 96, 96);
 }
-.solid-notes{
+.solid-notes {
   height: 40px;
   color: rgb(255, 189, 6);
   padding-left: 10px;
 }
-.form-control{
+.form-control {
   width: 40%;
 }
-.left{
+.left {
   @include borderForTest;
   @include left;
   @include head;
   justify-content: flex-start;
   height: 70px;
   padding-left: 0.5%;
-
 }
-.middle{
+.middle {
   @include borderForTest;
   @include middle;
   @include head;
@@ -97,19 +96,19 @@
   width: min(35%, 50.5rem);
   margin-left: 5%;
 }
-.middle .placeholder[type=text]{
+.middle .placeholder[type="text"] {
   @include placeholder;
-  background-color: 	#f1f3f4;
+  background-color: #f1f3f4;
   border: none;
   border: 1px solid transparent;
   border-radius: 8px;
 }
-.text-box{
+.text-box {
   height: 50px;
   width: min(20%, 20.5rem);
-    @include placeholder;
+  @include placeholder;
 }
-.right{
+.right {
   @include borderForTest;
   @include right;
   display: flex;
@@ -121,14 +120,13 @@
   width: min(20%, 20.5rem);
   margin-left: 20%;
   padding-right: 2%;
- }
+}
 //  .right p{
 //    padding-top: 15px;
 //  }
-.custom-title{
+.custom-title {
   margin-top: -13px;
 }
-.placeholder{
+.placeholder {
   @include placeholder;
 }
-

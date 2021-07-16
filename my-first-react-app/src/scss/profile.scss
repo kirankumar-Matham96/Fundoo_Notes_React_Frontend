@@ -1,9 +1,9 @@
 @mixin basic-flex {
-  display:flex;
+  display: flex;
   align-items: center;
 }
 
-.profile{
+.profile {
   @include basic-flex;
   flex-direction: column;
   justify-content: space-around;
@@ -17,19 +17,19 @@
   width: 250px;
   transition: 0.3s;
 }
-.profile.active{
+.profile.active {
   border: 2px solid tomato;
   height: 30vh;
   padding-bottom: 15px;
   box-shadow: 0px 0px 15px -4px;
 }
-.info{
+.info {
   justify-content: center;
   // border: 1px solid rgb(42, 0, 158);
   margin-top: 29px;
   padding-top: 35px;
 }
-.from-storage{
+.from-storage {
   @include basic-flex;
   justify-content: center;
 }

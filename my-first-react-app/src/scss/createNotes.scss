@@ -1,4 +1,4 @@
-@mixin icon_background_color{
+@mixin icon_background_color {
   background-color: rgb(232, 235, 235);
   box-shadow: 0px 0px 10px -1px;
 }
@@ -21,13 +21,13 @@
 /**
 new changes experiments:
 */
-.createNote{
+.createNote {
   @include border-color;
   box-shadow: 0px 2px 15px -5px;
   border-radius: 5px;
   margin: 2% 30%;
   height: 22vh;
-  .main_note{
+  .main_note {
     // all:unset;
     // @include border-color;
     // border: 1px solid rgb(111, 121, 214);
@@ -38,7 +38,7 @@ new changes experiments:
     height: 100%;
     // form-part{
 
-    .row1{
+    .row1 {
       // @include border-color;
       @include takeNoteTab;
       // width: 75vw;
@@ -46,36 +46,38 @@ new changes experiments:
       height: 100%;
       padding-top: 1%;
       padding-left: 1%;
-      .input-group{
+      .input-group {
         @include border-color;
         display: flex;
         justify-content: space-between;
-        input{all: unset;}
-        .pin{
+        input {
+          all: unset;
+        }
+        .pin {
           @include border-color;
           @include icon-design;
         }
       }
-      .content-area{
+      .content-area {
         all: unset;
         @include border-color;
         margin-top: 5px;
       }
-      .icon-close-group{
+      .icon-close-group {
         @include border-color;
         // border: 1px solid blue;
         display: flex;
         justify-content: space-between;
-        .notebar_icons{
+        .notebar_icons {
           @include border-color;
           width: 85%;
 
-          .inner_icons{
+          .inner_icons {
             @include icon-design;
             margin-right: 2%;
           }
         }
-        .close{
+        .close {
           background: none;
           border: none;
           margin-right: 10px;
@@ -86,10 +88,7 @@ new changes experiments:
   }
 }
 
-
-
 //*************************************
-
 
 // .createNote .main_note form{
 //   all:unset;

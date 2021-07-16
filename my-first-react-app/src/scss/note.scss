@@ -1,11 +1,11 @@
-.note{
+.note {
   all: unset;
   height: max-content;
   border-radius: 10px;
   box-shadow: 0px 1px 10px -5px;
   margin: 10px 10px 10px 10px;
 }
-.note_icons{
+.note_icons {
   all: unset;
   display: flex;
   flex-direction: row;
@@ -13,7 +13,7 @@
   // border: 1px solid rgb(0, 255, 64);
   margin-top: 10px;
 }
-.inner_note_icons{
+.inner_note_icons {
   color: rgb(77, 72, 72);
   // margin: 0px 7px 0px 7px;
   padding: 0;
@@ -22,7 +22,7 @@
   border-radius: 10px;
   // border: 1px solid red;
 }
-.inner_note_icons:hover{
+.inner_note_icons:hover {
   background-color: rgb(232, 235, 235);
   box-shadow: 0px 0px 7px -2px;
 }

@@ -1,7 +1,7 @@
-*{
-  font-family: roboto,'Noto Sans Myanmar UI',arial,sans-serif;
+* {
+  font-family: roboto, "Noto Sans Myanmar UI", arial, sans-serif;
 }
-  .register-page{
+.register-page {
   display: flex;
   // align-items: center;
   justify-content: center;
@@ -9,26 +9,26 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   overflow: hidden;
   box-shadow: 0px 0px 15px -5px;
   width: 700px;
   height: 700px;
   border-radius: 10px;
 }
-.form-content{
+.form-content {
   display: flex;
   align-content: center;
   // width: 90%;
   padding-left: 30px;
   padding-right: 60px;
 }
-.title{
+.title {
   display: flex;
   justify-content: flex-start;
   margin-top: 20px;
 }
-.sub-title p{
+.sub-title p {
   margin: none;
   padding: none;
   display: flex;
@@ -39,7 +39,7 @@
   font-size: 150%;
   color: black;
 }
-.text{
+.text {
   display: flex;
   justify-content: flex-start;
   width: 540px;
@@ -47,11 +47,11 @@
   // border: 1px solid black;
   margin: 0px 0px 30px 0px;
 }
-.parallel-fields{
+.parallel-fields {
   display: flex;
   align-content: space-between;
 }
-.left-field{
+.left-field {
   display: flex;
   flex-direction: column;
   margin-right: 20px;
@@ -60,7 +60,7 @@
   font-size: auto;
   width: 15rem;
 }
-.right-field{
+.right-field {
   display: flex;
   flex-direction: column;
   margin-left: 20px;
@@ -69,33 +69,33 @@
   font-size: auto;
   width: 15rem;
 }
-.firstName{
+.firstName {
   border: 1px solid gray;
   box-shadow: none;
   border-radius: 3px;
   width: 246px;
   padding: 20px 0px 20px 10px;
 }
-.lastName{
+.lastName {
   border: 1px solid gray;
   box-shadow: none;
   border-radius: 3px;
   width: 246px;
   padding: 20px 0px 20px 10px;
 }
-.password{
+.password {
   border: 1px solid gray;
   box-shadow: none;
   border-radius: 3px;
   width: 246px;
   padding: 20px 0px 20px 10px;
 }
-.confirmPassword{
+.confirmPassword {
   // border-radius: 3px;
   width: 46px;
   padding: 20px 0px 20px 10px;
 }
-.email{
+.email {
   margin-bottom: 0px;
   width: 34rem;
   border-radius: 3px;
@@ -104,30 +104,31 @@
   box-shadow: none;
   font-size: auto;
 }
-p{
+p {
   margin: 0px 0px 10px 10px;
   color: rgb(88, 88, 88);
 }
-a{
+a {
   text-decoration: none;
 }
-.pwd-section{
+.pwd-section {
   margin-top: 25px;
   margin-bottom: 0px;
 }
-.error-message{
+.error-message {
   color: red;
   margin-left: 10px;
   padding-top: 8px;
-  font-size: .8rem;
+  font-size: 0.8rem;
 }
-.email-error{//<---------------------
+.email-error {
+  //<---------------------
   color: red;
   margin-left: 10px;
   padding-top: 0px;
-  font-size: .8rem;
+  font-size: 0.8rem;
 }
-.foot{
+.foot {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -135,17 +136,17 @@ a{
   margin-top: 40px;
   padding: 10px 10px 10px 10px;
 }
-.signin-link{
+.signin-link {
   display: flex;
   align-items: center;
 }
-.button{
+.button {
   display: flex;
   flex-direction: row;
   width: 230px;
   justify-content: space-between;
 }
-.register-btn{
+.register-btn {
   border-radius: 5px;
   color: #fff;
   background-color: rgb(6, 92, 252);
@@ -153,7 +154,7 @@ a{
   width: 100px;
   font-size: 18px;
 }
-.home-btn{
+.home-btn {
   border-radius: 5px;
   color: #fff;
   background-color: rgb(6, 92, 252);
@@ -163,37 +164,37 @@ a{
 }
 
 /*Model 1*/
-.custom-field{
+.custom-field {
   position: relative;
   font-size: 14px;
   padding-top: 20px;
 }
 
-.custom-field .placeHolder{
+.custom-field .placeHolder {
   position: absolute;
   left: 12px;
   top: 60%;
-  transform:translateY(-50%);
+  transform: translateY(-50%);
   color: gray;
   transition: top 0.3s ease, font-size 0.3s ease, color 0.3s ease;
 }
 .custom-field input:valid + .placeHolder,
-.custom-field input:focus + .placeHolder{
-  top:10px;
+.custom-field input:focus + .placeHolder {
+  top: 10px;
   font-size: 11px;
   color: #222;
 }
 /*****************/
 
 /*Model 2*/
-.custom-field input{
+.custom-field input {
   border: 2px solid rgb(150, 150, 150);
   transition: border-color 0.3s ease;
 }
 
 .custom-field input:valid,
 .custom-field input:focus {
-  top:10px;
+  top: 10px;
   font-size: 10px;
   color: #222;
   transition-delay: 0.1s;
@@ -205,27 +206,27 @@ a{
 }
 
 .custom-field input:valid + .placeHolder,
-.custom-field input:focus + .placeHolder{
-  top:20px;
+.custom-field input:focus + .placeHolder {
+  top: 20px;
   background: #fff;
 }
 
 /*****************/
 
-.checkbox-content .showMe{
+.checkbox-content .showMe {
   cursor: pointer;
 }
-.custom-field-email input{
+.custom-field-email input {
   border: 2px solid rgb(150, 150, 150);
 }
-.custom-field-email .placeHolder{
+.custom-field-email .placeHolder {
   color: gray;
   position: relative;
   left: 15px;
   bottom: 40px;
 }
 .custom-field-email input:valid + .placeHolder,
-.custom-field-email input:focus + .placeHolder{
+.custom-field-email input:focus + .placeHolder {
   bottom: 72px;
   color: black;
   background-color: #fff;
@@ -233,25 +234,25 @@ a{
   font-size: 12px;
   // padding-right: 5px;
 }
-.custom-field-email .ph{
+.custom-field-email .ph {
   color: rgb(61, 59, 59);
   position: relative;
   left: 420px;
   bottom: 40px;
 }
-.pwd-section{
+.pwd-section {
   margin-top: -30px;
 }
-.email-div{
+.email-div {
   display: flex;
   align-items: flex-start;
   flex-direction: column;
   // margin: none;
   height: 100px;
 }
-.email-div label{
+.email-div label {
   padding: 100px;
 }
-.email-para{
+.email-para {
   padding-bottom: 20px;
 }

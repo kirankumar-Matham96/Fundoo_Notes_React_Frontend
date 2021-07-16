@@ -6,7 +6,7 @@
   border-radius: 5px;
   border: 2px solid gray;
 }
-.login-container{
+.login-container {
   width: 800px;
   display: flex;
   justify-content: center;
@@ -14,18 +14,18 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   overflow: hidden;
   box-shadow: 0px 0px 15px -5px;
   width: 560px;
   height: 700px;
   border-radius: 10px;
 }
-.content{
+.content {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   display: flex;
   // border: 1px solid violet;
   width: 600px;
@@ -34,7 +34,7 @@
   justify-content: flex-start;
   align-items: center;
 }
-.form-fields{
+.form-fields {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -44,7 +44,7 @@
   height: 80%;
   padding: 0px 0px 0px 0px;
 }
-.LoginField{
+.LoginField {
   // border: 1px solid red;
   display: flex;
   flex-direction: column;
@@ -56,37 +56,37 @@
 
 // }
 .LoginField {
-  color: red
+  color: red;
 }
 
-.LoginField .errors{
-  color: red
+.LoginField .errors {
+  color: red;
 }
 
-.LoginField .email-login{
+.LoginField .email-login {
   @include boxes;
 }
-.LoginField .password-login{
+.LoginField .password-login {
   @include boxes;
 }
-.LoginField .placeholder{
+.LoginField .placeholder {
   // border: 1px solid red;
   color: gray;
   position: relative;
   top: -35px;
   left: 10px;
 }
-.LoginField .email-ph{
+.LoginField .email-ph {
   width: 17%;
 }
-.LoginField .password-ph{
+.LoginField .password-ph {
   width: 29%;
 }
-.show-pwd{
+.show-pwd {
   padding: 10px 10px 5px 10px;
   // border: 1px solid rgb(199, 0, 0);
 }
-.login-button{
+.login-button {
   margin-top: 20px;
   width: 100px;
   height: 45px;
@@ -95,12 +95,12 @@
   background-color: rgb(6, 92, 252);
   color: #fff;
 }
-a{
+a {
   text-decoration: none;
   padding-top: 25px;
 }
 .LoginField input:focus + .email-ph,
-.LoginField input:valid + .email-ph{
+.LoginField input:valid + .email-ph {
   color: black;
   top: -58px;
   background-color: #fff;
@@ -108,7 +108,7 @@ a{
   padding-right: 5px;
 }
 .LoginField input:focus + .password-ph,
-.LoginField input:valid + .password-ph{
+.LoginField input:valid + .password-ph {
   color: black;
   top: -58px;
   background-color: #fff;
