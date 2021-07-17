@@ -12,7 +12,7 @@ const CreateNote = (props) => {
   };
 
   const [note, setNote] = useState(initialState);
-  const [initiateNote, setInitiateNote] = useState(true);
+  const [initiateNote, setInitiateNote] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -108,7 +108,10 @@ const CreateNote = (props) => {
       ) : (
         <div className="initial">
           <div className="main_note">
-            <form className="initial-form" onSubmit={handleSubmit}>
+            <form
+              className="initial-form"
+              // onSubmit={handleSubmit}
+            >
               <div className="row1-1">
                 <div className="input-group-1">
                   <input
@@ -118,10 +121,12 @@ const CreateNote = (props) => {
                     value={note.title}
                     onChange={inputEvent}
                     placeholder="Title"
+                    onClick={handleSubmit}
+                    autoComplete="off"
                   />
-                  <button className="close-1" type="submit">
+                  {/* <button className="close-1" type="submit">
                     Close
-                  </button>
+                  </button> */}
                 </div>
               </div>
             </form>
