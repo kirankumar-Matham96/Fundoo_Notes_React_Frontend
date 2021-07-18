@@ -1,3 +1,19 @@
+/*********************************************************************
+ * Execution    : cmd> npm start
+ *
+ * Purpose      : to login user through login UI page
+ *
+ * @description
+ *
+ * @file        : pages/login.jsx
+ * @overview    : controls login for frontend and authorize the user
+ * @module      : this is necessary to give the authorization to user.
+ * @author      : Kirankumar Matham <mathamkirankumar96@gmail.com>
+ * @version     : _ _ _
+ * @since       : 22-06-2021
+ *********************************************************************/
+
+//importing necessary libraries, files and components
 import React, { useState } from "react";
 import * as Yup from "yup";
 import { ErrorMessage, Formik, Field, Form } from "formik";
@@ -7,8 +23,10 @@ import "../scss/login.scss";
 import Service from "../services/user.js";
 import auth from "../services/auth";
 
+//creating an instance for service class
 const serviceClass = new Service();
 
+//Yup object for the validation
 const validate = Yup.object().shape({
   email: Yup.string().email("invalid email!").required("Email is required!"),
   password: Yup.string()
@@ -17,10 +35,20 @@ const validate = Yup.object().shape({
     .required("Password required!"),
 });
 
+/**
+ * functional component for the login page
+ * @returns login page jsx tags and components
+ */
 const Login = () => {
+  //for redirecting the page
   const history = useHistory();
+  //for toggling password visibility
   const [isPasswordShown, setPasswordVisibility] = useState();
 
+  /**
+   * to login and authenticate user based on credentials provided by the user
+   * @param {Object for local storage} data
+   */
   const userCredentials = (data) => {
     serviceClass
       .loginUser(data)
@@ -30,6 +58,7 @@ const Login = () => {
           localStorage.setItem("token", data.data.id);
 
           if (localStorage.getItem("token")) {
+            //to authorize user if credentials are correct
             auth.login(() => {
               alert("Login successful.\n Redirecting to dashboard...");
               history.push("./dashboard");
@@ -45,6 +74,7 @@ const Login = () => {
       });
   };
 
+  //to set toggle property for show password
   const togglePasswordVisibility = () => {
     setPasswordVisibility(isPasswordShown ? false : true);
   };
@@ -128,4 +158,5 @@ const Login = () => {
   );
 };
 
+//default exporting of the component
 export default Login;
