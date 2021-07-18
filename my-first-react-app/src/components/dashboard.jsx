@@ -42,9 +42,13 @@ const DashBoard = () => {
   };
 
   return (
-    <div className="dashBoard">
-      <Header />
-      <TakeANote passNote={addNote} />
+    <div className="dashBoard" data-testid="dashboardContainer">
+      <div data-testid="header">
+        <Header />
+      </div>
+      <div data-testid="takeANote">
+        <TakeANote passNote={addNote} />
+      </div>
       <div className="note_container">
         {addItem
           ? addItem.map((val, index) => {

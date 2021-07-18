@@ -3,3 +3,41 @@
 exports[`Login Snapshot Testing expect to render Login component 1`] = `ShallowWrapper {}`;
 
 exports[`Register Snapshot Testing expect to render Register component 1`] = `ShallowWrapper {}`;
+
+exports[`Snapshot Testing expect to render Login component 1`] = `ShallowWrapper {}`;
+
+exports[`Snapshot Testing expect to render Register component 1`] = `ShallowWrapper {}`;
+
+exports[`Snapshot Testing for Register and Login pages  1`] = `ShallowWrapper {}`;
+
+exports[`Snapshot Testing for Register and Login pages expect to render Login component 1`] = `ShallowWrapper {}`;
+
+exports[`Snapshot Testing for Register and Login pages expect to render Register component 1`] = `undefined`;
+
+exports[`Snapshot Testing for Register and Login pages givenLogPageShallowWrapper_whenMatchWithSnapshotThatExists_shouldPassTheTest 1`] = `ShallowWrapper {}`;
+
+exports[`Snapshot Testing for Register and Login pages givenLoginPageShallowWrapper_whenMatchWithSnapshotThatExists_shouldPassTheTest 1`] = `ShallowWrapper {}`;
+
+exports[`Snapshot Testing for Register and Login pages givenReg 1`] = `ShallowWrapper {}`;
+
+exports[`Snapshot Testing for Register and Login pages givenRegister 1`] = `ShallowWrapper {}`;
+
+exports[`Snapshot Testing for Register and Login pages givenRegisterPageShallowWrapper_whenMatchWithSnapshotThatExists_shouldPassTheTest 1`] = `ShallowWrapper {}`;
+
+exports[`Snapshot Testing for Register and Login pages givenRegisterPageShallowWrapper_whenMatchWithSnapshotThatExists_shouldPassTheTest 2`] = `ShallowWrapper {}`;
+
+exports[`Snapshot Testing for Register and Login pages givenRegisterShallow 1`] = `ShallowWrapper {}`;
+
+exports[`Snapshot Testing for Register and Login pages givenRegisterShallowWrapper_ 1`] = `ShallowWrapper {}`;
+
+exports[`Snapshot Testing for Register and Login pages givenRegisterShallowWrapper_whenMatchWithSna 1`] = `ShallowWrapper {}`;
+
+exports[`Snapshot Testing for Register and Login pages givenRegisterShallowWrapper_whenMatchWithSnapshotThatExists 1`] = `ShallowWrapper {}`;
+
+exports[`Snapshot Testing for Register and Login pages givenRegisterShallowWrapper_whenMatchWithSnapshotThatExists_shouldPassTheTest 1`] = `ShallowWrapper {}`;
+
+exports[`Snapshot Testing for Register and Login pages givenRegisterShallowWrapper_whenPr 1`] = `ShallowWrapper {}`;
+
+exports[`Snapshot Testing for register and Log expect to render Login component 1`] = `ShallowWrapper {}`;
+
+exports[`Snapshot Testing for register and Log expect to render Register component 1`] = `ShallowWrapper {}`;

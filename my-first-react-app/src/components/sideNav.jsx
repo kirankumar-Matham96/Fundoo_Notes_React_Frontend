@@ -27,38 +27,50 @@ import "../scss/side-nav.scss";
  */
 const sideNav = ({ show }) => {
   return (
-    <div className="body">
+    <div className="body" data-testid="body">
       <div className={show ? "side-nav active" : "side-nav"}>
         <ul>
           <li>
             <div className="inline-content1 active">
               {/* <FaRegStickyNote className='icon side-icon' /> */}
-              <MdLightbulbOutline className="icon side-icon" />
-              <a className="linkTag">Notes</a>
+              <MdLightbulbOutline
+                className="icon side-icon"
+                data-testid="bulbIcon"
+              />
+              <div className="linkTag">Notes</div>
             </div>
           </li>
           <li>
             <div className="inline-content2">
-              <FaRegBell className="icon side-icon" />
-              <a className="linkTag">Remainders</a>
+              <FaRegBell className="icon side-icon" data-testid="bellIcon" />
+              <div className="linkTag">Remainders</div>
             </div>
           </li>
           <li>
             <div className="inline-content2">
-              <FaPencilAlt className="icon side-icon" />
-              <a className="linkTag">Edit</a>
+              <FaPencilAlt
+                className="icon side-icon"
+                data-testid="pencilIcon"
+              />
+              <div className="linkTag">Edit</div>
             </div>
           </li>
           <li>
             <div className="inline-content2">
-              <RiInboxArchiveLine className="icon side-icon" />
-              <a className="linkTag">Archive</a>
+              <RiInboxArchiveLine
+                className="icon side-icon"
+                data-testid="archiveIcon"
+              />
+              <div className="linkTag">Archive</div>
             </div>
           </li>
           <li>
             <div className="inline-content2">
-              <FaRegTrashAlt className="icon side-icon" />
-              <a className="linkTag">Trash</a>
+              <FaRegTrashAlt
+                className="icon side-icon"
+                data-testid="trashCanIcon"
+              />
+              <div className="linkTag">Trash</div>
             </div>
           </li>
         </ul>

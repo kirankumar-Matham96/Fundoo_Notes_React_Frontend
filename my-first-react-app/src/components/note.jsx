@@ -41,12 +41,12 @@ const note = (props) => {
 
   return (
     <Card style={{ width: "13rem" }} className="note">
-      <Card.Body>
+      <Card.Body data-testid="body">
         <div className="note_head">
-          <Card.Title>{props.title}</Card.Title>
-          <Card.Text>{props.content}</Card.Text>
+          <Card.Title data-testid="title">{props.title}</Card.Title>
+          <Card.Text data-testid="content">{props.content}</Card.Text>
         </div>
-        <div className="note_icons">
+        <div className="note_icons" data-testid="icons">
           <BiBellPlus className="inner_note_icons" />
           <BiUserPlus className="inner_note_icons" />
           <BiImage className="inner_note_icons" />

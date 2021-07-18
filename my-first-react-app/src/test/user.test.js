@@ -15,42 +15,44 @@
 
 //importing required libraries and components
 import { shallow } from "enzyme";
-// import { render } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import Title from "../components/title";
 import Register from "../pages/register";
 import Login from "../pages/login";
 
-/**
- * Shallow testing: testing title, Register and Login
- */
-describe("Shallow testing", () => {
-  test("expect to render Title component", () => {
+describe("shallow rendering test for number of elements and successful rendering", () => {
+  test("givenTitleForShallow_whenContainsOnlyOneReturningTag_shouldPassTheTest", () => {
     expect(shallow(<Title />).length).toEqual(1);
   });
 
-  test("expect to render Register component", () => {
+  test("givenRegisterForShallow_whenRendersSuccessfully_shouldPassTheTest", () => {
     expect(shallow(<Register />).length).toEqual(1);
   });
 
-  test("expect to render Login component", () => {
+  test("givenLoginForShallow_whenRendersSuccessfully_shouldPassTheTest", () => {
     expect(shallow(<Login />).length).toEqual(1);
   });
 });
 
-/**
- * Snapshot testing
- */
-describe("Register Snapshot Testing", () => {
+describe("Snapshot Testing for Register and Login pages", () => {
+  test("givenRegisterPageShallowWrapper_whenMatchWithSnapshotThatExists_shouldPassTheTest", () => {
+    let wrapper = shallow(<Register />);
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  test("givenLoginPageShallowWrapper_whenMatchWithSnapshotThatExists_shouldPassTheTest", () => {
+    let wrapper = shallow(<Login />);
+    expect(wrapper).toMatchSnapshot();
+  });
+});
+
+describe("Data Binding Tests for Register Page", () => {
   let wrapper;
   beforeEach(() => {
     wrapper = shallow(<Register />);
   });
 
-  test("expect to render Register component", () => {
-    expect(wrapper).toMatchSnapshot();
-  });
-
-  test("expect to take the first name from form", () => {
+  test("givenDataForTheFieldFirstName_whenCaptured_shouldPassTheTest", () => {
     let firstName = wrapper.find(".firstName").first();
 
     firstName.simulate("change", {
@@ -64,7 +66,7 @@ describe("Register Snapshot Testing", () => {
     expect(firstName.props().value).toEqual("Hey");
   });
 
-  test("expect to take the last name from form", () => {
+  test("givenDataForTheFieldLastName_whenCaptured_shouldPassTheTest", () => {
     let lastName = wrapper.find(".lastName").first();
 
     lastName.simulate("change", {
@@ -78,7 +80,7 @@ describe("Register Snapshot Testing", () => {
     expect(lastName.props().value).toEqual("Hey");
   });
 
-  test("expect to take the email from form", () => {
+  test("givenDataForTheEmailField_whenCaptured_shouldPassTheTest", () => {
     let email = wrapper.find(".email").first();
 
     email.simulate("change", {
@@ -92,7 +94,7 @@ describe("Register Snapshot Testing", () => {
     expect(email.props().value).toEqual("Hey");
   });
 
-  test("expect to take the password from form", () => {
+  test("givenDataForThePasswordField_whenCaptured_shouldPassTheTest", () => {
     let password = wrapper.find(".password").first();
 
     password.simulate("change", {
@@ -107,50 +109,94 @@ describe("Register Snapshot Testing", () => {
   });
 });
 
-describe("Login Snapshot Testing", () => {
-  let wrapper;
-  beforeEach(() => {
-    wrapper = shallow(<Login />);
+describe("Login page components test for render", () => {
+  test("renderLoginPage_whenContainsWholePage_shouldPassTheTest", () => {
+    const { getByTestId } = render(<Login />);
+    const containerTag = getByTestId("loginTestContainer");
+    expect(containerTag).toBeInTheDocument();
   });
 
-  test("expect to render Login component", () => {
-    expect(wrapper).toMatchSnapshot();
+  test("renderLoginPage_whenContainsHeader_shouldPassTheTest", () => {
+    const { getByTestId } = render(<Login />);
+    const headerTag = getByTestId("header");
+    expect(headerTag).toBeInTheDocument();
   });
 
-  test("Email input field gets the email", () => {
-    expect(wrapper.length).toEqual(1);
+  test("renderLoginPage_whenContainsTitle_shouldPassTheTest", () => {
+    const { getByTestId } = render(<Login />);
+    const titleTag = getByTestId("title");
+    expect(titleTag).toBeInTheDocument();
   });
 
-  // test("Password input field gets the password", () => {
-  //   const subTitle = (
-  //     <div>
-  //       <h1>Login here</h1>
-  //     </div>
-  //   );
-  //   expect(wrapper.contains(subTitle)).toEqual(true);
-  // });
+  test("renderLoginPage_whenContainsSubTitle_shouldPassTheTest", () => {
+    const { getByTestId } = render(<Login />);
+    const subTitleTag = getByTestId("subTitle");
+    expect(subTitleTag).toBeInTheDocument();
+  });
+
+  test("renderLoginPage_whenContainsForm_shouldPassTheTest", () => {
+    const { getByTestId } = render(<Login />);
+    const formTag = getByTestId("form");
+    expect(formTag).toBeInTheDocument();
+  });
+
+  test("renderLoginPage_whenContainsLabelForEmail_shouldPassTheTest", () => {
+    const { getByTestId } = render(<Login />);
+    const emailLabelTag = getByTestId("labelForEmail");
+    expect(emailLabelTag).toBeInTheDocument();
+  });
+
+  test("renderLoginPage_whenContainsEmailInputField_shouldPassTheTest", () => {
+    const { getByTestId } = render(<Login />);
+    const emailFieldTag = getByTestId("emailField");
+    expect(emailFieldTag).toBeInTheDocument();
+  });
+
+  test("renderLoginPage_whenContainsPlaceholderForEmail_shouldPassTheTest", () => {
+    const { getByTestId } = render(<Login />);
+    const placeholderTag = getByTestId("emailPlaceholder");
+    expect(placeholderTag).toBeInTheDocument();
+  });
+
+  test("renderLoginPage_whenContainsInputFieldForPassword_shouldPassTheTest", () => {
+    const { getByTestId } = render(<Login />);
+    const inputFieldTag = getByTestId("passwordField");
+    expect(inputFieldTag).toBeInTheDocument();
+  });
+
+  test("renderLoginPage_whenContainsPlaceholderForPassword_shouldPassTheTest", () => {
+    const { getByTestId } = render(<Login />);
+    const placeholderTag = getByTestId("passwordPlaceholder");
+    expect(placeholderTag).toBeInTheDocument();
+  });
+
+  test("renderLoginPage_whenContainsShowPasswordDiv_shouldPassTheTest", () => {
+    const { getByTestId } = render(<Login />);
+    const showPWDTag = getByTestId("showPWD");
+    expect(showPWDTag).toBeInTheDocument();
+  });
+
+  test("renderLoginPage_whenContainsCheckBox_shouldPassTheTest", () => {
+    const { getByTestId } = render(<Login />);
+    const checkboxElement = getByTestId("checkBox");
+    expect(checkboxElement).toBeInTheDocument();
+  });
+
+  test("renderLoginPage_whenContainsLabelForCheckBox_shouldPassTheTest", () => {
+    const { getByTestId } = render(<Login />);
+    const showLabelElement = getByTestId("labelForShowPWD");
+    expect(showLabelElement).toBeInTheDocument();
+  });
+
+  test("renderLoginPage_whenContainsLoginButton_shouldPassTheTest", () => {
+    const { getByTestId } = render(<Login />);
+    const loginButtonTag = getByTestId("loginButton");
+    expect(loginButtonTag).toBeInTheDocument();
+  });
+
+  test("renderLoginPage_whenContainsLinkToRegisterPage_shouldPassTheTest", () => {
+    const { getByTestId } = render(<Login />);
+    const registerLinkTag = getByTestId("registerPageLink");
+    expect(registerLinkTag).toBeInTheDocument();
+  });
 });
-
-//   test("render test with test", () => {
-//     let wrapper = render(<Login />);
-//     const subTitle = (
-//       <div>
-//         <h1>Login here</h1>
-//       </div>
-//     );
-//     // expect(wrapper.contains({}).toequal(true));
-//     expect(loginTestContainer).toBeInTheDocument();
-//     // expect(form).toBeInTheDocument();
-//     // expect(button).toBeInTheDocument();
-//     // expect(email).toBeInTheDocument();
-//     // expect(password).toBeInTheDocument();
-//   });
-
-//TODO: follow this pattern
-//describe("render test", () => {
-//   test("check elements available", () => {
-//     const { getByTestId } = render(<Login />);
-//     const logo = getByTestId("loginTestContainer");
-//     expect(logo).toBeInTheDocument();
-//   });
-// });

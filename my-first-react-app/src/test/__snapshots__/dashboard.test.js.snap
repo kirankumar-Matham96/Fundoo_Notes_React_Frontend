@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot Testing for Dashboard and It's Components givenDashboardComponentShallowWrapper_whenMatchWithSnapshotThatExists_shouldPassTheTest 1`] = `ShallowWrapper {}`;
+
+exports[`Snapshot Testing for Dashboard and It's Components givenHeaderComponentShallowWrapper_whenMatchWithSnapshotThatExists_shouldPassTheTest 1`] = `ShallowWrapper {}`;
+
+exports[`Snapshot Testing for Dashboard and It's Components givenNoteComponentShallowWrapper_whenMatchWithSnapshotThatExists_shouldPassTheTest 1`] = `ShallowWrapper {}`;
+
+exports[`Snapshot Testing for Dashboard and It's Components givenSidenavComponentShallowWrapper_whenMatchWithSnapshotThatExists_shouldPassTheTest 1`] = `ShallowWrapper {}`;
+
+exports[`Snapshot Testing for Register and Login pages givenDashboardComponentShallowWrapper_whenMatchWithSnapshotThatExists_shouldPassTheTest 1`] = `ShallowWrapper {}`;

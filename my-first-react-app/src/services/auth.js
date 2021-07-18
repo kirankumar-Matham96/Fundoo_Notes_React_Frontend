@@ -16,8 +16,8 @@
 //statefull or class component of the auth guard
 class Auth {
   constructor() {
-    this.authenticated = false;
-    // this.authenticated = true; //to work freely with dashboard.
+    // this.authenticated = false;
+    this.authenticated = true; //to work freely with dashboard.
   }
 
   /**

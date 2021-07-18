@@ -58,12 +58,16 @@ const Header = () => {
                   onClick={() => {
                     setShowNav(!showNav);
                   }}
+                  data-testid="menuIcon"
                 />
-                <FaStickyNote className="icon solid-notes" />
-                <div className="custom-title">
+                <FaStickyNote
+                  className="icon solid-notes"
+                  data-testid="mainNoteIcon"
+                />
+                <div className="custom-title" data-testid="title">
                   <Title className="fundooTitile" />
                 </div>
-                <Form.Group className="middle">
+                <Form.Group className="middle" data-testid="searchBox">
                   <FaSearch className="search-icon icon" />
                   <FormControl
                     className="text-box placeholder"
@@ -72,12 +76,13 @@ const Header = () => {
                   />
                 </Form.Group>
                 <div className="right">
-                  <p className="text-muted mt-3">
+                  <p className="text-muted mt-3" data-testid="email">
                     {localStorage.getItem("email")}
                   </p>
                   <FaRegUserCircle
                     className="profile-icon icon"
                     onClick={denyPermission}
+                    data-testid="userProfileIcon"
                   />
                 </div>
               </div>
