@@ -1,3 +1,19 @@
+/*********************************************************************
+ * Execution    : cmd> npm start
+ *
+ * Purpose      : to register new user through registration UI page
+ *
+ * @description
+ *
+ * @file        : pages/register.jsx
+ * @overview    : controls registration for frontend
+ * @module      : this is necessary to register new user.
+ * @author      : Kirankumar Matham <mathamkirankumar96@gmail.com>
+ * @version     : _ _ _
+ * @since       : 22-06-2021
+ *********************************************************************/
+
+//importing required libraries, functions and components
 import React, { Component } from "react";
 import Title from "../components/title";
 import "../scss/register.scss";
@@ -5,7 +21,10 @@ import { Link } from "react-router-dom";
 import { Formik, Form } from "formik";
 import ServiceClass from "../services/user.js";
 
+//creating instance for the Service class
 const service = new ServiceClass();
+
+//object to stote initial state of the page
 const initialState = {
   isPasswordShown: false,
   formValues: {
@@ -45,11 +64,18 @@ class Register extends Component {
   //   target = null;
   // }
 
+  /**
+   * to toggle the password visibility
+   */
   passwordVisibilityHandler = () => {
     const isPasswordShown = this.state.isPasswordShown;
     this.setState({ isPasswordShown: !isPasswordShown });
   };
 
+  /**
+   * to get the data from the field
+   * @param {Object} target
+   */
   getData = (target) => {
     const modifiedData = {
       firstName: this.state.formValues.firstName,
@@ -58,6 +84,8 @@ class Register extends Component {
       password: this.state.formValues.password,
       service: "advance",
     };
+
+    //to call the method to send the data to backend
     service
       .registerUser(modifiedData)
       .then((data) => {
@@ -77,6 +105,10 @@ class Register extends Component {
       });
   };
 
+  /**
+   * to handle changes in the input fields
+   * @param {Object} param
+   */
   handleChange = ({ target }) => {
     const { formValues } = this.state;
     formValues[target.name] = target.value;
@@ -84,6 +116,10 @@ class Register extends Component {
     this.handleValidation(target);
   };
 
+  /**
+   * to validate the data
+   * @param {Object} target
+   */
   handleValidation = (target) => {
     const { name, value } = target;
     const fieldValidationErrors = this.state.formErrors;
@@ -135,8 +171,14 @@ class Register extends Component {
     });
   };
 
+  /**
+   * to handle the data when the form submitted
+   * @param {Object} event
+   */
   handleSubmit = (event) => {
+    //to prevent reloading the page
     event.preventDefault();
+
     this.setState({ isSubmitting: true });
     const { formValues, formValidity } = this.state;
     if (Object.values(formValidity).every(Boolean)) {
@@ -155,6 +197,10 @@ class Register extends Component {
     }
   };
 
+  /**
+   * to render the components in the web page
+   * @returns jsx elements
+   */
   render() {
     const { isPasswordShown, formValues, formErrors, isSubmitting } =
       this.state;
@@ -294,4 +340,5 @@ class Register extends Component {
   }
 }
 
+//exporting the class
 export default Register;

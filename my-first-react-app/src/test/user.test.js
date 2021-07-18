@@ -1,4 +1,5 @@
 import { shallow } from "enzyme";
+// import { render } from "@testing-library/react";
 import Title from "../components/title";
 import Register from "../pages/register";
 import Login from "../pages/login";
@@ -33,69 +34,61 @@ describe("Register Snapshot Testing", () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  test("expect to take the first name from form", () =>
-    //<== failed test case due to lack of input data
-    {
-      let firstName = wrapper.find(".firstName").first();
+  test("expect to take the first name from form", () => {
+    let firstName = wrapper.find(".firstName").first();
 
-      firstName.simulate("change", {
-        target: {
-          name: "firstName",
-          value: "Hey",
-        },
-      });
-
-      firstName = wrapper.find(".firstName").first();
-      expect(firstName.props().value).toEqual("Hey");
+    firstName.simulate("change", {
+      target: {
+        name: "firstName",
+        value: "Hey",
+      },
     });
 
-  test("expect to take the last name from form", () =>
-    //<== failed test case due to lack of input data
-    {
-      let lastName = wrapper.find(".lastName").first();
+    firstName = wrapper.find(".firstName").first();
+    expect(firstName.props().value).toEqual("Hey");
+  });
 
-      lastName.simulate("change", {
-        target: {
-          name: "lastName",
-          value: "Hey",
-        },
-      });
+  test("expect to take the last name from form", () => {
+    let lastName = wrapper.find(".lastName").first();
 
-      lastName = wrapper.find(".lastName").first();
-      expect(lastName.props().value).toEqual("Hey");
+    lastName.simulate("change", {
+      target: {
+        name: "lastName",
+        value: "Hey",
+      },
     });
 
-  test("expect to take the email from form", () =>
-    //<== failed test case due to lack of input data
-    {
-      let email = wrapper.find(".email").first();
+    lastName = wrapper.find(".lastName").first();
+    expect(lastName.props().value).toEqual("Hey");
+  });
 
-      email.simulate("change", {
-        target: {
-          name: "email",
-          value: "Hey",
-        },
-      });
+  test("expect to take the email from form", () => {
+    let email = wrapper.find(".email").first();
 
-      email = wrapper.find(".email").first();
-      expect(email.props().value).toEqual("Hey");
+    email.simulate("change", {
+      target: {
+        name: "email",
+        value: "Hey",
+      },
     });
 
-  test("expect to take the password from form", () =>
-    //<== failed test case due to lack of input data
-    {
-      let password = wrapper.find(".password").first();
+    email = wrapper.find(".email").first();
+    expect(email.props().value).toEqual("Hey");
+  });
 
-      password.simulate("change", {
-        target: {
-          name: "password",
-          value: "Hey11111111",
-        },
-      });
+  test("expect to take the password from form", () => {
+    let password = wrapper.find(".password").first();
 
-      password = wrapper.find(".password").first();
-      expect(password.props().value).toEqual("Hey11111111");
+    password.simulate("change", {
+      target: {
+        name: "password",
+        value: "Hey11111111",
+      },
     });
+
+    password = wrapper.find(".password").first();
+    expect(password.props().value).toEqual("Hey11111111");
+  });
 });
 
 describe("Login Snapshot Testing", () => {
@@ -112,8 +105,36 @@ describe("Login Snapshot Testing", () => {
     expect(wrapper.length).toEqual(1);
   });
 
-  test("Password input field gets the password", () => {
-    const subTitle = <h1>Login here</h1>;
-    expect(wrapper.contains(subTitle)).toEqual(true);
-  });
+  // test("Password input field gets the password", () => {
+  //   const subTitle = (
+  //     <div>
+  //       <h1>Login here</h1>
+  //     </div>
+  //   );
+  //   expect(wrapper.contains(subTitle)).toEqual(true);
+  // });
 });
+
+//   test("render test with test", () => {
+//     let wrapper = render(<Login />);
+//     const subTitle = (
+//       <div>
+//         <h1>Login here</h1>
+//       </div>
+//     );
+//     // expect(wrapper.contains({}).toequal(true));
+//     expect(loginTestContainer).toBeInTheDocument();
+//     // expect(form).toBeInTheDocument();
+//     // expect(button).toBeInTheDocument();
+//     // expect(email).toBeInTheDocument();
+//     // expect(password).toBeInTheDocument();
+//   });
+
+//TODO: follow this pattern
+//describe("render test", () => {
+//   test("check elements available", () => {
+//     const { getByTestId } = render(<Login />);
+//     const logo = getByTestId("loginTestContainer");
+//     expect(logo).toBeInTheDocument();
+//   });
+// });

@@ -64,7 +64,7 @@ const Login = () => {
         }}
       >
         {({ errors, touched }) => (
-          <div className="login-container">
+          <div className="login-container" data-testid="loginTestContainer">
             <div className="content">
               <header>
                 <div className="fundooNotes">{<Title />}</div>
@@ -116,7 +116,6 @@ const Login = () => {
                 <Link to="/">
                   <a>Create account</a>
                 </Link>
-
                 <Link to="/dashboard">
                   <a>Dash Board</a>
                 </Link>
