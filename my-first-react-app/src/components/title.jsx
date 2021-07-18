@@ -1,7 +1,26 @@
-// FUNDOO
+/*********************************************************************
+ * Execution    : cmd> npm start
+ *
+ * Purpose      : to render the title of the project
+ *
+ * @description
+ *
+ * @file        : components/title.jsx
+ * @overview    : renders the FundooNotes title
+ * @module      : this is necessary to render the title
+ * @author      : Kirankumar Matham <mathamkirankumar96@gmail.com>
+ * @version     : _ _ _
+ * @since       : 22-06-2021
+ *********************************************************************/
+
+//importing required libraries and components
 import React from "react";
 import "../scss/title.scss";
 
+/**
+ * functional component for the title component
+ * @returns title for the application
+ */
 const Title = () => {
   return (
     <div className="title">
@@ -22,4 +41,5 @@ const Title = () => {
   );
 };
 
+//exporting title
 export default Title;

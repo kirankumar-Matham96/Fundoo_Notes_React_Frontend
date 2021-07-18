@@ -1,3 +1,19 @@
+/*********************************************************************
+ * Execution    : cmd> npm start
+ *
+ * Purpose      : to render the createNote tab that will take input content from user
+ *
+ * @description
+ *
+ * @file        : components/createNote.jsx
+ * @overview    : provides input field for capturing the data from user and save the content
+ * @module      : this is necessary to create a new note
+ * @author      : Kirankumar Matham <mathamkirankumar96@gmail.com>
+ * @version     : _ _ _
+ * @since       : 22-06-2021
+ *********************************************************************/
+
+//importing the required libraries and components
 import "../scss/createNotes.scss";
 import React, { useState } from "react";
 import { RiPushpin2Line, RiInboxArchiveLine } from "react-icons/ri";
@@ -5,20 +21,37 @@ import { BiBellPlus, BiUserPlus, BiImage } from "react-icons/bi";
 import { IoColorPaletteOutline } from "react-icons/io5";
 import CRUD from "../services/fundooNotesServices";
 
+/**
+ * to create a new note
+ * @param {properties of the component} props
+ * @returns
+ */
 const CreateNote = (props) => {
+  //object for initial state for the createNote component
   const initialState = {
     title: "",
     content: "",
   };
 
+  //to store the data of the note
   const [note, setNote] = useState(initialState);
+  //to store the state of 'take a note' component
   const [initiateNote, setInitiateNote] = useState(false);
 
+  /**
+   * to handle the input data when the note is submitted
+   * @param {Object} event
+   */
   const handleSubmit = (event) => {
+    //to prevent reloading of the page
     event.preventDefault();
+
+    //toggling the state of take a note tab
     setInitiateNote(!initiateNote);
     console.log(`event in handler: ${event.target.title}`);
     console.log(`note in create note: ${JSON.stringify(note)}`);
+
+    //modified object to send the data to backend
     const newObj = {
       ...note,
       isPined: false,
@@ -39,6 +72,8 @@ const CreateNote = (props) => {
     console.log("axios response:", CRUD.createNote(newObj));
     // CRUD.getAllNotes();
     // (note.title && note.content) ? props.passNote(CRUD.createNote(newObj)) : alert('Please add Title and Content');
+
+    //condition to send the props to display the note
     note.title && note.content
       ? props.passNote(note)
       : // : alert("Please add Title and Content");
@@ -46,10 +81,15 @@ const CreateNote = (props) => {
     // resetForm();
   };
 
+  //to reset form after submission
   const resetForm = () => {
     document.getElementById("form-fields").reset();
   };
 
+  /**
+   * to add new notes data to array
+   * @param {Object} event
+   */
   const inputEvent = (event) => {
     const { name, value } = event.target;
     setNote((oldData) => {
@@ -124,9 +164,6 @@ const CreateNote = (props) => {
                     onClick={handleSubmit}
                     autoComplete="off"
                   />
-                  {/* <button className="close-1" type="submit">
-                    Close
-                  </button> */}
                 </div>
               </div>
             </form>
@@ -136,4 +173,6 @@ const CreateNote = (props) => {
     </div>
   );
 };
+
+//exporting functional component
 export default CreateNote;

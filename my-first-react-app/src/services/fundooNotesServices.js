@@ -1,12 +1,38 @@
+/*********************************************************************
+ * Execution    : cmd> npm start
+ *
+ * Purpose      : to provide connection between frontend and backend apis
+ *
+ * @description
+ *
+ * @file        : services/fundooNotesServices.js
+ * @overview    : transfers the data between frontend and backend
+ * @module      : this is necessary to connect with backend apis for CRUD operations
+ * @author      : Kirankumar Matham <mathamkirankumar96@gmail.com>
+ * @version     : _ _ _
+ * @since       : 22-06-2021
+ *********************************************************************/
+
+//importing required libraries and components
 import axios from "axios";
 require("dotenv").config();
 
+//getting token from local storage of the browser
 let token = localStorage.getItem("token");
+
+//configuring data inside header
 const headers = {
   "Content-Type": "application/json",
   Authorization: token,
 };
+
+//class component
 class FundooNotesServices {
+  /**
+   * sends a request to the backend for creating a new note
+   * @param {Object} data notes data from createNote function
+   * @returns response from the backend api
+   */
   createNote = (data) => {
     return axios
       .post(`${process.env.REACT_APP_BASE_CRUD_URL}addNotes`, data, {
@@ -16,6 +42,10 @@ class FundooNotesServices {
       .catch((err) => err);
   };
 
+  /**
+   * sends a request to the backend for fetching all the notes
+   * @returns response from the backend api
+   */
   getAllNotes = () => {
     //http://fundoonotes.incubation.bridgelabz.com/api/notes/getNotesList
     return axios
@@ -32,6 +62,11 @@ class FundooNotesServices {
       });
   };
 
+  /**
+   * sends a request to the backend for updating a particular note
+   * @param {Object} data updated data from the dashboard
+   * @returns response from backend api
+   */
   updateNote = (data) => {
     //http://fundoonotes.incubation.bridgelabz.com/api/notes/updateNotes
     /**
@@ -57,6 +92,10 @@ class FundooNotesServices {
       });
   };
 
+  /**
+   * sends a request to backend api to delete a particular note from the database
+   * @returns response from the backend api
+   */
   deleteNote = () => {
     //http://fundoonotes.incubation.bridgelabz.com/api/notes/trashNotes
     return axios
@@ -72,4 +111,5 @@ class FundooNotesServices {
   };
 }
 
+//exporting class
 export default new FundooNotesServices();
