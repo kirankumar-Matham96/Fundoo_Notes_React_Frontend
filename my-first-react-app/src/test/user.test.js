@@ -1,3 +1,19 @@
+/*********************************************************************
+ * Execution    : cmd> npm start
+ *
+ * Purpose      : to test the register and login page components
+ *
+ * @description
+ *
+ * @file        : test/user.test.js
+ * @overview    : tests the different components whether they are rendered successfully or not
+ * @module      : this is necessary to perform tests on the components for increasing performance of the code
+ * @author      : Kirankumar Matham <mathamkirankumar96@gmail.com>
+ * @version     : _ _ _
+ * @since       : 22-06-2021
+ *********************************************************************/
+
+//importing required libraries and components
 import { shallow } from "enzyme";
 // import { render } from "@testing-library/react";
 import Title from "../components/title";
