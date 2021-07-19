@@ -82,108 +82,107 @@ const Login = () => {
   };
 
   return (
-    <Router>
-      {/*for passing test cases.*/}
-      <div>
-        <Formik
-          className="formik-form"
-          initialValues={{
-            email: "",
-            password: "",
-          }}
-          validationSchema={validate}
-          onSubmit={(values, { resetForm }) => {
-            userCredentials(values);
-            resetForm({ values: "" });
-          }}
-        >
-          {({ errors, touched }) => (
-            <div className="login-container" data-testid="loginTestContainer">
-              <div className="content">
-                <header data-testid="header">
-                  <div className="fundooNotes" data-testid="title">
-                    {<Title />}
-                  </div>
-                  <h1 data-testid="subTitle">Login here</h1>
-                </header>
-                <Form className="form-fields" data-testid="form">
-                  <div className="block-errorMessage">
-                    <label className="LoginField" data-testid="labelForEmail">
-                      <Field
-                        className="email-login"
-                        data-testid="emailField"
-                        name="email"
-                        type="email"
-                        autoComplete="off"
-                        required
-                      />
-                      <span
-                        className="placeholder email-ph"
-                        data-testid="emailPlaceholder"
-                      >
-                        Email
-                      </span>
-                      <ErrorMessage
-                        name="email"
-                        data-testid="errorMessageForEmail"
-                      />
-                    </label>
-                    <label className="LoginField">
-                      <Field
-                        className="password-login"
-                        data-testid="passwordField"
-                        name="password"
-                        type={isPasswordShown ? "text" : "password"}
-                        autoComplete="off"
-                        required
-                      />
-                      <span
-                        className="placeholder password-ph"
-                        data-testid="passwordPlaceholder"
-                      >
-                        Password
-                      </span>
-                      {errors.password && touched.password ? (
-                        <div>{errors.password}</div>
-                      ) : null}
-                    </label>
-                  </div>
-                  <div className="show-pwd" data-testid="showPWD">
-                    <label>
-                      <Field
-                        className="check-box"
-                        data-testid="checkBox"
-                        type="checkbox"
-                        name="checked"
-                        onClick={togglePasswordVisibility}
-                      />
-                    </label>
-                    <label
-                      className="show"
-                      data-testid="labelForShowPWD"
-                      onClick={togglePasswordVisibility}
+    // <Router>
+    <div>
+      <Formik
+        className="formik-form"
+        initialValues={{
+          email: "",
+          password: "",
+        }}
+        validationSchema={validate}
+        onSubmit={(values, { resetForm }) => {
+          userCredentials(values);
+          resetForm({ values: "" });
+        }}
+      >
+        {({ errors, touched }) => (
+          <div className="login-container" data-testid="loginTestContainer">
+            <div className="content">
+              <header data-testid="header">
+                <div className="fundooNotes" data-testid="title">
+                  {<Title />}
+                </div>
+                <h1 data-testid="subTitle">Login here</h1>
+              </header>
+              <Form className="form-fields" data-testid="form">
+                <div className="block-errorMessage">
+                  <label className="LoginField" data-testid="labelForEmail">
+                    <Field
+                      className="email-login"
+                      data-testid="emailField"
+                      name="email"
+                      type="email"
+                      autoComplete="off"
+                      required
+                    />
+                    <span
+                      className="placeholder email-ph"
+                      data-testid="emailPlaceholder"
                     >
-                      Show password
-                    </label>
-                  </div>
-                  <button
-                    className="login-button"
-                    data-testid="loginButton"
-                    type="submit"
+                      Email
+                    </span>
+                    <ErrorMessage
+                      name="email"
+                      data-testid="errorMessageForEmail"
+                    />
+                  </label>
+                  <label className="LoginField">
+                    <Field
+                      className="password-login"
+                      data-testid="passwordField"
+                      name="password"
+                      type={isPasswordShown ? "text" : "password"}
+                      autoComplete="off"
+                      required
+                    />
+                    <span
+                      className="placeholder password-ph"
+                      data-testid="passwordPlaceholder"
+                    >
+                      Password
+                    </span>
+                    {errors.password && touched.password ? (
+                      <div>{errors.password}</div>
+                    ) : null}
+                  </label>
+                </div>
+                <div className="show-pwd" data-testid="showPWD">
+                  <label>
+                    <Field
+                      className="check-box"
+                      data-testid="checkBox"
+                      type="checkbox"
+                      name="checked"
+                      onClick={togglePasswordVisibility}
+                    />
+                  </label>
+                  <label
+                    className="show"
+                    data-testid="labelForShowPWD"
+                    onClick={togglePasswordVisibility}
                   >
-                    Login
-                  </button>
-                  <Link to="/" data-testid="registerPageLink">
-                    Create account
-                  </Link>
-                  <Link to="/dashboard">Dash Board</Link>
-                </Form>
-              </div>
+                    Show password
+                  </label>
+                </div>
+                <button
+                  className="login-button"
+                  data-testid="loginButton"
+                  type="submit"
+                >
+                  Login
+                </button>
+                <Link to="/" data-testid="registerPageLink">
+                  Create account
+                </Link>
+                <Link to="/dashboard">Dash Board</Link>
+              </Form>
             </div>
-          )}
-        </Formik>
-      </div>
-    </Router>
+          </div>
+        )}
+      </Formik>
+    </div>
+    // </Router>
   );
 };
 

@@ -44,7 +44,7 @@ const note = (props) => {
       <Card.Body data-testid="body">
         <div className="note_head">
           <Card.Title data-testid="title">{props.title}</Card.Title>
-          <Card.Text data-testid="content">{props.content}</Card.Text>
+          <Card.Text data-testid="content">{props.description}</Card.Text>
         </div>
         <div className="note_icons" data-testid="icons">
           <BiBellPlus className="inner_note_icons" />

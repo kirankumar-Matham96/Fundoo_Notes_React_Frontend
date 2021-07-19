@@ -1,5 +1,7 @@
 /*********************************************************************
  * Execution    : cmd> npm start
+ *                cmd> npm test
+ *                cmd> npm test -- --coverage
  *
  * Purpose      : to test the register and login page components
  *

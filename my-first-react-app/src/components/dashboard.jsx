@@ -18,6 +18,7 @@ import React, { useState } from "react";
 import Header from "../components/header";
 import "../scss/dashBoard.scss";
 import TakeANote from "./createNote";
+import CRUD from "../services/fundooNotesServices";
 import Note from "./note";
 
 /**
@@ -27,7 +28,15 @@ import Note from "./note";
 const DashBoard = () => {
   //to add the notes to the array
   const [addItem, setAddItem] = useState([]);
+
   const addNote = (note) => {
+    CRUD.getAllNotes().then((data) => {
+      setAddItem(data.data.data.data);
+      // console.log(
+      //   `data.data.data.data: ${JSON.stringify(data.data.data.data)}`
+      // );
+    });
+
     setAddItem((oldData) => {
       return [...oldData, note];
     });
@@ -57,7 +66,7 @@ const DashBoard = () => {
                   key={index}
                   id={index}
                   title={val.title}
-                  content={val.content}
+                  description={val.description || "description not returned!"}
                   deleteItem={onDelete}
                 />
               );

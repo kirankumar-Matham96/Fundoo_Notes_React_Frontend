@@ -30,7 +30,7 @@ const CreateNote = (props) => {
   //object for initial state for the createNote component
   const initialState = {
     title: "",
-    content: "",
+    description: "",
   };
 
   //to store the data of the note
@@ -69,12 +69,13 @@ const CreateNote = (props) => {
     //       collaberators: []
     //     }
 
-    console.log("axios response:", CRUD.createNote(newObj));
-    // CRUD.getAllNotes();
+    const axiosResponse = CRUD.createNote(newObj);
+    console.log("axios response:", axiosResponse);
+    console.log(`getAll: ${CRUD.getAllNotes()}`);
     // (note.title && note.content) ? props.passNote(CRUD.createNote(newObj)) : alert('Please add Title and Content');
 
     //condition to send the props to display the note
-    note.title && note.content
+    note.title && note.description
       ? props.passNote(note)
       : // : alert("Please add Title and Content");
         console.log("attempted!");
@@ -124,8 +125,8 @@ const CreateNote = (props) => {
                 </div>
                 <textarea
                   className="content-area"
-                  name="content"
-                  value={note.content}
+                  name="description"
+                  value={note.description}
                   onChange={inputEvent}
                   placeholder="Take a note..."
                 ></textarea>
@@ -158,7 +159,7 @@ const CreateNote = (props) => {
                     className="mb-0 mr-1"
                     type="text"
                     name="title"
-                    value={note.title}
+                    value=""
                     onChange={inputEvent}
                     placeholder="Title"
                     onClick={handleSubmit}
