@@ -58,6 +58,7 @@ const Login = () => {
         if (data.status === 200 && data.data.id) {
           localStorage.setItem("email", data.data.email);
           localStorage.setItem("token", data.data.id);
+          localStorage.setItem("id", data.data.userId);
 
           if (localStorage.getItem("token")) {
             //to authorize user if credentials are correct

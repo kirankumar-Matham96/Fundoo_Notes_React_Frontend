@@ -28,11 +28,15 @@ require("dotenv").config();
 
 //class component
 let token;
+let id;
 let headers;
 class FundooNotesServices {
   constructor() {
     //getting token from local storage of the browser
     token = localStorage.getItem("token");
+
+    //getting id from local storage of the browser
+    id = localStorage.getItem("id");
 
     //configuring data inside header
     headers = {
@@ -54,55 +58,20 @@ class FundooNotesServices {
       .catch((err) => err);
   };
 
-  // createNote = (data) => {
-  //   console.log(`latest token: ${token}`);
-  //   return axios
-  //     .post(
-  //       `${process.env.REACT_APP_BASE_CRUD_URL}addNotes?access_token=${token}`,
-  //       data
-  //     )
-  //     .then((res) => res)
-  //     .catch((err) => err);
-  // };
-
   /**
    * sends a request to the backend for fetching all the notes
    * @returns response from the backend api
    */
   getAllNotes = () => {
     console.log(`latest token: ${token}`);
-    //http://fundoonotes.incubation.bridgelabz.com/api/notes/getNotesList
     return axios
       .get(
         `${process.env.REACT_APP_BASE_CRUD_URL}getNotesList?access_token=${token}`
-        // {
-        //   headers: headers,
-        // }
       )
       .then((res) => {
-        // console.log(`get all res from axios 1: ${JSON.stringify(res)}`);
-        // console.log(`get all res from axios 2: ${JSON.stringify(res.data)}`);
-        // console.log(
-        //   `get all res from axios 3: ${JSON.stringify(res.data.data)}`
-        // );
-        // console.log(
-        //   `get all res from axios 4: ${JSON.stringify(res.data.data.data)}`
-        // );
-        // console.log(
-        //   `get all res from axios 5: ${JSON.stringify(...res.data.data.data)}`
-        // );
-        // console.log(
-        //   `get all res from axios 6: ${JSON.stringify(res.data.data.data[0])}`
-        // );
-        // console.log(
-        //   `get all res from axios 7: ${JSON.stringify(
-        //     res.data.data.data[0].title
-        //   )} \n ${res.data.data.data[0].description}`
-        // );
         return res;
       })
       .catch((err) => {
-        // console.log(`err from axios: ${err}`);
         return err;
       });
   };
@@ -142,23 +111,28 @@ class FundooNotesServices {
    * sends a request to backend api to delete a particular note from the database
    * @returns response from the backend api
    */
-  deleteNote = () => {
+  deleteNote = (data) => {
     console.log(`latest token: ${token}`);
     //http://fundoonotes.incubation.bridgelabz.com/api/notes/trashNotes
-    return axios
-      .post(`${process.env.REACT_APP_BASE_CRUD_URL}trashNotes?`, {
-        // headers: headers,
-        isDeleted: true,
-        // id of the note
-      })
-      .then((res) => {
-        console.log(`delete res from axios: ${res}`);
-        return res;
-      })
-      .catch((err) => {
-        console.log(`delete err from axios: ${err}`);
-        return err;
-      });
+    return (
+      axios
+        // .post(`${process.env.REACT_APP_BASE_CRUD_URL}trashNotes`, {
+        //   headers: { ...headers, isDeleted: true, noteIdList: [id] },
+        //   // isDeleted: true,
+        //   // noteIdList: [id],
+        // })
+        .post(`${process.env.REACT_APP_BASE_CRUD_URL}trashNotes`, data, {
+          headers: headers, //{ isDeleted: true, noteIdList: [id] },
+        })
+        .then((res) => {
+          console.log(`delete res from axios: ${res}`);
+          return res;
+        })
+        .catch((err) => {
+          console.log(`delete err from axios: ${err}`);
+          return err;
+        })
+    );
   };
 }
 

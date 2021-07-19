@@ -29,12 +29,26 @@ import CRUD from "../services/fundooNotesServices";
  * @returns
  */
 const note = (props) => {
+  // /**
+  //  * to update note
+  //  */
+  // const updateTheNote = () => {
+  //   //to update the description in the note
+  //   CRUD.updateNote();
+  //   //sending id of the note to the dashboard to update the content init
+  // };
+
   /**
    * to delete particular note from dashboard and backend storage
    */
   const deleteNote = () => {
+    const deleteData = {
+      //TODO: need to add id of the note.
+      isDeleted: true,
+      noteIdList: [localStorage.getItem("id")],
+    };
     //to delete the note from database(invoking delete api at the backend)
-    CRUD.deleteNote();
+    CRUD.deleteNote(deleteData);
     //sending id of the note to the dashboard to remove it from notes array
     props.deleteItem(props.id);
   };

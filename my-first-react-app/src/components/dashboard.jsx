@@ -66,7 +66,7 @@ const DashBoard = () => {
                   key={index}
                   id={index}
                   title={val.title}
-                  description={val.description || "description not returned!"}
+                  description={val.description}
                   deleteItem={onDelete}
                 />
               );
