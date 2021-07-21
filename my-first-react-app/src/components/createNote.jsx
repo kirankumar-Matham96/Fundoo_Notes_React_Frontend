@@ -44,34 +44,12 @@ const CreateNote = (props) => {
   const toggleBoolean = () => {
     setInitiateNote(!initiateNote);
   };
+
   /**
-   * to handle the input data when the note is submitted
-   * @param {Object} event
+   * Pass the note
+   * @param {*} event
    */
-  const handleSubmit = (event) => {
-    console.log("entered handle submit");
-    //to prevent reloading of the page
-    event.preventDefault();
-    console.log("prevented reloading");
-
-    //modified object to send the data to backend
-    const newObj = {
-      ...note,
-      isPined: false,
-      isArchived: false,
-      isDeleted: false,
-    };
-    setNote({
-      ...newObj,
-      title: title,
-      description: content,
-    });
-    console.log("newObj created");
-
-    console.log(
-      `note title: ${note.title} && note content: ${note.description}`
-    );
-
+  const passingNote = () => {
     //condition to send the props to display the note
     if (note.title && note.description) {
       props.passNote(note);
@@ -89,15 +67,80 @@ const CreateNote = (props) => {
       console.log("alert done");
 
       console.log("note passed to dashboard");
-      resetForm();
-      console.log("resetCalled");
+      // resetForm();
+      // console.log("resetCalled");
+
+      setTitle("");
+      setContent("");
+      console.log("reset done");
+      //toggling the state of take a note tab
+      toggleBoolean();
+      console.log("boolean changed");
+
+      //
     } else {
       alert("Please add Title and Content");
     }
   };
+  /**
+   * to handle the input data when the note is submitted
+   * @param {Object} event
+   */
+  const handleSubmit = async (event) => {
+    console.log("entered handle submit");
+    //to prevent reloading of the page
+    await event.preventDefault();
+    console.log("prevented reloading");
+
+    await setNote({
+      title: title,
+      description: content,
+      isPined: false,
+      isArchived: false,
+      isDeleted: false,
+    });
+    console.log("note populated with title and content & other properties");
+
+    //modified object to send the data to backend
+    // const newObj = {
+    //   ...note,
+    //   isPined: false,
+    //   isArchived: false,
+    //   isDeleted: false,
+    // };
+
+    console.log(
+      `note title: ${note.title} && note content: ${note.description}`
+    );
+
+    passingNote();
+
+    // //condition to send the props to display the note
+    // if (note.title && note.description) {
+    //   props.passNote(note);
+
+    //   // const axiosResponse = CRUD.createNote(newObj);
+    //   const axiosResponse = CRUD.createNote(note);
+
+    //   console.log("CRUD called to create note");
+
+    //   axiosResponse.then((res) => {
+    //     res.data && res.data.status.success
+    //       ? alert(`note added successfully!`)
+    //       : alert(`something bad happened!`);
+    //   });
+    //   console.log("alert done");
+
+    //   console.log("note passed to dashboard");
+    //   resetForm();
+    //   console.log("resetCalled");
+    // } else {
+    //   alert("Please add Title and Content");
+    // }
+  };
 
   //to reset form after submission
-  const resetForm = async () => {
+  const resetForm = () => {
     console.log("got inside reset");
     // await document.getElementById("form-fields").reset();
     setTitle("");
@@ -178,16 +221,13 @@ const CreateNote = (props) => {
       ) : (
         <div className="initial">
           <div className="main_note">
-            <form
-              className="initial-form"
-              // onSubmit={handleSubmit}
-            >
+            <form className="initial-form">
               <div className="row1-1">
                 <div className="input-group-1">
                   <input
                     className="mb-0 mr-1"
                     type="text"
-                    name="title"
+                    name="title1"
                     value=""
                     placeholder="Title"
                     onClick={toggleBoolean}

@@ -31,6 +31,9 @@ const DashBoard = () => {
   //to store note ids
   const noteIdMap = new Map();
 
+  /**
+   * to store the note id and set the note list to display
+   */
   const addToMap = (data) => {
     setAddItem(data.data.data.data);
     let i = 0;
@@ -39,19 +42,10 @@ const DashBoard = () => {
       i++;
     });
   };
-  /**
-   * to store the note id
-   */
-  // const setNoteIdToMap = (id, noteId) => {
-  // };
 
   const addNote = (note) => {
     CRUD.getAllNotes().then((data) => {
       addToMap(data);
-    });
-
-    setAddItem((oldData) => {
-      return [...oldData, note];
     });
   };
 
