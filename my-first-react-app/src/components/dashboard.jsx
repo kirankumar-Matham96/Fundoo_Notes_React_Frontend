@@ -20,10 +20,11 @@ import "../scss/dashBoard.scss";
 import TakeANote from "./createNote";
 import CRUD from "../services/fundooNotesServices";
 import Note from "./note";
+// import SideNav from "../components/sideNav";
 
 const pinnedNoteIdMap = new Map();
 const unPinnedNoteIdMap = new Map();
-const archivedNoteIdMap = new Map();
+// const archivedNoteIdMap = new Map();
 
 /**
  * Functional component for dashboard
@@ -40,7 +41,6 @@ const DashBoard = () => {
    * to store the note id and set the note list to display
    */
   const addToMap = (data) => {
-    console.log("data", JSON.stringify(data.data.data.data[0].isPined));
     for (let noteData of data.data.data.data) {
       let i = 0;
       let j = 0;
@@ -114,47 +114,52 @@ const DashBoard = () => {
       <div data-testid="header">
         <Header />
       </div>
-      <div data-testid="takeANote">
-        <TakeANote passNote={addNote} />
-      </div>
-      <div className="for_scrollbar">
-        <p className="headings">pinned notes</p>
-        <div className="note_container mb-5">
-          {addPinnedItem
-            ? addPinnedItem.map((val, index) => {
-                return (
-                  <Note
-                    key={index}
-                    id={index}
-                    title={val.title}
-                    description={val.description}
-                    noteId={val.id}
-                    deleteItem={onDelete}
-                    pinItem={onPinned}
-                    archiveItem={onArchive}
-                  />
-                );
-              })
-            : null}
+      {/* <div>
+        <SideNav />
+      </div> */}
+      <div className="main-board">
+        <div data-testid="takeANote">
+          <TakeANote passNote={addNote} />
         </div>
-        <p className="headings">Others</p>
-        <div className="note_container">
-          {addUnpinnedItem
-            ? addUnpinnedItem.map((val, index) => {
-                return (
-                  <Note
-                    key={index}
-                    id={index}
-                    title={val.title}
-                    description={val.description}
-                    noteId={val.id}
-                    deleteItem={onDelete}
-                    pinItem={onPinned}
-                    archiveItem={onArchive}
-                  />
-                );
-              })
-            : null}
+        <div className="for_scrollbar">
+          <p className="headings">pinned notes</p>
+          <div className="note_container mb-5">
+            {addPinnedItem
+              ? addPinnedItem.map((val, index) => {
+                  return (
+                    <Note
+                      key={index}
+                      id={index}
+                      title={val.title}
+                      description={val.description}
+                      noteId={val.id}
+                      deleteItem={onDelete}
+                      pinItem={onPinned}
+                      archiveItem={onArchive}
+                    />
+                  );
+                })
+              : null}
+          </div>
+          <p className="headings">Others</p>
+          <div className="note_container">
+            {addUnpinnedItem
+              ? addUnpinnedItem.map((val, index) => {
+                  return (
+                    <Note
+                      key={index}
+                      id={index}
+                      title={val.title}
+                      description={val.description}
+                      noteId={val.id}
+                      deleteItem={onDelete}
+                      pinItem={onPinned}
+                      archiveItem={onArchive}
+                    />
+                  );
+                })
+              : null}
+          </div>
         </div>
       </div>
     </div>
