@@ -101,28 +101,31 @@ new changes experiments:
     justify-content: space-between;
     width: 100%;
     height: 100%;
-    .row1-1 {
-      // @include border-color;
-      // border: 1px solid rgb(51, 65, 55);
-      @include takeNoteTab;
-      width: 38rem;
-      height: 100%;
-      margin-top: 7px;
-      padding-top: 2.5%;
-      padding-left: 3%;
-      .input-group-1 {
-        @include border-color;
-        display: flex;
-        justify-content: space-between;
-        input {
-          all: unset;
+    .initial-form {
+      all: unset;
+      .row1-1 {
+        // @include border-color;
+        // border: 1px solid rgb(51, 65, 55);
+        @include takeNoteTab;
+        width: 38rem;
+        height: 100%;
+        margin-top: 7px;
+        padding-top: 2.5%;
+        padding-left: 3%;
+        .input-group-1 {
+          @include border-color;
+          display: flex;
+          justify-content: space-between;
+          input {
+            all: unset;
+          }
         }
-      }
-      .close-1 {
-        background: none;
-        border: none;
-        margin-right: 10px;
-        color: black;
+        .close-1 {
+          background: none;
+          border: none;
+          margin-right: 10px;
+          color: black;
+        }
       }
     }
   }
