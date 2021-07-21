@@ -12,7 +12,7 @@
  * @version     : _ _ _
  * @since       : 22-06-2021
  *********************************************************************/
-
+/* eslint no-console: "error" */
 //importing the required libraries and components
 import React from "react";
 import "../scss/note.scss";
@@ -43,7 +43,6 @@ const note = (props) => {
    */
   const deleteNote = () => {
     const deleteData = {
-      //TODO: need to add id of the note.
       isDeleted: true,
       noteIdList: [localStorage.getItem("id")],
     };
@@ -51,6 +50,7 @@ const note = (props) => {
     CRUD.deleteNote(deleteData);
     //sending id of the note to the dashboard to remove it from notes array
     props.deleteItem(props.id);
+    console.log("Hello this is test for no-console");
   };
 
   return (
