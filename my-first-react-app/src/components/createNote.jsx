@@ -32,59 +32,80 @@ const CreateNote = (props) => {
     title: "",
     description: "",
   };
-
+  //to set title
+  const [title, setTitle] = useState("");
+  //to set content
+  const [content, setContent] = useState("");
   //to store the data of the note
   const [note, setNote] = useState(initialState);
   //to store the state of 'take a note' component
   const [initiateNote, setInitiateNote] = useState(false);
 
+  const toggleBoolean = () => {
+    setInitiateNote(!initiateNote);
+  };
   /**
    * to handle the input data when the note is submitted
    * @param {Object} event
    */
   const handleSubmit = (event) => {
+    console.log("entered handle submit");
     //to prevent reloading of the page
     event.preventDefault();
-
-    //toggling the state of take a note tab
-    setInitiateNote(!initiateNote);
-    console.log(`event in handler: ${event.target.title}`);
-    console.log(`note in create note: ${JSON.stringify(note)}`);
+    console.log("prevented reloading");
 
     //modified object to send the data to backend
     const newObj = {
       ...note,
       isPined: false,
       isArchived: false,
+      isDeleted: false,
     };
-    console.log(`object de-structured new data: ${JSON.stringify(newObj)}`);
-    // {
-    //       title: Hmmm...
-    //       description: HHhhhhmmmmm..........
-    //       isPined: false
-    //       color: #FFFFFF
-    //       isArchived: false
-    //       labelIdList: []
-    //       reminder:
-    //       collaberators: []
-    //     }
+    setNote({
+      ...newObj,
+      title: title,
+      description: content,
+    });
+    console.log("newObj created");
 
-    const axiosResponse = CRUD.createNote(newObj);
-    console.log("axios response:", axiosResponse);
-    console.log(`getAll: ${CRUD.getAllNotes()}`);
-    // (note.title && note.content) ? props.passNote(CRUD.createNote(newObj)) : alert('Please add Title and Content');
+    console.log(
+      `note title: ${note.title} && note content: ${note.description}`
+    );
 
     //condition to send the props to display the note
-    note.title && note.description
-      ? props.passNote(note)
-      : // : alert("Please add Title and Content");
-        console.log("attempted!");
-    // resetForm();
+    if (note.title && note.description) {
+      props.passNote(note);
+
+      // const axiosResponse = CRUD.createNote(newObj);
+      const axiosResponse = CRUD.createNote(note);
+
+      console.log("CRUD called to create note");
+
+      axiosResponse.then((res) => {
+        res.data && res.data.status.success
+          ? alert(`note added successfully!`)
+          : alert(`something bad happened!`);
+      });
+      console.log("alert done");
+
+      console.log("note passed to dashboard");
+      resetForm();
+      console.log("resetCalled");
+    } else {
+      alert("Please add Title and Content");
+    }
   };
 
   //to reset form after submission
-  const resetForm = () => {
-    document.getElementById("form-fields").reset();
+  const resetForm = async () => {
+    console.log("got inside reset");
+    // await document.getElementById("form-fields").reset();
+    setTitle("");
+    setContent("");
+    console.log("reset done");
+    //toggling the state of take a note tab
+    toggleBoolean();
+    console.log("boolean changed");
   };
 
   /**
@@ -94,6 +115,7 @@ const CreateNote = (props) => {
   const inputEvent = (event) => {
     const { name, value } = event.target;
     setNote((oldData) => {
+      // console.log(`oldData: ${JSON.stringify(oldData)}`);
       return {
         ...oldData,
         [name]: value,
@@ -117,17 +139,24 @@ const CreateNote = (props) => {
                     className="mb-0 mr-1"
                     type="text"
                     name="title"
-                    value={note.title}
-                    onChange={inputEvent}
+                    // value={note.title}
+                    // onChange={inputEvent}
+                    value={title}
+                    onChange={(e) => {
+                      setTitle(e.target.value);
+                    }}
                     placeholder="Title"
+                    autoComplete="off"
                   />
                   <RiPushpin2Line className="pin" />
                 </div>
                 <textarea
                   className="content-area"
                   name="description"
-                  value={note.description}
-                  onChange={inputEvent}
+                  value={content}
+                  onChange={(e) => {
+                    setContent(e.target.value);
+                  }}
                   placeholder="Take a note..."
                 ></textarea>
                 <div className="icon-close-group inline">
@@ -160,9 +189,8 @@ const CreateNote = (props) => {
                     type="text"
                     name="title"
                     value=""
-                    onChange={inputEvent}
                     placeholder="Title"
-                    onClick={handleSubmit}
+                    onClick={toggleBoolean}
                     autoComplete="off"
                   />
                 </div>

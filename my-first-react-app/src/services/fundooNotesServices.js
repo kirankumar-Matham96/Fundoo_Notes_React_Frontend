@@ -109,23 +109,16 @@ class FundooNotesServices {
    */
   deleteNote = (data) => {
     //http://fundoonotes.incubation.bridgelabz.com/api/notes/trashNotes
-    return (
-      axios
-        // .post(`${process.env.REACT_APP_BASE_CRUD_URL}trashNotes`, {
-        //   headers: { ...headers, isDeleted: true, noteIdList: [id] },
-        //   // isDeleted: true,
-        //   // noteIdList: [id],
-        // })
-        .post(`${process.env.REACT_APP_BASE_CRUD_URL}trashNotes`, data, {
-          headers: headers, //{ isDeleted: true, noteIdList: [id] },
-        })
-        .then((res) => {
-          return res;
-        })
-        .catch((err) => {
-          return err;
-        })
-    );
+    return axios
+      .post(`${process.env.REACT_APP_BASE_CRUD_URL}trashNotes`, data, {
+        headers: headers,
+      })
+      .then((res) => {
+        return res;
+      })
+      .catch((err) => {
+        return err;
+      });
   };
 }
 

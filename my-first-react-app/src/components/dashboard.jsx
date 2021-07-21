@@ -21,8 +21,6 @@ import TakeANote from "./createNote";
 import CRUD from "../services/fundooNotesServices";
 import Note from "./note";
 
-const noteIdMap = new Map();
-
 /**
  * Functional component for dashboard
  * @returns jsx tags and components
@@ -30,7 +28,17 @@ const noteIdMap = new Map();
 const DashBoard = () => {
   //to add the notes to the array
   const [addItem, setAddItem] = useState([]);
+  //to store note ids
+  const noteIdMap = new Map();
 
+  const addToMap = (data) => {
+    setAddItem(data.data.data.data);
+    let i = 0;
+    data.data.data.data.forEach((noteData) => {
+      noteIdMap.set(i, noteData.id);
+      i++;
+    });
+  };
   /**
    * to store the note id
    */
@@ -39,12 +47,7 @@ const DashBoard = () => {
 
   const addNote = (note) => {
     CRUD.getAllNotes().then((data) => {
-      setAddItem(data.data.data.data);
-      let i = 0;
-      data.data.data.data.forEach((noteData) => {
-        noteIdMap.set(i, noteData.id);
-        i++;
-      });
+      addToMap(data);
     });
 
     setAddItem((oldData) => {
@@ -53,12 +56,16 @@ const DashBoard = () => {
   };
 
   //to delete the notes from the array of notes
-  const onDelete = (id) => {
-    const mapValue = noteIdMap.get(id);
-    const remaining = addItem.filter(
-      (current, indexOfNote) => indexOfNote !== id
-    );
-    setAddItem(remaining);
+  const onDelete = async (id) => {
+    const mapValue = await noteIdMap.get(id);
+    const noteData = {
+      noteIdList: [mapValue],
+      isDeleted: true,
+    };
+    await CRUD.deleteNote(noteData);
+    await CRUD.getAllNotes().then((data) => {
+      addToMap(data);
+    });
   };
 
   return (
