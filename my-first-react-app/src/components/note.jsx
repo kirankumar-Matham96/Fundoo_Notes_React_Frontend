@@ -29,20 +29,22 @@ import CRUD from "../services/fundooNotesServices";
  * @returns
  */
 const Note = (props) => {
-  const [pinned, setPinned] = useState(false);
+  // const [pinned, setPinned] = useState(false);
 
   /**
    * is pinned?
    */
   const pinNote = () => {
-    setPinned(!pinned);
-    const pinnedNoteData = {
-      isPined: pinned,
-      noteIdList: [localStorage.getItem("noteId")],
-    };
+    // setPinned(!pinned);
+    // const pinnedNoteData = {
+    //   isPined: pinned,
+    //   noteIdList: [localStorage.getItem("noteId")],
+    // };
     //to delete the note from database(invoking delete api at the backend)
-    CRUD.pinTheNote(pinnedNoteData);
+    // CRUD.pinTheNote(pinnedNoteData);
     //sending id of the note to the dashboard to remove it from notes array
+    // console.log("pinned in note: ", pinned);
+    // props.pinItem(props.id);
     props.pinItem(props.id);
   };
   // /**
@@ -58,12 +60,13 @@ const Note = (props) => {
    * to delete particular note from dashboard and backend storage
    */
   const deleteNote = () => {
-    const deleteData = {
-      isDeleted: true,
-      noteIdList: [localStorage.getItem("noteId")],
-    };
+    // const deleteData = {
+    //   isDeleted: true,
+    //   // noteIdList: [localStorage.getItem("noteId")],
+    //   noteIdList: [],
+    // };
     //to delete the note from database(invoking delete api at the backend)
-    CRUD.deleteNote(deleteData);
+    // CRUD.deleteNote(deleteData);
     //sending id of the note to the dashboard to remove it from notes array
     props.deleteItem(props.id);
   };
@@ -73,10 +76,7 @@ const Note = (props) => {
       <Card.Body data-testid="body">
         <div className="note_head">
           <div className="Group">
-            {/* <Card.Title data-testid="title">{props.title}</Card.Title> */}
-            <Card.Text className="T1" data-testid="content">
-              {props.description}
-            </Card.Text>
+            <Card.Title data-testid="title">{props.title}</Card.Title>
             <RiPushpin2Line className="pin" onClick={pinNote} />
           </div>
           <Card.Text data-testid="content">{props.description}</Card.Text>

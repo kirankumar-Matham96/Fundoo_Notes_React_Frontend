@@ -131,7 +131,7 @@ class FundooNotesServices {
         headers: headers,
       })
       .then((res) => {
-        console.log(`pinned response: ${res}`);
+        console.log(`pinned response: ${JSON.stringify(res)}`);
         return res;
       })
       .catch((err) => {

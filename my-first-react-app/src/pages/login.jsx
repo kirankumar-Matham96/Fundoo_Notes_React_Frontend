@@ -72,7 +72,6 @@ const Login = () => {
         }
       })
       .catch((err) => {
-        console.log(`Error: ${err}`);
         alert("Something bad happened!😥");
       });
   };

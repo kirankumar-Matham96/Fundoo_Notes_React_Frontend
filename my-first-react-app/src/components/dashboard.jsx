@@ -14,14 +14,15 @@
  *********************************************************************/
 
 //importing all necessary libraries and components
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../components/header";
 import "../scss/dashBoard.scss";
 import TakeANote from "./createNote";
 import CRUD from "../services/fundooNotesServices";
 import Note from "./note";
 
-const noteIdMap = new Map();
+const pinnedNoteIdMap = new Map();
+const unPinnedNoteIdMap = new Map();
 
 /**
  * Functional component for dashboard
@@ -29,7 +30,8 @@ const noteIdMap = new Map();
  */
 const DashBoard = () => {
   //to add the notes to the array
-  const [addItem, setAddItem] = useState([]);
+  const [addPinnedItem, setPinnedItem] = useState([]);
+  const [addUnpinnedItem, setUnpinnedItem] = useState([]);
   //to store note ids
   // const noteIdMap = new Map();
 
@@ -37,29 +39,53 @@ const DashBoard = () => {
    * to store the note id and set the note list to display
    */
   const addToMap = (data) => {
-    setAddItem(data.data.data.data);
-    let i = 0;
-    data.data.data.data.forEach((noteData) => {
-      noteIdMap.set(i, noteData.id);
-      i++;
-    });
-    console.log("from addToMap function: ", noteIdMap.get(2)); //able to store
+    console.log("data", JSON.stringify(data.data.data.data[0].isPined));
+    for (let noteData of data.data.data.data) {
+      let i = 0;
+      let j = 0;
+      if (noteData.isPined) {
+        setUnpinnedItem(data.data.data.data);
+        data.data.data.data.forEach((noteData) => {
+          unPinnedNoteIdMap.set(i, noteData.id);
+          i++;
+        });
+      } else {
+        setPinnedItem(data.data.data.data);
+        data.data.data.data.forEach((noteData) => {
+          unPinnedNoteIdMap.set(j, noteData.id);
+          j++;
+        });
+      }
+    }
   };
 
-  const addNote = (note) => {
+  const addNote = () => {
     CRUD.getAllNotes().then((data) => {
       addToMap(data);
     });
   };
 
+  useEffect(() => {
+    addNote();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [!addUnpinnedItem && !addPinnedItem]);
+
   //onPinned
-  const onPinned = () => {};
+  const onPinned = (id) => {
+    const mapNoteIdValue = unPinnedNoteIdMap.get(id);
+    const noteData = {
+      noteIdList: [mapNoteIdValue],
+      isPined: true,
+    };
+    CRUD.pinTheNote(noteData);
+    CRUD.getAllNotes().then((data) => {
+      addToMap(data);
+    });
+  };
+
   //to delete the notes from the array of notes
   const onDelete = (id) => {
-    console.log(`id from note: ${id}`);
-    console.log(noteIdMap.get(2));
-    const mapNoteIdValue = noteIdMap.get(id);
-    console.log(`mapNoteIdValue: ${mapNoteIdValue}`);
+    const mapNoteIdValue = unPinnedNoteIdMap.get(id);
     const noteData = {
       noteIdList: [mapNoteIdValue],
       isDeleted: true,
@@ -79,9 +105,26 @@ const DashBoard = () => {
         <TakeANote passNote={addNote} />
       </div>
       <div className="for_scrollbar">
+        <div className="note_container mb-5">
+          {addPinnedItem
+            ? addPinnedItem.map((val, index) => {
+                return (
+                  <Note
+                    key={index}
+                    id={index}
+                    title={val.title}
+                    description={val.description}
+                    noteId={val.id}
+                    deleteItem={onDelete}
+                    pinItem={onPinned}
+                  />
+                );
+              })
+            : null}
+        </div>
         <div className="note_container">
-          {addItem
-            ? addItem.map((val, index) => {
+          {addUnpinnedItem
+            ? addUnpinnedItem.map((val, index) => {
                 return (
                   <Note
                     key={index}
