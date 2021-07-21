@@ -28,7 +28,7 @@ require("dotenv").config();
 
 //class component
 let token;
-let id;
+let userId;
 let headers;
 class FundooNotesServices {
   constructor() {
@@ -36,7 +36,7 @@ class FundooNotesServices {
     token = localStorage.getItem("token");
 
     //getting id from local storage of the browser
-    id = localStorage.getItem("id");
+    userId = localStorage.getItem("id");
 
     //configuring data inside header
     headers = {
@@ -63,7 +63,6 @@ class FundooNotesServices {
    * @returns response from the backend api
    */
   getAllNotes = () => {
-    console.log(`latest token: ${token}`);
     return axios
       .get(
         `${process.env.REACT_APP_BASE_CRUD_URL}getNotesList?access_token=${token}`
@@ -82,7 +81,6 @@ class FundooNotesServices {
    * @returns response from backend api
    */
   updateNote = (data) => {
-    console.log(`latest token: ${token}`);
     //http://fundoonotes.incubation.bridgelabz.com/api/notes/updateNotes
     /**
      * Updated request Data:
@@ -98,11 +96,9 @@ class FundooNotesServices {
         headers: headers,
       })
       .then((res) => {
-        console.log(`update res from axios: ${res}`);
         return res;
       })
       .catch((err) => {
-        console.log(`update err from axios: ${err}`);
         return err;
       });
   };
@@ -112,7 +108,6 @@ class FundooNotesServices {
    * @returns response from the backend api
    */
   deleteNote = (data) => {
-    console.log(`latest token: ${token}`);
     //http://fundoonotes.incubation.bridgelabz.com/api/notes/trashNotes
     return (
       axios
@@ -125,11 +120,9 @@ class FundooNotesServices {
           headers: headers, //{ isDeleted: true, noteIdList: [id] },
         })
         .then((res) => {
-          console.log(`delete res from axios: ${res}`);
           return res;
         })
         .catch((err) => {
-          console.log(`delete err from axios: ${err}`);
           return err;
         })
     );
