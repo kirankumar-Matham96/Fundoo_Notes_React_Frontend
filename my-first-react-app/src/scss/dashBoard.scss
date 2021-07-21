@@ -3,13 +3,34 @@
   overflow-y: auto;
   height: 100vh;
 }
+// .for_scrollbar {
+//   overflow: hidden;
+//   overflow-y: scroll;
+// }
 .note_container {
-  margin: 20px 15% 0 15%;
+  // border: 2px solid gray;
+  // box-shadow: 0px 0px 15px -5px;
+  margin: 20px 15% 0 20%;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: flex-start;
+  width: 950px;
+  height: 500px;
+  overflow: auto;
 }
+.note_container::-webkit-scrollbar {
+  width: 20px;
+}
+.note_container::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: rgb(218, 214, 214);
+}
+.note_container::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgb(115, 121, 115);
+}
+
 .note_container .note_card {
   margin-left: 100px;
 }

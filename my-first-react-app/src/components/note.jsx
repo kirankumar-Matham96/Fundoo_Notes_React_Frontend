@@ -12,12 +12,12 @@
  * @version     : _ _ _
  * @since       : 22-06-2021
  *********************************************************************/
-/* eslint no-console: "error" */
+
 //importing the required libraries and components
-import React from "react";
+import React, { useState } from "react";
 import "../scss/note.scss";
 import { Card } from "react-bootstrap";
-import { RiInboxArchiveLine } from "react-icons/ri";
+import { RiInboxArchiveLine, RiPushpin2Line } from "react-icons/ri";
 import { BiBellPlus, BiUserPlus, BiImage } from "react-icons/bi";
 import { CgTrash } from "react-icons/cg";
 import { IoColorPaletteOutline } from "react-icons/io5";
@@ -28,7 +28,23 @@ import CRUD from "../services/fundooNotesServices";
  * @param {Object} props properties from createNote component
  * @returns
  */
-const note = (props) => {
+const Note = (props) => {
+  const [pinned, setPinned] = useState(false);
+
+  /**
+   * is pinned?
+   */
+  const pinNote = () => {
+    setPinned(!pinned);
+    const pinnedNoteData = {
+      isPined: pinned,
+      noteIdList: [localStorage.getItem("noteId")],
+    };
+    //to delete the note from database(invoking delete api at the backend)
+    CRUD.pinTheNote(pinnedNoteData);
+    //sending id of the note to the dashboard to remove it from notes array
+    props.pinItem(props.id);
+  };
   // /**
   //  * to update note
   //  */
@@ -44,20 +60,25 @@ const note = (props) => {
   const deleteNote = () => {
     const deleteData = {
       isDeleted: true,
-      noteIdList: [localStorage.getItem("id")],
+      noteIdList: [localStorage.getItem("noteId")],
     };
     //to delete the note from database(invoking delete api at the backend)
     CRUD.deleteNote(deleteData);
     //sending id of the note to the dashboard to remove it from notes array
     props.deleteItem(props.id);
-    console.log("Hello this is test for no-console");
   };
 
   return (
     <Card style={{ width: "13rem" }} className="note">
       <Card.Body data-testid="body">
         <div className="note_head">
-          <Card.Title data-testid="title">{props.title}</Card.Title>
+          <div className="Group">
+            {/* <Card.Title data-testid="title">{props.title}</Card.Title> */}
+            <Card.Text className="T1" data-testid="content">
+              {props.description}
+            </Card.Text>
+            <RiPushpin2Line className="pin" onClick={pinNote} />
+          </div>
           <Card.Text data-testid="content">{props.description}</Card.Text>
           <Card.Text>{props.id}</Card.Text>
         </div>
@@ -75,4 +96,4 @@ const note = (props) => {
 };
 
 //exporting note
-export default note;
+export default Note;

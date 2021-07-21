@@ -100,7 +100,6 @@ class Register extends Component {
         }
       })
       .catch((err) => {
-        console.log(`Error: ${err}`);
         alert("Something went wrong!😥");
       });
   };
@@ -319,7 +318,8 @@ class Register extends Component {
               <footer className="foot">
                 <div className="signin-link">
                   <Link to="/login">
-                    <a>signin instead</a>
+                    {/* <a>signin instead</a> */}
+                    sign-in instead
                   </Link>
                 </div>
                 <div className="button">

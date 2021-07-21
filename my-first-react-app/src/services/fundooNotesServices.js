@@ -36,7 +36,7 @@ class FundooNotesServices {
     token = localStorage.getItem("token");
 
     //getting id from local storage of the browser
-    userId = localStorage.getItem("id");
+    userId = localStorage.getItem("userId");
 
     //configuring data inside header
     headers = {
@@ -108,7 +108,6 @@ class FundooNotesServices {
    * @returns response from the backend api
    */
   deleteNote = (data) => {
-    //http://fundoonotes.incubation.bridgelabz.com/api/notes/trashNotes
     return axios
       .post(`${process.env.REACT_APP_BASE_CRUD_URL}trashNotes`, data, {
         headers: headers,
@@ -117,6 +116,26 @@ class FundooNotesServices {
         return res;
       })
       .catch((err) => {
+        return err;
+      });
+  };
+
+  /**
+   * pinned notes
+   * @param {*} data
+   * @returns
+   */
+  pinTheNote = (data) => {
+    return axios
+      .post(`${process.env.REACT_APP_BASE_CRUD_URL}pinUnpinNotes`, data, {
+        headers: headers,
+      })
+      .then((res) => {
+        console.log(`pinned response: ${res}`);
+        return res;
+      })
+      .catch((err) => {
+        console.log(`pinned response error: ${err}`);
         return err;
       });
   };

@@ -21,6 +21,8 @@ import TakeANote from "./createNote";
 import CRUD from "../services/fundooNotesServices";
 import Note from "./note";
 
+const noteIdMap = new Map();
+
 /**
  * Functional component for dashboard
  * @returns jsx tags and components
@@ -29,7 +31,7 @@ const DashBoard = () => {
   //to add the notes to the array
   const [addItem, setAddItem] = useState([]);
   //to store note ids
-  const noteIdMap = new Map();
+  // const noteIdMap = new Map();
 
   /**
    * to store the note id and set the note list to display
@@ -41,6 +43,7 @@ const DashBoard = () => {
       noteIdMap.set(i, noteData.id);
       i++;
     });
+    console.log("from addToMap function: ", noteIdMap.get(2)); //able to store
   };
 
   const addNote = (note) => {
@@ -49,15 +52,20 @@ const DashBoard = () => {
     });
   };
 
+  //onPinned
+  const onPinned = () => {};
   //to delete the notes from the array of notes
-  const onDelete = async (id) => {
-    const mapValue = await noteIdMap.get(id);
+  const onDelete = (id) => {
+    console.log(`id from note: ${id}`);
+    console.log(noteIdMap.get(2));
+    const mapNoteIdValue = noteIdMap.get(id);
+    console.log(`mapNoteIdValue: ${mapNoteIdValue}`);
     const noteData = {
-      noteIdList: [mapValue],
+      noteIdList: [mapNoteIdValue],
       isDeleted: true,
     };
-    await CRUD.deleteNote(noteData);
-    await CRUD.getAllNotes().then((data) => {
+    CRUD.deleteNote(noteData);
+    CRUD.getAllNotes().then((data) => {
       addToMap(data);
     });
   };
@@ -70,21 +78,24 @@ const DashBoard = () => {
       <div data-testid="takeANote">
         <TakeANote passNote={addNote} />
       </div>
-      <div className="note_container">
-        {addItem
-          ? addItem.map((val, index) => {
-              return (
-                <Note
-                  key={index}
-                  id={index}
-                  title={val.title}
-                  description={val.description}
-                  noteId={val.id}
-                  deleteItem={onDelete}
-                />
-              );
-            })
-          : null}
+      <div className="for_scrollbar">
+        <div className="note_container">
+          {addItem
+            ? addItem.map((val, index) => {
+                return (
+                  <Note
+                    key={index}
+                    id={index}
+                    title={val.title}
+                    description={val.description}
+                    noteId={val.id}
+                    deleteItem={onDelete}
+                    pinItem={onPinned}
+                  />
+                );
+              })
+            : null}
+        </div>
       </div>
     </div>
   );
