@@ -21,7 +21,6 @@ import { RiInboxArchiveLine, RiPushpin2Line } from "react-icons/ri";
 import { BiBellPlus, BiUserPlus, BiImage } from "react-icons/bi";
 import { CgTrash } from "react-icons/cg";
 import { IoColorPaletteOutline } from "react-icons/io5";
-import CRUD from "../services/fundooNotesServices";
 
 /**
  * functional component for the note
@@ -71,6 +70,10 @@ const Note = (props) => {
     props.deleteItem(props.id);
   };
 
+  const archivedNote = () => {
+    props.archiveItem(props.id);
+  };
+
   return (
     <Card style={{ width: "13rem" }} className="note">
       <Card.Body data-testid="body">
@@ -87,7 +90,10 @@ const Note = (props) => {
           <BiUserPlus className="inner_note_icons" />
           <BiImage className="inner_note_icons" />
           <IoColorPaletteOutline className="inner_note_icons" />
-          <RiInboxArchiveLine className="inner_note_icons" />
+          <RiInboxArchiveLine
+            className="inner_note_icons"
+            onClick={archivedNote}
+          />
           <CgTrash className="inner_note_icons" onClick={deleteNote} />
         </div>
       </Card.Body>

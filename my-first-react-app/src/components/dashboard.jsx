@@ -23,6 +23,7 @@ import Note from "./note";
 
 const pinnedNoteIdMap = new Map();
 const unPinnedNoteIdMap = new Map();
+const archivedNoteIdMap = new Map();
 
 /**
  * Functional component for dashboard
@@ -46,7 +47,7 @@ const DashBoard = () => {
       if (noteData.isPined) {
         setUnpinnedItem(data.data.data.data);
         data.data.data.data.forEach((noteData) => {
-          unPinnedNoteIdMap.set(i, noteData.id);
+          pinnedNoteIdMap.set(i, noteData.id);
           i++;
         });
       } else {
@@ -70,6 +71,18 @@ const DashBoard = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [!addUnpinnedItem && !addPinnedItem]);
 
+  //onArchived
+  const onArchive = (id) => {
+    const mapNoteIdValue = unPinnedNoteIdMap.get(id);
+    const noteData = {
+      noteIdList: [mapNoteIdValue],
+      isArchived: true,
+    };
+    CRUD.archiveNote(noteData);
+    CRUD.getAllNotes().then((data) => {
+      addToMap(data);
+    });
+  };
   //onPinned
   const onPinned = (id) => {
     const mapNoteIdValue = unPinnedNoteIdMap.get(id);
@@ -105,6 +118,7 @@ const DashBoard = () => {
         <TakeANote passNote={addNote} />
       </div>
       <div className="for_scrollbar">
+        <p className="headings">pinned notes</p>
         <div className="note_container mb-5">
           {addPinnedItem
             ? addPinnedItem.map((val, index) => {
@@ -117,11 +131,13 @@ const DashBoard = () => {
                     noteId={val.id}
                     deleteItem={onDelete}
                     pinItem={onPinned}
+                    archiveItem={onArchive}
                   />
                 );
               })
             : null}
         </div>
+        <p className="headings">Others</p>
         <div className="note_container">
           {addUnpinnedItem
             ? addUnpinnedItem.map((val, index) => {
@@ -134,6 +150,7 @@ const DashBoard = () => {
                     noteId={val.id}
                     deleteItem={onDelete}
                     pinItem={onPinned}
+                    archiveItem={onArchive}
                   />
                 );
               })

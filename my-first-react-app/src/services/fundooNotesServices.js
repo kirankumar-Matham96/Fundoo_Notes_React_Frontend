@@ -28,15 +28,11 @@ require("dotenv").config();
 
 //class component
 let token;
-let userId;
 let headers;
 class FundooNotesServices {
   constructor() {
     //getting token from local storage of the browser
     token = localStorage.getItem("token");
-
-    //getting id from local storage of the browser
-    userId = localStorage.getItem("userId");
 
     //configuring data inside header
     headers = {
@@ -131,11 +127,27 @@ class FundooNotesServices {
         headers: headers,
       })
       .then((res) => {
-        console.log(`pinned response: ${JSON.stringify(res)}`);
         return res;
       })
       .catch((err) => {
-        console.log(`pinned response error: ${err}`);
+        return err;
+      });
+  };
+
+  /**
+   *
+   * @param {*} data
+   * @returns
+   */
+  archiveNote = (data) => {
+    return axios
+      .post(`${process.env.REACT_APP_BASE_CRUD_URL}archiveNotes`, data, {
+        headers: headers,
+      })
+      .then((res) => {
+        return res;
+      })
+      .catch((err) => {
         return err;
       });
   };

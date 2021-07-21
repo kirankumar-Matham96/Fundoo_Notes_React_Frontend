@@ -8,7 +8,7 @@
 //   overflow-y: scroll;
 // }
 .note_container {
-  // border: 2px solid gray;
+  border-radius: 10px;
   box-shadow: inset 0px 0px 15px -5px;
   box-shadow: inset 0px 15px -5px;
   margin: 20px 15% 0 20%;
@@ -16,6 +16,7 @@
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: flex-start;
+  align-content: flex-start; //<===================
   width: 950px;
   // width: 76%;
   height: 500px;
@@ -37,4 +38,9 @@
 
 .note_container .note_card {
   margin-left: 100px;
+}
+.for_scrollbar {
+  .headings {
+    margin-left: 20%;
+  }
 }
