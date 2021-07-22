@@ -28,22 +28,10 @@ import { IoColorPaletteOutline } from "react-icons/io5";
  * @returns
  */
 const Note = (props) => {
-  // const [pinned, setPinned] = useState(false);
-
   /**
    * is pinned?
    */
   const pinNote = () => {
-    // setPinned(!pinned);
-    // const pinnedNoteData = {
-    //   isPined: pinned,
-    //   noteIdList: [localStorage.getItem("noteId")],
-    // };
-    //to delete the note from database(invoking delete api at the backend)
-    // CRUD.pinTheNote(pinnedNoteData);
-    //sending id of the note to the dashboard to remove it from notes array
-    // console.log("pinned in note: ", pinned);
-    // props.pinItem(props.id);
     props.pinItem(props.id);
   };
   // /**
@@ -59,14 +47,6 @@ const Note = (props) => {
    * to delete particular note from dashboard and backend storage
    */
   const deleteNote = () => {
-    // const deleteData = {
-    //   isDeleted: true,
-    //   // noteIdList: [localStorage.getItem("noteId")],
-    //   noteIdList: [],
-    // };
-    //to delete the note from database(invoking delete api at the backend)
-    // CRUD.deleteNote(deleteData);
-    //sending id of the note to the dashboard to remove it from notes array
     props.deleteItem(props.id);
   };
 

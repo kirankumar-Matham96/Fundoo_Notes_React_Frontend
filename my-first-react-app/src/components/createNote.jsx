@@ -96,7 +96,7 @@ const CreateNote = (props) => {
     // await document.getElementById("form-fields").reset();
     setTitle("");
     setContent("");
-    setNote([]); //<========================
+    setNote([]);
     //toggling the state of take a note tab
     toggleBoolean();
   };
