@@ -14,7 +14,7 @@
  *********************************************************************/
 
 //importing the required libraries and components
-import React, { useState } from "react";
+import React from "react";
 import "../scss/note.scss";
 import { Card } from "react-bootstrap";
 import { RiInboxArchiveLine, RiPushpin2Line } from "react-icons/ri";
@@ -34,20 +34,25 @@ const Note = (props) => {
   const pinNote = () => {
     props.pinItem(props.id);
   };
-  // /**
-  //  * to update note
-  //  */
-  // const updateTheNote = () => {
-  //   //to update the description in the note
-  //   CRUD.updateNote();
-  //   //sending id of the note to the dashboard to update the content init
+
+  // const displayUpdateSheet = () => {
+  //   props.dispUpdateSheet(props.id);
   // };
+  /**
+   * to update note
+   */
+  const updateTheNote = () => {
+    // displayUpdateSheet();
+    props.dispUpdateSheet(props.id);
+    //to update the description in the note
+    //sending id of the note to the dashboard to update the content init
+  };
 
   /**
    * to delete particular note from dashboard and backend storage
    */
   const deleteNote = () => {
-    props.deleteItem(props.id)
+    props.deleteItem(props.id);
   };
 
   const archivedNote = () => {
@@ -56,7 +61,7 @@ const Note = (props) => {
 
   return (
     <Card style={{ width: "13rem" }} className="note">
-      <Card.Body data-testid="body">
+      <Card.Body data-testid="body" onDoubleClick={() => updateTheNote()}>
         <div className="note_head">
           <div className="Group">
             <Card.Title data-testid="title">{props.title}</Card.Title>

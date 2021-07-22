@@ -20,6 +20,7 @@ import "../scss/dashBoard.scss";
 import TakeANote from "./createNote";
 import CRUD from "../services/fundooNotesServices";
 import Note from "./note";
+import UpdateSheet from "./updateSheet";
 // import SideNav from "../components/sideNav";
 
 const pinnedNoteIdMap = new Map();
@@ -34,6 +35,7 @@ const DashBoard = () => {
   //to add the notes to the array
   const [addPinnedItem, setPinnedItem] = useState([]);
   const [addUnpinnedItem, setUnpinnedItem] = useState([]);
+  const [displayUpdateSheet, setDisplayUpdateSheet] = useState(false);
   //to store note ids
   // const noteIdMap = new Map();
 
@@ -59,6 +61,12 @@ const DashBoard = () => {
       }
     }
   };
+
+  // for (let i of addPinnedItem) {
+  //   console.log(i.title);
+  //   console.log(i.description);
+  //   console.log(i.id);
+  // }
 
   const addNote = () => {
     CRUD.getAllNotes().then((data) => {
@@ -109,8 +117,51 @@ const DashBoard = () => {
     });
   };
 
+  //********************
+  /**
+   * For testing:
+   */
+  const array = [
+    // { title: "Title from array", description: "Description from array" },
+  ];
+  //********************
+
+  const onUpdate = async (id) => {
+    const noteId = await unPinnedNoteIdMap.get(id);
+    const otherData = await addPinnedItem[id];
+    await array.splice(0, array.length);
+    await array.push({
+      noteId: noteId,
+      title: otherData.title,
+      description: otherData.description,
+    });
+    await setDisplayUpdateSheet(true);
+  };
+
   return (
     <div className="dashBoard" data-testid="dashboardContainer">
+      {displayUpdateSheet ? (
+        <div>
+          {array
+            ? array.map((val, index) => {
+                return (
+                  <UpdateSheet
+                    key={index}
+                    id={index}
+                    title={val.title}
+                    description={val.description}
+                    noteId={val.id}
+                    // dispUpdateSheet={(boolean) => {
+                    //   setDisplayUpdateSheet(boolean);
+                    // }}
+                  />
+                );
+              })
+            : null}
+        </div>
+      ) : (
+        ""
+      )}
       <div data-testid="header">
         <Header />
       </div>
@@ -136,6 +187,7 @@ const DashBoard = () => {
                       deleteItem={onDelete}
                       pinItem={onPinned}
                       archiveItem={onArchive}
+                      dispUpdateSheet={onUpdate}
                     />
                   );
                 })
@@ -155,6 +207,10 @@ const DashBoard = () => {
                       deleteItem={onDelete}
                       pinItem={onPinned}
                       archiveItem={onArchive}
+                      dispUpdateSheet={onUpdate}
+                      // dispUpdateSheet={(boolean) => {
+                      //   setDisplayUpdateSheet(boolean);
+                      // }}
                     />
                   );
                 })
