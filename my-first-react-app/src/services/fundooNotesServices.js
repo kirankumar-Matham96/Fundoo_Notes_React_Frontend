@@ -58,17 +58,35 @@ class FundooNotesServices {
    * sends a request to the backend for fetching all the notes
    * @returns response from the backend api
    */
-  getAllNotes = () => {
-    return axios
-      .get(
-        `${process.env.REACT_APP_BASE_CRUD_URL}getNotesList?access_token=${token}`
-      )
-      .then((res) => {
-        return res;
-      })
-      .catch((err) => {
-        return err;
-      });
+  // getAllNotes = () => {
+  //   return axios
+  //     .get(
+  //       `${process.env.REACT_APP_BASE_CRUD_URL}getNotesList?access_token=${token}`
+  //     )
+  //     .then((res) => {
+  //       res.data.data.data.forEach((obj) => {
+  //         if (!obj.isDeleted) console.log("get from axios: ", obj);
+  //       });
+  //       return res;
+  //     })
+  //     .catch((err) => {
+  //       return err;
+  //     });
+  // };
+
+  // getAllNotes = async () => {
+  //   return await axios.get(
+  //     `${process.env.REACT_APP_BASE_CRUD_URL}getNotesList?access_token=${token}`
+  //   );
+  // };
+
+  getAllNotes = async () => {
+    return await axios.get(
+      `${process.env.REACT_APP_BASE_CRUD_URL}getNotesList`,
+      {
+        headers: headers,
+      }
+    );
   };
 
   /**
@@ -86,7 +104,7 @@ class FundooNotesServices {
      *    description: "HHhhhhmmmmm..........mmmhhhHH"
      *  }
      */
-
+    console.log("data in update axios: ", data);
     return axios
       .post(`${process.env.REACT_APP_BASE_CRUD_URL}updateNotes`, data, {
         headers: headers,
@@ -103,17 +121,27 @@ class FundooNotesServices {
    * sends a request to backend api to delete a particular note from the database
    * @returns response from the backend api
    */
-  deleteNote = (data) => {
-    return axios
-      .post(`${process.env.REACT_APP_BASE_CRUD_URL}trashNotes`, data, {
+  // deleteNote = (data) => {
+  //   return axios
+  //     .post(`${process.env.REACT_APP_BASE_CRUD_URL}trashNotes`, data, {
+  //       headers: headers,
+  //     })
+  //     .then((res) => {
+  //       return res;
+  //     })
+  //     .catch((err) => {
+  //       return err;
+  //     });
+  // };
+
+  deleteNote = async (data) => {
+    return await axios.post(
+      `${process.env.REACT_APP_BASE_CRUD_URL}trashNotes`,
+      data,
+      {
         headers: headers,
-      })
-      .then((res) => {
-        return res;
-      })
-      .catch((err) => {
-        return err;
-      });
+      }
+    );
   };
 
   /**

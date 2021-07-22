@@ -43,6 +43,7 @@ const Note = (props) => {
    */
   const updateTheNote = () => {
     // displayUpdateSheet();
+    // dispUpdateSheet;
     props.dispUpdateSheet(props.id);
     //to update the description in the note
     //sending id of the note to the dashboard to update the content init

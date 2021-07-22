@@ -10,19 +10,23 @@ const UpdateSheet = (props) => {
     description: props.description,
     noteId: props.noteId,
   };
+
   const [edit, setEdit] = useState(false);
   const [data, setData] = useState(initialState);
 
   const updateNote = async () => {
     await setEdit(false);
-    // await setData({ ...data, isUpdated: true, noteIdList: ["ID"] });
-    // CRUD.updateNote(data);
+    await CRUD.updateNote(data);
     await props.dispUpdateSheet(false);
   };
 
   const cancelChanges = async () => {
-    await setEdit(false);
-    await setData(initialState);
+    if (edit) {
+      await setEdit(false);
+      await setData(initialState);
+    } else {
+      await props.dispUpdateSheet(false);
+    }
   };
 
   return (
@@ -68,6 +72,8 @@ const UpdateSheet = (props) => {
               // }}
               >
                 {data.description}
+                <br />
+                {data.noteId}
               </Card.Text>
             </div>
           )}

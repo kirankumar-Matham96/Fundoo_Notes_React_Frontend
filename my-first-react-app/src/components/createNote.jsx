@@ -151,7 +151,6 @@ const CreateNote = (props) => {
                     className="mb-0 mr-1"
                     type="text"
                     name="title1"
-                    value=""
                     placeholder="Title"
                     onClick={toggleBoolean}
                     autoComplete="off"

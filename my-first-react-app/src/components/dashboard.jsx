@@ -23,8 +23,8 @@ import Note from "./note";
 import UpdateSheet from "./updateSheet";
 // import SideNav from "../components/sideNav";
 
-const pinnedNoteIdMap = new Map();
-const unPinnedNoteIdMap = new Map();
+// const deletedNoteIdMap = new Map();
+const unDeletedNoteIdMap = new Map();
 // const archivedNoteIdMap = new Map();
 
 /**
@@ -33,9 +33,11 @@ const unPinnedNoteIdMap = new Map();
  */
 const DashBoard = () => {
   //to add the notes to the array
-  const [addPinnedItem, setPinnedItem] = useState([]);
-  const [addUnpinnedItem, setUnpinnedItem] = useState([]);
+  const [addDeletedItem, setDeletedItem] = useState([]);
+  const [addUnDeletedItem, setUnDeletedItem] = useState([]);
   const [displayUpdateSheet, setDisplayUpdateSheet] = useState(false);
+  const [array, setArray] = useState([]);
+  const [infiniteStopper, setInfiniteStopper] = useState(0);
   //to store note ids
   // const noteIdMap = new Map();
 
@@ -43,117 +45,149 @@ const DashBoard = () => {
    * to store the note id and set the note list to display
    */
   const addToMap = (data) => {
+    //***************************************************
+    /**
+     * test
+     */
+    const unDeletedNotesArray = data.data.data.data.filter((obj) => {
+      return obj.isDeleted === false ? obj : null;
+    });
+    console.log(
+      `unDeletedNotesArray: ${JSON.stringify(unDeletedNotesArray[0])}`
+    );
+    console.log(`unDeletedNotesArray: ${unDeletedNotesArray.length}`);
+    setUnDeletedItem(unDeletedNotesArray);
+    console.log(`addUnDeletedItem: ${addUnDeletedItem.length}`);
+
+    //***************************************************
+
     for (let noteData of data.data.data.data) {
-      let i = 0;
+      // let i = 0;
       let j = 0;
-      if (noteData.isPined) {
-        setUnpinnedItem(data.data.data.data);
-        data.data.data.data.forEach((noteData) => {
-          pinnedNoteIdMap.set(i, noteData.id);
-          i++;
-        });
+
+      if (noteData.isDeleted) {
+        // setDeletedItem(data.data.data.data);
+        // data.data.data.data.forEach((noteData) => {
+        //   deletedNoteIdMap.set(i, noteData.id);
+        //   i++;
+        // });
       } else {
-        setPinnedItem(data.data.data.data);
+        // setUnDeletedItem(data.data.data.data);
         data.data.data.data.forEach((noteData) => {
-          unPinnedNoteIdMap.set(j, noteData.id);
+          unDeletedNoteIdMap.set(j, noteData.id);
           j++;
         });
       }
     }
   };
 
-  // for (let i of addPinnedItem) {
+  // for (let i of addDeletedItem) {
   //   console.log(i.title);
   //   console.log(i.description);
   //   console.log(i.id);
   // }
 
-  const addNote = () => {
-    CRUD.getAllNotes().then((data) => {
-      addToMap(data);
-    });
+  // const addNote = () => {
+  //   CRUD.getAllNotes().then((data) => {
+  //     addToMap(data);
+  //   });
+  // };
+
+  //************************************ */
+  /**
+   * trying demo
+   */
+  const addNote = async () => {
+    const data = await CRUD.getAllNotes();
+    await addToMap(data);
   };
+
+  //************************************ */
+
+  // useEffect(() => {
+  //   addNote();
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [!addUnDeletedItem && !addDeletedItem]);
 
   useEffect(() => {
     addNote();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [!addUnpinnedItem && !addPinnedItem]);
+  }, [infiniteStopper]);
 
   //onArchived
   const onArchive = (id) => {
-    const mapNoteIdValue = unPinnedNoteIdMap.get(id);
+    const mapNoteIdValue = unDeletedNoteIdMap.get(id);
     const noteData = {
       noteIdList: [mapNoteIdValue],
       isArchived: true,
     };
     CRUD.archiveNote(noteData);
-    CRUD.getAllNotes().then((data) => {
-      addToMap(data);
-    });
+    addNote();
+    // CRUD.getAllNotes().then((data) => {
+    //   addToMap(data);
+    // });
   };
   //onPinned
   const onPinned = (id) => {
-    const mapNoteIdValue = unPinnedNoteIdMap.get(id);
+    const mapNoteIdValue = unDeletedNoteIdMap.get(id);
     const noteData = {
       noteIdList: [mapNoteIdValue],
       isPined: true,
     };
     CRUD.pinTheNote(noteData);
-    CRUD.getAllNotes().then((data) => {
-      addToMap(data);
-    });
+    addNote();
+    // CRUD.getAllNotes().then((data) => {
+    //   addToMap(data);
+    // });
   };
 
   //to delete the notes from the array of notes
   const onDelete = (id) => {
-    const mapNoteIdValue = unPinnedNoteIdMap.get(id);
+    const mapNoteIdValue = unDeletedNoteIdMap.get(id);
+    console.log(`mapNoteIdValue: ${typeof mapNoteIdValue}`);
     const noteData = {
       noteIdList: [mapNoteIdValue],
       isDeleted: true,
     };
     CRUD.deleteNote(noteData);
-    CRUD.getAllNotes().then((data) => {
-      addToMap(data);
-    });
+    addNote();
+    // CRUD.getAllNotes().then((data) => {
+    //   addToMap(data);
+    // });
   };
 
-  //********************
-  /**
-   * For testing:
-   */
-  const array = [
-    // { title: "Title from array", description: "Description from array" },
-  ];
-  //********************
-
-  const onUpdate = async (id) => {
-    const noteId = await unPinnedNoteIdMap.get(id);
-    const otherData = await addPinnedItem[id];
-    await array.splice(0, array.length);
-    await array.push({
-      noteId: noteId,
-      title: otherData.title,
-      description: otherData.description,
-    });
-    await setDisplayUpdateSheet(true);
+  const onUpdate = (id) => {
+    const noteId = unDeletedNoteIdMap.get(id + 3);
+    console.log(`noteId from dash: ${noteId}`);
+    const otherData = addUnDeletedItem[id];
+    setArray([
+      {
+        noteId: noteId,
+        title: otherData.title,
+        description: otherData.description,
+      },
+    ]);
+    setDisplayUpdateSheet(true);
+    addNote();
   };
 
   return (
     <div className="dashBoard" data-testid="dashboardContainer">
       {displayUpdateSheet ? (
         <div>
-          {array
+          {array.length
             ? array.map((val, index) => {
                 return (
                   <UpdateSheet
                     key={index}
-                    id={index}
+                    // id={index}
                     title={val.title}
                     description={val.description}
-                    noteId={val.id}
-                    // dispUpdateSheet={(boolean) => {
-                    //   setDisplayUpdateSheet(boolean);
-                    // }}
+                    // Id={val.id}
+                    noteId={val.noteId}
+                    dispUpdateSheet={(boolean) => {
+                      setDisplayUpdateSheet(boolean);
+                    }}
                   />
                 );
               })
@@ -173,30 +207,31 @@ const DashBoard = () => {
           <TakeANote passNote={addNote} />
         </div>
         <div className="for_scrollbar">
-          <p className="headings">pinned notes</p>
+          {/* <p className="headings">pinned notes</p> */}
           <div className="note_container mb-5">
-            {addPinnedItem
-              ? addPinnedItem.map((val, index) => {
-                  return (
-                    <Note
-                      key={index}
-                      id={index}
-                      title={val.title}
-                      description={val.description}
-                      noteId={val.id}
-                      deleteItem={onDelete}
-                      pinItem={onPinned}
-                      archiveItem={onArchive}
-                      dispUpdateSheet={onUpdate}
-                    />
-                  );
-                })
-              : null}
+            {addDeletedItem
+              ? ""
+              : // addPinnedItem.map((val, index) => {
+                //     return (
+                //       <Note
+                //         key={index}
+                //         id={index}
+                //         title={val.title}
+                //         description={val.description}
+                //         noteId={val.id}
+                //         deleteItem={onDelete}
+                //         pinItem={onPinned}
+                //         archiveItem={onArchive}
+                //         dispUpdateSheet={onUpdate}
+                //       />
+                //     );
+                //   })
+                null}
           </div>
-          <p className="headings">Others</p>
+          {/* <p className="headings">Others</p> */}
           <div className="note_container">
-            {addUnpinnedItem
-              ? addUnpinnedItem.map((val, index) => {
+            {addUnDeletedItem
+              ? addUnDeletedItem.map((val, index) => {
                   return (
                     <Note
                       key={index}
