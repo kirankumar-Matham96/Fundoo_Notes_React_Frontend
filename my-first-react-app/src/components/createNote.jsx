@@ -27,11 +27,6 @@ import CRUD from "../services/fundooNotesServices";
  * @returns
  */
 const CreateNote = (props) => {
-  //object for initial state for the createNote component
-  // const initialState = {
-  //   title: "",
-  //   description: "",
-  // };
   //to set title
   const [title, setTitle] = useState("");
   //to set content
@@ -55,23 +50,18 @@ const CreateNote = (props) => {
     if (note.title && note.description) {
       props.passNote(note);
 
-      // const axiosResponse = CRUD.createNote(newObj);
       const axiosResponse = CRUD.createNote(note);
-
       axiosResponse.then((res) => {
         res.data && res.data.status.success
           ? alert(`note added successfully!`)
           : alert(`something bad happened!`);
       });
-
       resetForm();
-      // console.log("resetCalled");
-
-      //
     } else {
       alert("Please add Title and Content");
     }
   };
+
   /**
    * to handle the input data when the note is submitted
    * @param {Object} event
@@ -117,8 +107,6 @@ const CreateNote = (props) => {
                     className="mb-0 mr-1"
                     type="text"
                     name="title"
-                    // value={note.title}
-                    // onChange={inputEvent}
                     value={title}
                     onChange={(e) => {
                       setTitle(e.target.value);

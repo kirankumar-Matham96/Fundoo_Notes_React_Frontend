@@ -47,7 +47,7 @@ const Note = (props) => {
    * to delete particular note from dashboard and backend storage
    */
   const deleteNote = () => {
-    props.deleteItem(props.id);
+    props.deleteItem(props.id)
   };
 
   const archivedNote = () => {
