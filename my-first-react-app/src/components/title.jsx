@@ -25,17 +25,17 @@ const Title = () => {
   return (
     <div className="title">
       <div className="fundoo">
-        <h1 id="f">F</h1>
-        <h1 id="u">u</h1>
-        <h1 id="n1">n</h1>
-        <h1 id="d">d</h1>
-        <h1 id="o1">o</h1>
-        <h1 id="o2">o</h1>
-        <h1 id="n2">N</h1>
-        <h1 id="o3">o</h1>
-        <h1 id="t">t</h1>
-        <h1 id="e">e</h1>
-        <h1 id="s">s</h1>
+        <h3 id="f">F</h3>
+        <h3 id="u">u</h3>
+        <h3 id="n1">n</h3>
+        <h3 id="d">d</h3>
+        <h3 id="o1">o</h3>
+        <h3 id="o2">o</h3>
+        <h3 id="n2">N</h3>
+        <h3 id="o3">o</h3>
+        <h3 id="t">t</h3>
+        <h3 id="e">e</h3>
+        <h3 id="s">s</h3>
       </div>
     </div>
   );

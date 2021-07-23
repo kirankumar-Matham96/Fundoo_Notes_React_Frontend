@@ -14,7 +14,7 @@
  *********************************************************************/
 
 //importing the required libraries and components
-// import React from "react";
+import React from "react";
 import "../scss/note.scss";
 import { Card } from "react-bootstrap";
 import { RiInboxArchiveLine, RiPushpin2Line } from "react-icons/ri";
@@ -29,24 +29,18 @@ import { IoColorPaletteOutline } from "react-icons/io5";
  */
 const Note = (props) => {
   /**
-   * is pinned?
+   * passing the props of notes which has been pinned
    */
   const pinNote = () => {
     props.pinItem(props.id);
   };
 
-  // const displayUpdateSheet = () => {
-  //   props.dispUpdateSheet(props.id);
-  // };
   /**
    * to update note
    */
   const updateTheNote = () => {
-    // displayUpdateSheet();
-    // dispUpdateSheet;
-    props.dispUpdateSheet(props.id);
-    //to update the description in the note
     //sending id of the note to the dashboard to update the content init
+    props.dispUpdateSheet(props.id);
   };
 
   /**
@@ -73,7 +67,6 @@ const Note = (props) => {
             <RiPushpin2Line className="pin" onClick={pinNote} />
           </div>
           <Card.Text data-testid="content">{props.description}</Card.Text>
-          <Card.Text>{props.id}</Card.Text>
         </div>
         <div className="note_icons" data-testid="icons">
           <BiBellPlus className="inner_note_icons" />

@@ -83,7 +83,7 @@ const Login = () => {
 
   return (
     // <Router>
-    <div>
+    <div className="full-body">
       <Formik
         className="formik-form"
         initialValues={{
@@ -103,7 +103,7 @@ const Login = () => {
                 <div className="fundooNotes" data-testid="title">
                   {<Title />}
                 </div>
-                <h1 data-testid="subTitle">Login here</h1>
+                <h4 data-testid="subTitle">Login here</h4>
               </header>
               <Form className="form-fields" data-testid="form">
                 <div className="block-errorMessage">
@@ -175,7 +175,7 @@ const Login = () => {
                 <Link to="/" data-testid="registerPageLink">
                   Create account
                 </Link>
-                <Link to="/dashboard">Dash Board</Link>
+                {/* <Link to="/dashboard">Dash Board</Link> */}
               </Form>
             </div>
           </div>
