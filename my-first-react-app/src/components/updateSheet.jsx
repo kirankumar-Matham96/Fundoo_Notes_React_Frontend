@@ -59,18 +59,14 @@ const UpdateSheet = (props) => {
           ) : (
             <div className="non-editable">
               <div className="Group">
-                <Card.Title>{data.title}</Card.Title>
+                <Card.Title className="note-title">{data.title}</Card.Title>
                 <FaPencilAlt
                   onClick={() => {
                     setEdit(true);
                   }}
                 />
               </div>
-              <Card.Text>
-                {data.description}
-                <br />
-                {data.noteId}
-              </Card.Text>
+              <Card.Text className="note-content">{data.description}</Card.Text>
             </div>
           )}
           <div className="updateNoteFooter">
