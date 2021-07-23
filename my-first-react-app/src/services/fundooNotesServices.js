@@ -95,16 +95,7 @@ class FundooNotesServices {
    * @returns response from backend api
    */
   updateNote = (data) => {
-    //http://fundoonotes.incubation.bridgelabz.com/api/notes/updateNotes
-    /**
-     * Updated request Data:
-     *  {
-     *    noteId: "60edaf48833be700222a9dba",
-     *    title: "Hmmm...",
-     *    description: "HHhhhhmmmmm..........mmmhhhHH"
-     *  }
-     */
-    console.log("data in update axios: ", data);
+    // console.log("data in update axios: ", data);
     return axios
       .post(`${process.env.REACT_APP_BASE_CRUD_URL}updateNotes`, data, {
         headers: headers,

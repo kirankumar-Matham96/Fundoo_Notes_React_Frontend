@@ -38,6 +38,9 @@
   display: none;
   transition: 0.5s;
 }
+.noteBody {
+    // border: 1px solid red;
+  }
 .note:hover {
   display: flex;
   flex-direction: row;

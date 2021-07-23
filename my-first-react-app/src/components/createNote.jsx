@@ -15,7 +15,8 @@
 
 //importing the required libraries and components
 import "../scss/createNotes.scss";
-import React, { useState } from "react";
+// import React, { useState } from "react";
+import { useState } from "react";
 import { RiPushpin2Line, RiInboxArchiveLine } from "react-icons/ri";
 import { BiBellPlus, BiUserPlus, BiImage } from "react-icons/bi";
 import { IoColorPaletteOutline } from "react-icons/io5";
@@ -66,11 +67,11 @@ const CreateNote = (props) => {
    * to handle the input data when the note is submitted
    * @param {Object} event
    */
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     //to prevent reloading of the page
-    event.preventDefault();
+    await event.preventDefault();
 
-    setNote({
+    await setNote({
       title: title,
       description: content,
       isPined: false,
@@ -78,7 +79,7 @@ const CreateNote = (props) => {
       isDeleted: false,
     });
 
-    passingNote();
+    await passingNote();
   };
 
   //to reset form after submission
@@ -151,6 +152,7 @@ const CreateNote = (props) => {
                     className="mb-0 mr-1"
                     type="text"
                     name="title1"
+                    value=""
                     placeholder="Title"
                     onClick={toggleBoolean}
                     autoComplete="off"

@@ -14,7 +14,7 @@
  *********************************************************************/
 
 //importing the required libraries and components
-import React from "react";
+// import React from "react";
 import "../scss/note.scss";
 import { Card } from "react-bootstrap";
 import { RiInboxArchiveLine, RiPushpin2Line } from "react-icons/ri";
@@ -62,7 +62,11 @@ const Note = (props) => {
 
   return (
     <Card style={{ width: "13rem" }} className="note">
-      <Card.Body data-testid="body" onDoubleClick={() => updateTheNote()}>
+      <Card.Body
+        className="noteBody"
+        data-testid="body"
+        onDoubleClick={() => updateTheNote()}
+      >
         <div className="note_head">
           <div className="Group">
             <Card.Title data-testid="title">{props.title}</Card.Title>

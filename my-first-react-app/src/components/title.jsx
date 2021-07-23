@@ -14,7 +14,7 @@
  *********************************************************************/
 
 //importing required libraries and components
-import React from "react";
+// import React from "react";
 import "../scss/title.scss";
 
 /**

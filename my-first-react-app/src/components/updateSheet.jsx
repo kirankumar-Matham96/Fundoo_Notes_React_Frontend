@@ -8,7 +8,7 @@ const UpdateSheet = (props) => {
   const initialState = {
     title: props.title,
     description: props.description,
-    noteId: props.noteId,
+    // noteId: props.noteId,
   };
 
   const [edit, setEdit] = useState(false);
@@ -66,34 +66,32 @@ const UpdateSheet = (props) => {
                   }}
                 />
               </div>
-              <Card.Text
-              // onChange={(e) => {
-              //   setData(e.target.value);
-              // }}
-              >
+              <Card.Text>
                 {data.description}
                 <br />
                 {data.noteId}
               </Card.Text>
             </div>
           )}
-          <Button
-            variant="Light"
-            onClick={() => {
-              cancelChanges();
-              // setEdit(false);
-            }}
-          >
-            Cancel
-          </Button>
-          <Button
-            variant="Light"
-            onClick={() => {
-              updateNote();
-            }}
-          >
-            Update
-          </Button>
+          <div className="updateNoteFooter">
+            <Button
+              variant="Light"
+              onClick={() => {
+                cancelChanges();
+                // setEdit(false);
+              }}
+            >
+              Cancel
+            </Button>
+            <Button
+              variant="Light"
+              onClick={() => {
+                updateNote();
+              }}
+            >
+              Update
+            </Button>
+          </div>
         </Card.Body>
       </Card>
     </div>
