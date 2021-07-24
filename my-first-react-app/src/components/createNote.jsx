@@ -33,7 +33,6 @@ const CreateNote = (props) => {
   //to set content
   const [content, setContent] = useState("");
   //to store the data of the note
-  // const [note, setNote] = useState(initialState);
   const [note, setNote] = useState({});
   //to store the state of 'take a note' component
   const [initiateNote, setInitiateNote] = useState(false);
@@ -84,7 +83,6 @@ const CreateNote = (props) => {
 
   //to reset form after submission
   const resetForm = () => {
-    // await document.getElementById("form-fields").reset();
     setTitle("");
     setContent("");
     setNote([]);

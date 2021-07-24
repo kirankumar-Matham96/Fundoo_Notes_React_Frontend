@@ -8,7 +8,7 @@ const UpdateSheet = (props) => {
   const initialState = {
     title: props.title,
     description: props.description,
-    // noteId: props.noteId,
+    noteId: props.noteId,
   };
 
   const [edit, setEdit] = useState(false);

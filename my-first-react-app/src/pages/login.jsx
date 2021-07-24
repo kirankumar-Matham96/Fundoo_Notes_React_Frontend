@@ -122,10 +122,13 @@ const Login = () => {
                     >
                       Email
                     </span>
-                    <ErrorMessage
-                      name="email"
-                      data-testid="errorMessageForEmail"
-                    />
+                    <div id="errorMessage" type="text">
+                      <div className="message-place">
+                        {errors.email && touched.email ? (
+                          <div>{errors.email}</div>
+                        ) : null}
+                      </div>
+                    </div>
                   </label>
                   <label className="LoginField">
                     <Field
@@ -142,12 +145,35 @@ const Login = () => {
                     >
                       Password
                     </span>
-                    {errors.password && touched.password ? (
-                      <div>{errors.password}</div>
-                    ) : null}
+                    <div id="errorMessage" type="text">
+                      <div className="message-place">
+                        {errors.password && touched.password ? (
+                          <div>{errors.password}</div>
+                        ) : null}
+                      </div>
+                    </div>
                   </label>
+
+                  <div className="show-pwd" data-testid="showPWD">
+                    <label>
+                      <Field
+                        className="check-box"
+                        data-testid="checkBox"
+                        type="checkbox"
+                        name="checked"
+                        onClick={togglePasswordVisibility}
+                      />
+                    </label>
+                    <label
+                      className="show"
+                      data-testid="labelForShowPWD"
+                      onClick={togglePasswordVisibility}
+                    >
+                      Show password
+                    </label>
+                  </div>
                 </div>
-                <div className="show-pwd" data-testid="showPWD">
+                {/* <div className="show-pwd" data-testid="showPWD">
                   <label>
                     <Field
                       className="check-box"
@@ -164,18 +190,19 @@ const Login = () => {
                   >
                     Show password
                   </label>
+                </div> */}
+                <div className="footer">
+                  <button
+                    className="login-button"
+                    data-testid="loginButton"
+                    type="submit"
+                  >
+                    Login
+                  </button>
+                  <Link to="/" className="link" data-testid="registerPageLink">
+                    Create account
+                  </Link>
                 </div>
-                <button
-                  className="login-button"
-                  data-testid="loginButton"
-                  type="submit"
-                >
-                  Login
-                </button>
-                <Link to="/" data-testid="registerPageLink">
-                  Create account
-                </Link>
-                {/* <Link to="/dashboard">Dash Board</Link> */}
               </Form>
             </div>
           </div>

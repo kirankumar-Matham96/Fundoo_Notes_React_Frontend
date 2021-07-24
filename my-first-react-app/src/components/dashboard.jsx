@@ -15,7 +15,7 @@
 
 //importing all necessary libraries and components
 import React, { useState, useEffect } from "react";
-import Header from "../components/header";
+import Header from "./header";
 import "../scss/dashBoard.scss";
 import TakeANote from "./createNote";
 import CRUD from "../services/fundooNotesServices";
@@ -30,7 +30,7 @@ const unDeletedNoteIdMap = new Map();
  */
 const DashBoard = () => {
   //to add the notes to the array
-  const [addDeletedItem, setDeletedItem] = useState([]);
+  // const [addDeletedItem, setDeletedItem] = useState([]);
   const [addUnDeletedItem, setUnDeletedItem] = useState([]);
   const [displayUpdateSheet, setDisplayUpdateSheet] = useState(false);
   const [array, setArray] = useState([]);
@@ -65,7 +65,7 @@ const DashBoard = () => {
   useEffect(() => {
     addNote();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [infiniteStopper]);
+  }, [setInfiniteStopper]);
 
   //onArchived
   const onArchive = (id) => {
