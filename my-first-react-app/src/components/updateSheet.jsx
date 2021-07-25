@@ -17,6 +17,7 @@ const UpdateSheet = (props) => {
   const updateNote = async () => {
     await setEdit(false);
     await CRUD.updateNote(data);
+    await props.function1();
     await props.dispUpdateSheet(false);
   };
 

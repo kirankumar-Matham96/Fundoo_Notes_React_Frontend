@@ -1,9 +1,4 @@
-@mixin boxes {
-  border: 1px solid rgb(17, 0, 255);
-}
-
 .full-body {
-  // @include boxes;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,7 +7,6 @@
 }
 
 .login-container {
-  // @include boxes;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,7 +14,6 @@
 }
 
 .content {
-  // @include boxes;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -48,11 +41,9 @@ header {
 
 .block-errorMessage {
   all: unset;
-  // @include boxes;
   margin-top: 20px;
 }
 .form-fields .block-errorMessage .show-pwd {
-  // @include boxes;
   position: relative;
   left: 20px;
   top: -15px;
@@ -60,7 +51,6 @@ header {
 }
 
 .LoginField {
-  // @include boxes;
   padding: none;
   margin: none;
   display: flex;
@@ -94,7 +84,6 @@ header {
 }
 .LoginField .placeholder {
   all: unset;
-  @include boxes;
 }
 #errorMessage {
   all: unset;
@@ -107,7 +96,6 @@ header {
 }
 .LoginField .email-ph {
   all: unset;
-  // @include boxes;
   position: relative;
   top: -35px;
   margin-right: 190px;
@@ -115,7 +103,6 @@ header {
 }
 .LoginField .password-ph {
   all: unset;
-  // @include boxes;
   position: relative;
   top: -35px;
   margin-right: 160px;
@@ -140,7 +127,6 @@ header {
 }
 .link {
   text-decoration: none;
-  @include boxes;
 }
 .LoginField input:focus + .email-ph,
 .LoginField input:valid + .email-ph {

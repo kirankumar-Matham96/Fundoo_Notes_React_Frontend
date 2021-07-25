@@ -28,12 +28,10 @@ import CRUD from "../services/fundooNotesServices";
  * @returns
  */
 const CreateNote = (props) => {
-  //to set title
-  const [title, setTitle] = useState("");
-  //to set content
-  const [content, setContent] = useState("");
-  //to store the data of the note
-  const [note, setNote] = useState({});
+  const [note, setNote] = useState({
+    title: "",
+    description: "",
+  });
   //to store the state of 'take a note' component
   const [initiateNote, setInitiateNote] = useState(false);
 
@@ -45,18 +43,11 @@ const CreateNote = (props) => {
    * Pass the note
    * @param {*} event
    */
-  const passingNote = () => {
+  const passingNote = async () => {
     //condition to send the props to display the note
     if (note.title && note.description) {
-      props.passNote(note);
-
-      const axiosResponse = CRUD.createNote(note);
-      axiosResponse.then((res) => {
-        res.data && res.data.status.success
-          ? alert(`note added successfully!`)
-          : alert(`something bad happened!`);
-      });
-      resetForm();
+      await props.passNote(note);
+      await resetForm();
     } else {
       alert("Please add Title and Content");
     }
@@ -66,26 +57,24 @@ const CreateNote = (props) => {
    * to handle the input data when the note is submitted
    * @param {Object} event
    */
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     //to prevent reloading of the page
-    await event.preventDefault();
-
-    await setNote({
-      title: title,
-      description: content,
+    event.preventDefault();
+    setNote({
+      ...note,
       isPined: false,
       isArchived: false,
       isDeleted: false,
     });
-
-    await passingNote();
+    passingNote();
   };
 
   //to reset form after submission
   const resetForm = () => {
-    setTitle("");
-    setContent("");
-    setNote([]);
+    setNote({
+      title: "",
+      description: "",
+    });
     //toggling the state of take a note tab
     toggleBoolean();
   };
@@ -106,9 +95,9 @@ const CreateNote = (props) => {
                     className="mb-0 mr-1"
                     type="text"
                     name="title"
-                    value={title}
+                    value={note.title}
                     onChange={(e) => {
-                      setTitle(e.target.value);
+                      setNote({ ...note, title: e.target.value });
                     }}
                     placeholder="Title"
                     autoComplete="off"
@@ -118,9 +107,9 @@ const CreateNote = (props) => {
                 <textarea
                   className="content-area"
                   name="description"
-                  value={content}
+                  value={note.description}
                   onChange={(e) => {
-                    setContent(e.target.value);
+                    setNote({ ...note, description: e.target.value });
                   }}
                   placeholder="Take a note..."
                 ></textarea>

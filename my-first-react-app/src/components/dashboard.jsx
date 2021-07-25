@@ -30,7 +30,6 @@ const unDeletedNoteIdMap = new Map();
  */
 const DashBoard = () => {
   //to add the notes to the array
-  // const [addDeletedItem, setDeletedItem] = useState([]);
   const [addUnDeletedItem, setUnDeletedItem] = useState([]);
   const [displayUpdateSheet, setDisplayUpdateSheet] = useState(false);
   const [array, setArray] = useState([]);
@@ -57,6 +56,16 @@ const DashBoard = () => {
     }
   };
 
+  const createNewNote = (note) => {
+    const axiosResponse = CRUD.createNote(note);
+    axiosResponse.then((res) => {
+      res.data && res.data.status.success
+        ? alert(`note added successfully!`)
+        : alert(`something bad happened!`);
+    });
+    addNote();
+  };
+
   const addNote = async () => {
     const data = await CRUD.getAllNotes();
     await addToMap(data);
@@ -67,27 +76,6 @@ const DashBoard = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setInfiniteStopper]);
 
-  //onArchived
-  const onArchive = (id) => {
-    const mapNoteIdValue = unDeletedNoteIdMap.get(id);
-    const noteData = {
-      noteIdList: [mapNoteIdValue],
-      isArchived: true,
-    };
-    CRUD.archiveNote(noteData);
-    addNote();
-  };
-  //onPinned
-  const onPinned = (id) => {
-    const mapNoteIdValue = unDeletedNoteIdMap.get(id);
-    const noteData = {
-      noteIdList: [mapNoteIdValue],
-      isPined: true,
-    };
-    CRUD.pinTheNote(noteData);
-    addNote();
-  };
-
   //to delete the notes from the array of notes
   const onDelete = (id) => {
     // const mapNoteIdValue = unDeletedNoteIdMap.get(id);
@@ -97,6 +85,7 @@ const DashBoard = () => {
       isDeleted: true,
     };
     CRUD.deleteNote(noteData);
+    // setInfiniteStopper();
     addNote();
   };
 
@@ -110,6 +99,7 @@ const DashBoard = () => {
       },
     ]);
     setDisplayUpdateSheet(true);
+    // setInfiniteStopper(0);
     addNote();
   };
 
@@ -128,6 +118,7 @@ const DashBoard = () => {
                     dispUpdateSheet={(boolean) => {
                       setDisplayUpdateSheet(boolean);
                     }}
+                    function1={addNote}
                   />
                 );
               })
@@ -141,7 +132,7 @@ const DashBoard = () => {
       </div>
       <div className="main-board">
         <div data-testid="takeANote">
-          <TakeANote passNote={addNote} />
+          <TakeANote passNote={createNewNote} />
         </div>
         <div className="for_scrollbar">
           <div className="note_container">
@@ -155,9 +146,8 @@ const DashBoard = () => {
                       description={val.description}
                       noteId={val.id}
                       deleteItem={onDelete}
-                      pinItem={onPinned}
-                      archiveItem={onArchive}
                       dispUpdateSheet={onUpdate}
+                      function2={addNote}
                     />
                   );
                 })
