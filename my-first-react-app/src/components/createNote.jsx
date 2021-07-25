@@ -140,6 +140,7 @@ const CreateNote = (props) => {
                     type="text"
                     name="title1"
                     value=""
+                    readOnly
                     placeholder="Title"
                     onClick={toggleBoolean}
                     autoComplete="off"
