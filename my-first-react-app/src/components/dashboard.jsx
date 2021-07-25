@@ -33,6 +33,7 @@ const DashBoard = () => {
   const [addUnDeletedItem, setUnDeletedItem] = useState([]);
   const [displayUpdateSheet, setDisplayUpdateSheet] = useState(false);
   const [array, setArray] = useState([]);
+  // eslint-disable-next-line no-unused-vars
   const [infiniteStopper, setInfiniteStopper] = useState(0);
 
   /**

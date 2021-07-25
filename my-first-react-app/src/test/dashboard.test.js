@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /*********************************************************************
  * Execution    : cmd> npm start
  *                cmd> npm test

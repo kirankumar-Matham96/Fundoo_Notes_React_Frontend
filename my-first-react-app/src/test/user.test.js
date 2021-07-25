@@ -97,7 +97,7 @@ describe("Data Binding Tests for Register Page", () => {
   });
 
   test("givenDataForThePasswordField_whenCaptured_shouldPassTheTest", () => {
-    let password = wrapper.find(".password").first();
+    let password = wrapper.find(".password1").first();
 
     password.simulate("change", {
       target: {
@@ -106,7 +106,7 @@ describe("Data Binding Tests for Register Page", () => {
       },
     });
 
-    password = wrapper.find(".password").first();
+    password = wrapper.find(".password1").first();
     expect(password.props().value).toEqual("Hey11111111");
   });
 });
