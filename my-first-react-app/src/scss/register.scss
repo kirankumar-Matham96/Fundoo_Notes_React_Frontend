@@ -1,258 +1,120 @@
-// * {
-//   font-family: roboto, "Noto Sans Myanmar UI", arial, sans-serif;
-// }
-// .register-page {
-//   display: flex;
-//   // align-items: center;
-//   justify-content: center;
-//   flex-direction: row;
-//   position: absolute;
-//   top: 50%;
-//   left: 50%;
-//   transform: translate(-50%, -50%);
-//   overflow: hidden;
-//   box-shadow: 0px 0px 15px -5px;
-//   width: 700px;
-//   height: 700px;
-//   border-radius: 10px;
-// }
-// .form-content {
-//   display: flex;
-//   align-content: center;
-//   // width: 90%;
-//   padding-left: 30px;
-//   padding-right: 60px;
-// }
-// .title {
-//   display: flex;
-//   justify-content: flex-start;
-//   margin-top: 20px;
-// }
-// .sub-title p {
-//   margin: none;
-//   padding: none;
-//   display: flex;
-//   justify-content: flex-start;
-//   margin-top: -10px;
-//   font-style: normal;
-//   font-weight: normal;
-//   font-size: 150%;
-//   color: black;
-// }
-// .text {
-//   display: flex;
-//   justify-content: flex-start;
-//   width: 540px;
-//   align-items: center;
-//   // border: 1px solid black;
-//   margin: 0px 0px 30px 0px;
-// }
-// .parallel-fields {
-//   display: flex;
-//   align-content: space-between;
-// }
-// .left-field {
-//   display: flex;
-//   flex-direction: column;
-//   margin-right: 20px;
-//   border-radius: 3px;
-//   padding: 0px 20px 5px 0px;
-//   font-size: auto;
-//   width: 15rem;
-// }
-// .right-field {
-//   display: flex;
-//   flex-direction: column;
-//   margin-left: 20px;
-//   border-radius: 3px;
-//   padding: 0px 20px 5px 0px;
-//   font-size: auto;
-//   width: 15rem;
-// }
-// .firstName {
-//   border: 1px solid gray;
-//   box-shadow: none;
-//   border-radius: 3px;
-//   width: 246px;
-//   padding: 20px 0px 20px 10px;
-// }
-// .lastName {
-//   border: 1px solid gray;
-//   box-shadow: none;
-//   border-radius: 3px;
-//   width: 246px;
-//   padding: 20px 0px 20px 10px;
-// }
-// .password {
-//   border: 1px solid gray;
-//   box-shadow: none;
-//   border-radius: 3px;
-//   width: 246px;
-//   padding: 20px 0px 20px 10px;
-// }
-// .confirmPassword {
-//   // border-radius: 3px;
-//   width: 46px;
-//   padding: 20px 0px 20px 10px;
-// }
-// .email {
-//   margin-bottom: 0px;
-//   width: 34rem;
-//   border-radius: 3px;
-//   padding: 20px 0px 20px 20px;
-//   border: 1px solid gray;
-//   box-shadow: none;
-//   font-size: auto;
-// }
-// p {
-//   margin: 0px 0px 10px 10px;
-//   color: rgb(88, 88, 88);
-// }
-// a {
-//   text-decoration: none;
-// }
-// .pwd-section {
-//   margin-top: 25px;
-//   margin-bottom: 0px;
-// }
-// .error-message {
-//   color: red;
-//   margin-left: 10px;
-//   padding-top: 8px;
-//   font-size: 0.8rem;
-// }
-// .email-error {
-//   //<---------------------
-//   color: red;
-//   margin-left: 10px;
-//   padding-top: 0px;
-//   font-size: 0.8rem;
-// }
-// .foot {
-//   display: flex;
-//   flex-direction: row;
-//   justify-content: space-between;
-//   align-content: space-between;
-//   margin-top: 40px;
-//   padding: 10px 10px 10px 10px;
-// }
-// .signin-link {
-//   display: flex;
-//   align-items: center;
-// }
-// .button {
-//   display: flex;
-//   flex-direction: row;
-//   width: 230px;
-//   justify-content: space-between;
-// }
-// .register-btn {
-//   border-radius: 5px;
-//   color: #fff;
-//   background-color: rgb(6, 92, 252);
-//   height: 45px;
-//   width: 100px;
-//   font-size: 18px;
-// }
-// .home-btn {
-//   border-radius: 5px;
-//   color: #fff;
-//   background-color: rgb(6, 92, 252);
-//   width: 100px;
-//   height: 45px;
-//   font-size: 18px;
-// }
-
-// /*Model 1*/
-// .custom-field {
-//   position: relative;
-//   font-size: 14px;
-//   padding-top: 20px;
-// }
-
-// .custom-field .placeHolder {
-//   position: absolute;
-//   left: 12px;
-//   top: 60%;
-//   transform: translateY(-50%);
-//   color: gray;
-//   transition: top 0.3s ease, font-size 0.3s ease, color 0.3s ease;
-// }
-// .custom-field input:valid + .placeHolder,
-// .custom-field input:focus + .placeHolder {
-//   top: 10px;
-//   font-size: 11px;
-//   color: #222;
-// }
-// /*****************/
-
-// /*Model 2*/
-// .custom-field input {
-//   border: 2px solid rgb(150, 150, 150);
-//   transition: border-color 0.3s ease;
-// }
-
-// .custom-field input:valid,
-// .custom-field input:focus {
-//   top: 10px;
-//   font-size: 10px;
-//   color: #222;
-//   transition-delay: 0.1s;
-// }
-
-// .custom-field input + .placeHolder {
-//   padding: 0 5px;
-//   left: 8px;
-// }
-
-// .custom-field input:valid + .placeHolder,
-// .custom-field input:focus + .placeHolder {
-//   top: 20px;
-//   background: #fff;
-// }
-
-// /*****************/
-
-// .checkbox-content .showMe {
-//   cursor: pointer;
-// }
-// .custom-field-email input {
-//   border: 2px solid rgb(150, 150, 150);
-// }
-// .custom-field-email .placeHolder {
-//   color: gray;
-//   position: relative;
-//   left: 15px;
-//   bottom: 40px;
-// }
-// .custom-field-email input:valid + .placeHolder,
-// .custom-field-email input:focus + .placeHolder {
-//   bottom: 72px;
-//   color: black;
-//   background-color: #fff;
-//   border: 3px solid #fff;
-//   font-size: 12px;
-//   // padding-right: 5px;
-// }
-// .custom-field-email .ph {
-//   color: rgb(61, 59, 59);
-//   position: relative;
-//   left: 420px;
-//   bottom: 40px;
-// }
-// .pwd-section {
-//   margin-top: -30px;
-// }
-// .email-div {
-//   display: flex;
-//   align-items: flex-start;
-//   flex-direction: column;
-//   // margin: none;
-//   height: 100px;
-// }
-// .email-div label {
-//   padding: 100px;
-// }
-// .email-para {
-//   padding-bottom: 20px;
-// }
+@mixin placeholder-animation {
+  padding-left: 2px;
+  padding-right: 2px;
+  top: -58px;
+  font-size: smaller;
+  background-color: #fff;
+}
+.register-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  height: 100vh;
+}
+.form-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: clamp(200px, 500px, 700px);
+  box-shadow: 0px 1px 15px -5px;
+  border-radius: 5px;
+  padding: 20px;
+}
+.text {
+  display: flex;
+  justify-content: space-between;
+}
+.parallel-fields {
+  all: unset;
+}
+.custom-field {
+  all: unset;
+  width: 0.5rem;
+}
+.firstName {
+  all: unset;
+  border: 2px solid gray;
+  min-height: 40px;
+  border-radius: 5px;
+  width: clamp(200px, 200px, 400px);
+  padding: 0px;
+  padding-left: 10px;
+}
+.lastName {
+  all: unset;
+  border: 2px solid gray;
+  min-height: 40px;
+  border-radius: 5px;
+  width: clamp(200px, 200px, 400px);
+  padding: 0px;
+  padding-left: 20px;
+}
+.email {
+  all: unset;
+  border: 2px solid gray;
+  min-height: 40px;
+  border-radius: 5px;
+  width: clamp(200px, 434px, 600px);
+  padding: 0px;
+  padding-left: 10px;
+}
+.password1 {
+  all: unset;
+  border: 2px solid gray;
+  min-height: 40px;
+  border-radius: 5px;
+  width: clamp(200px, 200px, 400px);
+  padding: 0px;
+  padding-left: 10px;
+  margin-right: 12px;
+}
+.password2 {
+  all: unset;
+  border: 2px solid gray;
+  min-height: 40px;
+  border-radius: 5px;
+  width: clamp(200px, 210px, 400px);
+  padding: 0px;
+  padding-left: 10px;
+  margin-right: none;
+}
+.error-message {
+  color: red;
+}
+.signin-link {
+  text-decoration: none;
+}
+.register-btn {
+  width: 90px;
+  height: 40px;
+  font-size: 17px;
+  border-radius: 5px;
+  margin-right: 8px;
+  background-color: rgb(6, 92, 252);
+  color: #fff;
+}
+.placeHolder {
+  position: relative;
+  top: -35px;
+  left: 10px;
+}
+.ph {
+  position: relative;
+  top: -35px;
+  left: 300px;
+}
+.foot {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.parallel-fields input:focus + .placeHolder,
+.parallel-fields input:valid + .placeHolder {
+  @include placeholder-animation;
+}
+.custom-field-email input:focus + .placeHolder,
+.custom-field-email input:valid + .placeHolder {
+  @include placeholder-animation;
+}

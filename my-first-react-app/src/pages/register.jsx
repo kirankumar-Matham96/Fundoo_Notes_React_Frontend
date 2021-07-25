@@ -58,12 +58,6 @@ class Register extends Component {
     this.state = initialState;
   }
 
-  // reset = (target) =>
-  // {
-  //   this.state = initialState;
-  //   target = null;
-  // }
-
   /**
    * to toggle the password visibility
    */
@@ -89,7 +83,6 @@ class Register extends Component {
     service
       .registerUser(modifiedData)
       .then((data) => {
-        // this.reset(target);
         if (data.status === 200) {
           alert(
             "Registration successful. 👍\nNow you will be redirected to login page."
@@ -212,7 +205,7 @@ class Register extends Component {
               <div className="sub-title">
                 <p>Register now and keep your notes safe.</p>{" "}
               </div>
-              <div className="text name">
+              <div className="text">
                 <div className="parallel-fields left-field">
                   <label className="custom-field">
                     <input
@@ -265,11 +258,11 @@ class Register extends Component {
               <p className="email-para">
                 You can use letters, numbers & periods
               </p>
-              <div className="text pwd-section">
+              <div className="text">
                 <div className="parallel-fields left-field">
                   <label className="custom-field">
                     <input
-                      className="password"
+                      className="password1"
                       name="password"
                       type={isPasswordShown ? "text" : "password"}
                       onChange={this.handleChange}
@@ -284,7 +277,7 @@ class Register extends Component {
                 <div className="parallel-fields right-field">
                   <label className="custom-field">
                     <input
-                      className="password"
+                      className="password2"
                       name="confirmPassword"
                       type={isPasswordShown ? "text" : "password"}
                       onChange={this.handleChange}
@@ -316,9 +309,8 @@ class Register extends Component {
                 </label>
               </div>
               <footer className="foot">
-                <div className="signin-link">
-                  <Link to="/login">
-                    {/* <a>signin instead</a> */}
+                <div>
+                  <Link to="/login" className="signin-link">
                     sign-in instead
                   </Link>
                 </div>
