@@ -66,6 +66,7 @@ describe("Data Binding Tests for Register Page", () => {
 
     firstName = wrapper.find(".firstName").first();
     expect(firstName.props().value).toEqual("Hey");
+    expect(firstName.props().value).not.toEqual("Hey1");
   });
 
   test("givenDataForTheFieldLastName_whenCaptured_shouldPassTheTest", () => {
