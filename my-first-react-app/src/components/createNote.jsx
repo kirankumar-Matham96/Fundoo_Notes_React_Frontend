@@ -15,12 +15,12 @@
 
 //importing the required libraries and components
 import "../scss/createNotes.scss";
-// import React, { useState } from "react";
-import { useState } from "react";
+import React, { useState } from "react";
+// import { useState } from "react";
 import { RiPushpin2Line, RiInboxArchiveLine } from "react-icons/ri";
 import { BiBellPlus, BiUserPlus, BiImage } from "react-icons/bi";
 import { IoColorPaletteOutline } from "react-icons/io5";
-import CRUD from "../services/fundooNotesServices";
+// import CRUD from "../services/fundooNotesServices";
 
 /**
  * to create a new note

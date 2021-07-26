@@ -66,7 +66,7 @@ const Header = () => {
                   data-testid="mainNoteIcon"
                 />
                 <div className="custom-title" data-testid="title">
-                  <Title className="fundooTitile" />
+                  <Title className="fundooTitle" />
                 </div>
                 <Form.Group className="middle" data-testid="searchBox">
                   <FaSearch className="search-icon icon" />
