@@ -81,6 +81,7 @@ describe("Data Binding Tests for Register Page", () => {
 
     lastName = wrapper.find(".lastName").first();
     expect(lastName.props().value).toEqual("Hey");
+    expect(lastName.props().value).not.toEqual("Hey1");
   });
 
   test("givenDataForTheEmailField_whenCaptured_shouldPassTheTest", () => {
@@ -95,6 +96,7 @@ describe("Data Binding Tests for Register Page", () => {
 
     email = wrapper.find(".email").first();
     expect(email.props().value).toEqual("Hey");
+    expect(email.props().value).not.toEqual("Hey1");
   });
 
   test("givenDataForThePasswordField_whenCaptured_shouldPassTheTest", () => {
@@ -109,6 +111,7 @@ describe("Data Binding Tests for Register Page", () => {
 
     password = wrapper.find(".password1").first();
     expect(password.props().value).toEqual("Hey11111111");
+    expect(password.props().value).not.toEqual("Hey1111111");
   });
 });
 
