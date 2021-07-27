@@ -1,4 +1,5 @@
 #!/bin/bash
+
 # cd /home/ubuntu/my-first-react-app/
 # npm i
 /home/ubuntu/my-first-react-app/ npm i
