@@ -83,119 +83,115 @@ const Login = () => {
 
   return (
     // <Router>
-      <div className="full-body">
-        <Formik
-          className="formik-form"
-          initialValues={{
-            email: "",
-            password: "",
-          }}
-          validationSchema={validate}
-          onSubmit={(values, { resetForm }) => {
-            userCredentials(values);
-            resetForm({ values: "" });
-          }}
-        >
-          {({ errors, touched }) => (
-            <div className="login-container" data-testid="loginTestContainer">
-              <div className="content">
-                <header data-testid="header">
-                  <div className="fundooNotes" data-testid="title">
-                    {<Title />}
-                  </div>
-                  <h4 data-testid="subTitle">Login here</h4>
-                </header>
-                <Form className="form-fields" data-testid="form">
-                  <div className="block-errorMessage">
-                    <label className="LoginField" data-testid="labelForEmail">
-                      <Field
-                        className="email-login"
-                        data-testid="emailField"
-                        name="email"
-                        type="email"
-                        autoComplete="off"
-                        required
-                      />
-                      <span
-                        className="placeholder email-ph"
-                        data-testid="emailPlaceholder"
-                      >
-                        Email
-                      </span>
-                      <div id="errorMessage" type="text">
-                        <div className="message-place">
-                          {errors.email && touched.email ? (
-                            <div>{errors.email}</div>
-                          ) : null}
-                        </div>
+    <div className="full-body">
+      <Formik
+        className="formik-form"
+        initialValues={{
+          email: "",
+          password: "",
+        }}
+        validationSchema={validate}
+        onSubmit={(values, { resetForm }) => {
+          userCredentials(values);
+          resetForm({ values: "" });
+        }}
+      >
+        {({ errors, touched }) => (
+          <div className="login-container" data-testid="loginTestContainer">
+            <div className="content">
+              <header data-testid="header">
+                <div className="fundooNotes" data-testid="title">
+                  {<Title />}
+                </div>
+                <h4 data-testid="subTitle">Login here</h4>
+              </header>
+              <Form className="form-fields" data-testid="form">
+                <div className="block-errorMessage">
+                  <label className="LoginField" data-testid="labelForEmail">
+                    <Field
+                      className="email-login"
+                      data-testid="emailField"
+                      name="email"
+                      type="email"
+                      autoComplete="off"
+                      required
+                    />
+                    <span
+                      className="placeholder email-ph"
+                      data-testid="emailPlaceholder"
+                    >
+                      Email
+                    </span>
+                    <div id="errorMessage" type="text">
+                      <div className="message-place">
+                        {errors.email && touched.email ? (
+                          <div>{errors.email}</div>
+                        ) : null}
                       </div>
-                    </label>
-                    <label className="LoginField">
-                      <Field
-                        className="password-login"
-                        data-testid="passwordField"
-                        name="password"
-                        type={isPasswordShown ? "text" : "password"}
-                        autoComplete="off"
-                        required
-                      />
-                      <span
-                        className="placeholder password-ph"
-                        data-testid="passwordPlaceholder"
-                      >
-                        Password
-                      </span>
-                      <div id="errorMessage" type="text">
-                        <div className="message-place">
-                          {errors.password && touched.password ? (
-                            <div>{errors.password}</div>
-                          ) : null}
-                        </div>
-                      </div>
-                    </label>
-
-                    <div className="show-pwd" data-testid="showPWD">
-                      <label>
-                        <Field
-                          className="check-box"
-                          data-testid="checkBox"
-                          type="checkbox"
-                          name="checked"
-                          onClick={togglePasswordVisibility}
-                        />
-                      </label>
-                      <label
-                        className="show"
-                        data-testid="labelForShowPWD"
-                        onClick={togglePasswordVisibility}
-                      >
-                        Show password
-                      </label>
                     </div>
-                  </div>
-                  <div className="footer">
-                    <button
-                      className="login-button"
-                      data-testid="loginButton"
-                      type="submit"
+                  </label>
+                  <label className="LoginField">
+                    <Field
+                      className="password-login"
+                      data-testid="passwordField"
+                      name="password"
+                      type={isPasswordShown ? "text" : "password"}
+                      autoComplete="off"
+                      required
+                    />
+                    <span
+                      className="placeholder password-ph"
+                      data-testid="passwordPlaceholder"
                     >
-                      Login
-                    </button>
-                    <Link
-                      to="/"
-                      className="link"
-                      data-testid="registerPageLink"
+                      Password
+                    </span>
+                    <div id="errorMessage" type="text">
+                      <div className="message-place">
+                        {errors.password && touched.password ? (
+                          <div>{errors.password}</div>
+                        ) : null}
+                      </div>
+                    </div>
+                  </label>
+
+                  <div className="show-pwd" data-testid="showPWD">
+                    <label>
+                      <Field
+                        className="check-box"
+                        data-testid="checkBox"
+                        type="checkbox"
+                        name="checked"
+                        onClick={togglePasswordVisibility}
+                      />
+                    </label>
+                    <label
+                      className="show"
+                      data-testid="labelForShowPWD"
+                      onClick={togglePasswordVisibility}
                     >
-                      Create account
-                    </Link>
+                      Show password
+                    </label>
                   </div>
-                </Form>
-              </div>
+                </div>
+                <div className="footer">
+                  <button
+                    className="login-button"
+                    data-testid="loginButton"
+                    type="submit"
+                  >
+                    Login
+                  </button>
+                  <Link to="/" className="link" data-testid="registerPageLink">
+                    Create account
+                  </Link>
+                </div>
+              </Form>
             </div>
-          )}
-        </Formik>
-      </div>
-    {/* </Router> */}
+          </div>
+        )}
+      </Formik>
+    </div>
+    // </Router>
   );
 };
 
