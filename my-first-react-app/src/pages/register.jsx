@@ -310,9 +310,9 @@ class Register extends Component {
               </div>
               <footer className="foot">
                 <div>
-                  {/* <Link to="/login" className="signin-link">
+                  <Link to="/login" className="signin-link">
                     sign-in instead
-                  </Link> */}
+                  </Link>
                 </div>
                 <div className="button">
                   <button

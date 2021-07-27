@@ -82,7 +82,7 @@ const Login = () => {
   };
 
   return (
-    <Router>
+    // <Router>
       <div className="full-body">
         <Formik
           className="formik-form"
@@ -195,7 +195,7 @@ const Login = () => {
           )}
         </Formik>
       </div>
-    </Router>
+    {/* </Router> */}
   );
 };
 
