@@ -1,7 +1,5 @@
 #!/bin/bash
-cd /home/ubuntu/application/reactapp/my-first-react-app/
-npm init
-echo "npm initializing..."
+cd /home/ubuntu/my-first-react-app/
 npm i
 echo "installing node modules..."
 npm build
