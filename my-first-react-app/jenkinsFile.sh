@@ -1,12 +1,12 @@
 #!/bin/bash
 
 # cd /home/ubuntu/my-first-react-app/
-# npm i
-/home/ubuntu/my-first-react-app/ npm i
+#/home/ubuntu/my-first-react-app/ npm i
+npm i
 echo "installing node modules..."
-# npm build
-/home/ubuntu/my-first-react-app/npm build
+#/home/ubuntu/my-first-react-app/npm build
+npm build
 echo "optimizing build for deployment..."
-# npm start
-/home/ubuntu/my-first-react-app/ npm start
+#/home/ubuntu/my-first-react-app/ npm start
+npm start
 echo "server starting..."
