@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 # cd /home/ubuntu/my-first-react-app/
 #/home/ubuntu/my-first-react-app/ npm i
