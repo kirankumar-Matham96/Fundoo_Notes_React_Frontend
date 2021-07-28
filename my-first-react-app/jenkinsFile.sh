@@ -3,4 +3,4 @@
 echo "installing node modules..."
 npm i
 echo "server starting..."
-npm start
+npm run start
