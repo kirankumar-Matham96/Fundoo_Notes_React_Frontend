@@ -5,8 +5,8 @@
 npm i
 echo "installing node modules..."
 #/home/ubuntu/my-first-react-app/npm build
-npm build
+npm run build
 echo "optimizing build for deployment..."
 #/home/ubuntu/my-first-react-app/ npm start
-npm start
+npm run start
 echo "server starting..."
