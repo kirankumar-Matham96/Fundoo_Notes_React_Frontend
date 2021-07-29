@@ -75,12 +75,12 @@ describe("Data Binding Tests for Register Page", () => {
     lastName.simulate("change", {
       target: {
         name: "lastName",
-        value: "Hey",
+        value: "SaiKiran",
       },
     });
 
     lastName = wrapper.find(".lastName").first();
-    expect(lastName.props().value).toEqual("Hey");
+    expect(lastName.props().value).toEqual("SaiKiran");
     expect(lastName.props().value).not.toEqual("Hey1");
   });
 
